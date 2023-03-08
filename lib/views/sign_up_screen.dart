@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:helal/views/sign_up_screen.dart';
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+import 'package:helal/views/login_screen.dart';
+
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({Key? key}) : super(key: key);
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignUpScreenState extends State<SignUpScreen> {
+
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-  bool _isInvisible = true;
+  final _fullNameController = TextEditingController();
+  final _phoneController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -56,13 +59,55 @@ class _LoginScreenState extends State<LoginScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const Text(
-                  "Login",
+                  "Sign Up",
                   style: TextStyle(
                       fontFamily: 'OoohBaby',
                       fontSize: 45,
                       fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 50),
+                Material(
+                  elevation: 9.5,
+                  shadowColor: Colors.purple,
+                  borderRadius: const BorderRadius.all(Radius.circular(50)),
+                  child: TextField(
+                    controller: _fullNameController,
+                    decoration: InputDecoration(
+                        hintText: 'Full Name',
+                        prefixIcon: const Icon(
+                          Icons.drive_file_rename_outline,
+                          color: Colors.purple,
+                        ),
+                        contentPadding:
+                        const EdgeInsets.symmetric(horizontal: 15),
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                          borderRadius: BorderRadius.circular(50),
+                        )),
+                  ),
+                ),
+                const SizedBox(height: 15),
+                Material(
+                  elevation: 9.5,
+                  shadowColor: Colors.purple,
+                  borderRadius: const BorderRadius.all(Radius.circular(50)),
+                  child: TextField(
+                    controller: _phoneController,
+                    decoration: InputDecoration(
+                        hintText: 'Phone Number',
+                        prefixIcon: const Icon(
+                          Icons.phone,
+                          color: Colors.purple,
+                        ),
+                        contentPadding:
+                        const EdgeInsets.symmetric(horizontal: 15),
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                          borderRadius: BorderRadius.circular(50),
+                        )),
+                  ),
+                ),
+                const SizedBox(height: 15),
                 Material(
                   elevation: 9.5,
                   shadowColor: Colors.purple,
@@ -90,47 +135,18 @@ class _LoginScreenState extends State<LoginScreen> {
                   borderRadius: const BorderRadius.all(Radius.circular(50)),
                   child: TextField(
                     controller: _passwordController,
-                    obscureText: _isInvisible,
                     decoration: InputDecoration(
                         hintText: 'Password',
                         prefixIcon: const Icon(
                           Icons.lock,
                           color: Colors.purple,
                         ),
-                        suffixIcon: IconButton(
-                          onPressed: () {
-                            _isInvisible = !_isInvisible;
-                            setState(() {});
-                          },
-                          icon: _isInvisible
-                              ? const Icon(Icons.visibility_off)
-                              : const Icon(Icons.visibility),
-                        ),
                         contentPadding:
-                            const EdgeInsets.symmetric(horizontal: 15),
+                        const EdgeInsets.symmetric(horizontal: 15),
                         border: OutlineInputBorder(
                           borderSide: BorderSide.none,
                           borderRadius: BorderRadius.circular(50),
                         )),
-                  ),
-                ),
-                const SizedBox(height: 20),
-                Align(
-                  alignment: Alignment.topRight,
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Container()));
-                    },
-                    child: const Text(
-                      'Forget Password ?',
-                      style: TextStyle(
-                        color: Colors.deepPurple,
-                        fontFamily: 'TiltNeon',
-                        fontWeight: FontWeight.bold,
-                        decoration: TextDecoration.underline,
-                      ),
-                    ),
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -142,7 +158,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       backgroundColor: Colors.purpleAccent,
                     ),
                     child: const Text(
-                      "Login",
+                      "Sign Up",
                       style: TextStyle(
                           fontFamily: 'TiltNeon',
                           fontSize: 25,
@@ -154,13 +170,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text('Don\'t have an account ?'),
+                    const Text('have an account ?'),
                     TextButton(
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => const SignUpScreen(),));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginScreen(),));
                       },
                       child: const Text(
-                        'Create',
+                        'Login',
                         style: TextStyle(
                           fontFamily: 'TiltNeon',
                           fontWeight: FontWeight.bold,
