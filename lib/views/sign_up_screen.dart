@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:helal/views/home_screen.dart';
 import 'package:helal/views/login_screen.dart';
+// ignore: implementation_imports
+import 'package:dropdown_button2/src/dropdown_button2.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -15,6 +17,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final _passwordController = TextEditingController();
   final _fullNameController = TextEditingController();
   final _phoneController = TextEditingController();
+
+  final List<String> cities = [
+    'Amman',
+    'Zarqa',
+    'Irbid',
+    'Aqaba',
+    'Mafraq',
+    'Madaba',
+    'Jerash',
+    'Karak',
+    'Tafilah',
+    'As-Salt',
+    'Ajloun',
+    'Ma\'an',
+  ];
+  String? selectedValue;
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +74,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 50),
+                const SizedBox(height: 30),
                 const Text(
                   "Sign Up",
                   style: TextStyle(
@@ -104,6 +122,96 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           borderSide: BorderSide.none,
                           borderRadius: BorderRadius.circular(50),
                         )),
+                  ),
+                ),
+                const SizedBox(height: 15),
+                Material(
+                  elevation: 9.5,
+                  shadowColor: Colors.purple,
+                  borderRadius: const BorderRadius.all(Radius.circular(50)),
+                  child: DropdownButtonHideUnderline(
+                    child: DropdownButton2(
+                      isExpanded: true,
+                      hint: Row(
+                        children: const [
+                          Icon(
+                            Icons.add_home_work,
+                            size: 28,
+                            color: Colors.purple,
+                          ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Expanded(
+                            child: Text(
+                              'Select City',
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.black54,
+                              ),
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ],
+                      ),
+                      items: cities
+                          .map((item) => DropdownMenuItem<String>(
+                        value: item,
+                        child: Text(
+                          item,
+                          style: const TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black54,
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ))
+                          .toList(),
+                      value: selectedValue,
+                      onChanged: (value) {
+                        setState(() {
+                          selectedValue = value as String;
+                        });
+                      },
+                      buttonStyleData: ButtonStyleData(
+                        height: 50,
+                        width: double.infinity,
+                        padding: const EdgeInsets.only(left: 14, right: 14),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          color: Colors.white,
+                        ),
+                      ),
+                      iconStyleData: const IconStyleData(
+                        icon: Icon(
+                          Icons.arrow_forward_ios_outlined,
+                        ),
+                        iconSize: 17,
+                        iconEnabledColor: Colors.purple,
+                        iconDisabledColor: Colors.purple,
+                      ),
+                      dropdownStyleData: DropdownStyleData(
+                        maxHeight: 200,
+                        width: 150,
+                        padding: null,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(14),
+                          color: Colors.purple,
+                        ),
+                        elevation: 8,
+                        offset: const Offset(-20, 0),
+                        scrollbarTheme: ScrollbarThemeData(
+                          radius: const Radius.circular(40),
+                          thickness: MaterialStateProperty.all<double>(6),
+                          thumbVisibility: MaterialStateProperty.all<bool>(true),
+                        ),
+                      ),
+                      menuItemStyleData: const MenuItemStyleData(
+                        height: 40,
+                        padding: EdgeInsets.only(left: 30, right: 14),
+                      ),
+                    ),
                   ),
                 ),
                 const SizedBox(height: 15),
