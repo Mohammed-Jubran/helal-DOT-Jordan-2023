@@ -17,6 +17,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final _passwordController = TextEditingController();
   final _fullNameController = TextEditingController();
   final _phoneController = TextEditingController();
+  String ? citySelected;
+
 
   final List<String> cities = [
     'Amman',
@@ -172,6 +174,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       onChanged: (value) {
                         setState(() {
                           selectedValue = value as String;
+                          citySelected=selectedValue;
                         });
                       },
                       buttonStyleData: ButtonStyleData(
