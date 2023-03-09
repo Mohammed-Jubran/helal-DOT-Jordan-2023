@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:helal/views/home_screen.dart';
 import 'package:helal/views/login_screen.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -18,38 +19,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          children: const [
-            Text(
-              '  Welcome in ',
-              style: TextStyle(
-                fontFamily: 'OoohBaby',
-                fontSize: 30,
-              ),
-            ),
-            Text(
-              'HelaL ',
-              style: TextStyle(
-                fontFamily: 'OoohBaby',
-                fontSize: 30,
-                color: Colors.purple,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            Text(
-              'market',
-              style: TextStyle(
-                fontFamily: 'OoohBaby',
-                fontSize: 30,
-              ),
-            ),
-          ],
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
-      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Center(
@@ -58,6 +27,36 @@ class _SignUpScreenState extends State<SignUpScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: const [
+                    Text(
+                      '  Welcome in ',
+                      style: TextStyle(
+                        fontFamily: 'OoohBaby',
+                        fontSize: 30,
+                      ),
+                    ),
+                    Text(
+                      'HelaL ',
+                      style: TextStyle(
+                        fontFamily: 'OoohBaby',
+                        fontSize: 30,
+                        color: Colors.purple,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      'market',
+                      style: TextStyle(
+                        fontFamily: 'OoohBaby',
+                        fontSize: 30,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 50),
                 const Text(
                   "Sign Up",
                   style: TextStyle(
@@ -153,7 +152,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 SizedBox(
                   width: (double.infinity) - 10,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => const HomeScreen(),));
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.purpleAccent,
                     ),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:helal/views/sign_up_screen.dart';
+
+import 'home_screen.dart';
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
@@ -15,38 +17,6 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          children: const [
-            Text(
-              '  Welcome in ',
-              style: TextStyle(
-                fontFamily: 'OoohBaby',
-                fontSize: 30,
-              ),
-            ),
-            Text(
-              'HelaL ',
-              style: TextStyle(
-                fontFamily: 'OoohBaby',
-                fontSize: 30,
-                color: Colors.purple,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            Text(
-              'market',
-              style: TextStyle(
-                fontFamily: 'OoohBaby',
-                fontSize: 30,
-              ),
-            ),
-          ],
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
-      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Center(
@@ -55,6 +25,36 @@ class _LoginScreenState extends State<LoginScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: const [
+                    Text(
+                      '  Welcome in ',
+                      style: TextStyle(
+                        fontFamily: 'OoohBaby',
+                        fontSize: 30,
+                      ),
+                    ),
+                    Text(
+                      'HelaL ',
+                      style: TextStyle(
+                        fontFamily: 'OoohBaby',
+                        fontSize: 30,
+                        color: Colors.purple,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      'market',
+                      style: TextStyle(
+                        fontFamily: 'OoohBaby',
+                        fontSize: 30,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 100),
                 const Text(
                   "Login",
                   style: TextStyle(
@@ -137,7 +137,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(
                   width: (double.infinity) - 10,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => const HomeScreen(),));
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.purpleAccent,
                     ),
