@@ -24,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             children: [
               BannerImage(
-                aspectRatio: 1.8,
+                aspectRatio: 1.9,
                 itemLength: list.length,
                 withOutIndicator: false,
                 selectedIndicatorColor: Colors.purple,
@@ -37,13 +37,45 @@ class _HomeScreenState extends State<HomeScreen> {
                     fit: BoxFit.cover,
                   ),
                 ),
-                onTap: (int index) {
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    content: Text('On Tap $index'),
-                  ));
-                },
               ),
-
+              const SizedBox(height: 25),
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: Text("CATEGORIES",
+                      style: TextStyle(
+                        fontSize: 17,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'TiltNeon',
+                      )),
+                ),
+              ),
+              const SizedBox(height: 25),
+              Container(
+                color: Colors.pink,
+                width: double.infinity,
+                height: 200,
+                child: ListView.separated(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 30,
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  itemBuilder: (context, index) {
+                    return Column(
+                      children:  [
+                        CircleAvatar(
+                          backgroundColor: Colors.white70,
+                          radius: 35,
+                          child: Image.asset("",fit: BoxFit.fill),
+                        ),
+                        const SizedBox(height: 10),
+                        const Text("data"),
+                      ],
+                    );
+                  },
+                  separatorBuilder: (context, index) => const SizedBox(width: 10),
+                ),
+              ),
             ],
           ),
         ),
