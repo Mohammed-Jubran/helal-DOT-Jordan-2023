@@ -13,7 +13,6 @@ class _HomeScreenState extends State<HomeScreen> {
     'assets/images/1.jpeg',
     'assets/images/4.jpeg',
     'assets/images/3.jpeg',
-
   ];
 
   @override
