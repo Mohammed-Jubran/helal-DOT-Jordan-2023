@@ -11,7 +11,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final list = [
     'assets/images/1.jpeg',
-    'assets/images/2.jpeg',
+    'assets/images/4.jpeg',
     'assets/images/3.jpeg',
 
   ];
@@ -25,6 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             children: [
               BannerImage(
+                aspectRatio: 1.8,
                 itemLength: list.length,
                 withOutIndicator: false,
                 selectedIndicatorColor: Colors.purple,
@@ -39,10 +40,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 onTap: (int index) {
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    content: Text('On Tap$index'),
+                    content: Text('On Tap $index'),
                   ));
                 },
               ),
+
             ],
           ),
         ),
