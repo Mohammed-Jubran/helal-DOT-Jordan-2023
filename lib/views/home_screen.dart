@@ -20,11 +20,11 @@ class _HomeScreenState extends State<HomeScreen> {
     return SafeArea(
       child: Scaffold(
         body: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 0),
           child: Column(
             children: [
               BannerImage(
-                aspectRatio: 1.9,
+                aspectRatio: 2.1,
                 itemLength: list.length,
                 withOutIndicator: false,
                 selectedIndicatorColor: Colors.purple,
@@ -52,28 +52,27 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               const SizedBox(height: 25),
-              Container(
-                color: Colors.pink,
+              SizedBox(
                 width: double.infinity,
-                height: 200,
+                height: 110,
                 child: ListView.separated(
                   scrollDirection: Axis.horizontal,
                   itemCount: 30,
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
                   itemBuilder: (context, index) {
                     return Column(
-                      children:  [
+                      children:  const [
                         CircleAvatar(
-                          backgroundColor: Colors.white70,
+                          backgroundColor: Colors.transparent,
                           radius: 35,
-                          child: Image.asset("",fit: BoxFit.fill),
+                          backgroundImage: AssetImage("assets/images/5.jpg"),
                         ),
-                        const SizedBox(height: 10),
-                        const Text("data"),
+                        SizedBox(height: 5),
+                        Text("fruits",style: TextStyle(fontSize: 20,fontFamily: 'TiltNeon',color: Colors.black)),
                       ],
                     );
                   },
-                  separatorBuilder: (context, index) => const SizedBox(width: 10),
+                  separatorBuilder: (context, index) => const SizedBox(width: 15),
                 ),
               ),
             ],
