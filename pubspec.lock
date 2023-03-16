@@ -9,6 +9,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.10.0"
+  banner_image:
+    dependency: "direct main"
+    description:
+      name: banner_image
+      sha256: db038887810a3af8ecccd4417fdb86daeab685f0dcb7c9fe4c2e1e9a4a992a26
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.7"
   boolean_selector:
     dependency: transitive
     description:
