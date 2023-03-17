@@ -24,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             children: [
               BannerImage(
-                aspectRatio: 2.1,
+                aspectRatio: 2.7,
                 itemLength: list.length,
                 withOutIndicator: false,
                 selectedIndicatorColor: Colors.purple,
@@ -93,25 +93,71 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               Expanded(
-                child: ListView.separated(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 30,
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                  itemBuilder: (context, index) {
-                    return SizedBox(
-                      width: double.infinity,
-                      height: double.infinity,
-                      child: Column(
-                        children: [
-                          Container(
-                            child: Image.asset(""),
-                          )
-                        ],
-                      ),
-                    );
-                  },
-                  separatorBuilder: (context, index) =>
-                  const SizedBox(width: 15),
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: const Color(0xFFf6f5f4),
+                  ),
+                  width: double.infinity,
+                  child: ListView.separated(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: 30,
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 10),
+                        child: Material(
+                          elevation: 7,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              color: Color(0xFFf6f5f4),
+                            ),
+                            child: Column(
+                              children: [
+                                Expanded(
+                                  flex: 3,
+                                  child: Container(
+                                    width: (MediaQuery.of(context).size.width) *
+                                        .40,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(5),
+                                        image: const DecorationImage(
+                                            image: ExactAssetImage(
+                                                "assets/images/11.jpeg"),
+                                            fit: BoxFit.cover)),
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 1,
+                                  child: Column(
+                                    mainAxisAlignment:MainAxisAlignment.spaceEvenly,
+                                    crossAxisAlignment:CrossAxisAlignment.start,
+                                    children: [
+                                      const Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: Text("Honey Gel",style: TextStyle(fontWeight: FontWeight.bold,fontFamily: "TiltNeon",fontSize: 15),),
+                                      ),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: const [
+                                          Text("Honey Gel"),
+                                          Text("Honey Gel"),
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                    separatorBuilder: (context, index) =>
+                        const SizedBox(width: 15),
+                  ),
                 ),
               ),
             ],
