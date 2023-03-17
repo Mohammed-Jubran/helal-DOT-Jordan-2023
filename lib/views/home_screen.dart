@@ -38,7 +38,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
-              const SizedBox(height: 25),
               const Align(
                 alignment: Alignment.centerLeft,
                 child: Padding(
@@ -51,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       )),
                 ),
               ),
-              const SizedBox(height: 25),
+              const SizedBox(height: 10),
               SizedBox(
                 width: double.infinity,
                 height: 110,
@@ -61,18 +60,58 @@ class _HomeScreenState extends State<HomeScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 15),
                   itemBuilder: (context, index) {
                     return Column(
-                      children:  const [
+                      children: const [
                         CircleAvatar(
                           backgroundColor: Colors.transparent,
                           radius: 35,
                           backgroundImage: AssetImage("assets/images/5.jpg"),
                         ),
                         SizedBox(height: 5),
-                        Text("fruits",style: TextStyle(fontSize: 20,fontFamily: 'TiltNeon',color: Colors.black)),
+                        Text("fruits",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontFamily: 'TiltNeon',
+                                color: Colors.black)),
                       ],
                     );
                   },
-                  separatorBuilder: (context, index) => const SizedBox(width: 15),
+                  separatorBuilder: (context, index) =>
+                      const SizedBox(width: 15),
+                ),
+              ),
+              const SizedBox(height: 5),
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: Text("FEATURED PRODUCTS",
+                      style: TextStyle(
+                        fontSize: 17,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'TiltNeon',
+                      )),
+                ),
+              ),
+              Expanded(
+                child: ListView.separated(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 30,
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  itemBuilder: (context, index) {
+                    return SizedBox(
+                      width: double.infinity,
+                      height: double.infinity,
+                      child: Column(
+                        children: [
+                          Container(
+                            child: Image.asset(""),
+                          )
+                        ],
+                      ),
+                    );
+                  },
+                  separatorBuilder: (context, index) =>
+                  const SizedBox(width: 15),
                 ),
               ),
             ],
