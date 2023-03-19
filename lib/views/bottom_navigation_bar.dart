@@ -70,6 +70,8 @@ class _BottomNavigationState extends State<BottomNavigation> {
         ),
         body: _pages[_selectedTab],
         bottomNavigationBar: BottomNavigationBar(
+          elevation: 7,
+          backgroundColor: const Color(0xFFf2f2f2),
           type: BottomNavigationBarType.fixed,
           currentIndex: _selectedTab,
           onTap: (index) => _changeTab(index),

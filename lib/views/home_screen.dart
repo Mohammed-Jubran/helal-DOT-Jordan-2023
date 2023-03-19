@@ -111,9 +111,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5),
-                              color: Color(0xFFf6f5f4),
+                              color: const Color(0xFFf6f5f4),
                             ),
                             child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Expanded(
                                   flex: 3,
@@ -130,23 +131,23 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                                 Expanded(
                                   flex: 1,
-                                  child: Column(
-                                    mainAxisAlignment:MainAxisAlignment.spaceEvenly,
-                                    crossAxisAlignment:CrossAxisAlignment.start,
-                                    children: [
-                                      const Align(
-                                        alignment: Alignment.centerLeft,
-                                        child: Text("Honey Gel",style: TextStyle(fontWeight: FontWeight.bold,fontFamily: "TiltNeon",fontSize: 15),),
-                                      ),
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        crossAxisAlignment: CrossAxisAlignment.center,
-                                        children: const [
-                                          Text("Honey Gel"),
-                                          Text("Honey Gel"),
-                                        ],
-                                      )
-                                    ],
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children:  [
+                                        const Text("Honey Gel",style: TextStyle(fontWeight: FontWeight.w600,fontFamily: "TiltNeon",fontSize: 15),),
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          crossAxisAlignment: CrossAxisAlignment.center  ,
+                                          children: const [
+                                            Text("\$18.5/",style: TextStyle(fontFamily:"TiltNeon",fontWeight:FontWeight.bold,color: Colors.purple)),
+                                            Text("500ml",style: TextStyle(fontSize: 10,fontFamily:"TiltNeon",fontWeight: FontWeight.w400),),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ],
