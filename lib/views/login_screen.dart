@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:helal/views/bottom_navigation_bar.dart';
 import 'package:helal/views/sign_up_screen.dart';
 
-import 'home_screen.dart';
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
@@ -139,7 +138,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   width: (double.infinity) - 10,
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => const BottomNavigation(),));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const BottomNavigation(),
+                          ));
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.purpleAccent,
@@ -160,7 +163,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     const Text('Don\'t have an account ?'),
                     TextButton(
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => const SignUpScreen(),));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const SignUpScreen(),
+                            ));
                       },
                       child: const Text(
                         'Create',
