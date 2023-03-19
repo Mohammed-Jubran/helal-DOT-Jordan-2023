@@ -19,7 +19,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
         child: GridView.builder(
           gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
             maxCrossAxisExtent: 200,
-            childAspectRatio: 3 / 2,
+            childAspectRatio: 3 / 3,
             crossAxisSpacing: 20,
             mainAxisSpacing: 20,
           ),
@@ -28,10 +28,42 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
             return Container(
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                  image: const DecorationImage(
-                      image: AssetImage("assets/images/5.jpg"), fit: BoxFit.cover),
-                  borderRadius: BorderRadius.circular(15)),
-              child: Text(myCategories[index]["name"],style: TextStyle(color: Colors.purple),),
+                  color: const Color(0xFFA020F0).withOpacity(0.4),
+                  borderRadius: BorderRadius.circular(20)),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  // const CircleAvatar(
+                  //   radius: 40,
+                  //   backgroundImage: AssetImage("assets/images/5.jpg"),
+                  // ),
+                  Expanded(
+                    flex: 3,
+                    child: Container(
+                      margin: const EdgeInsets.only(top: 10,right: 10,left: 10,bottom: 5),
+                      decoration: BoxDecoration(
+                        color: Colors.grey,
+                        borderRadius: BorderRadius.circular(15),
+                        image: const DecorationImage(
+                          image: AssetImage("assets/images/5.jpg"),
+                          fit: BoxFit.cover,
+                          opacity:.6 ,
+                        )
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 1,
+                      child: Text(
+                    myCategories[index]["name"],
+                    style: const TextStyle(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 18,
+                        fontFamily: "TiltNeon"),
+                  )),
+                ],
+              ),
             );
           },
         ),
