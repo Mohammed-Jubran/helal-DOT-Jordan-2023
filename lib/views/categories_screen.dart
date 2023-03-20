@@ -28,16 +28,12 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
             return Container(
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                  color: const Color(0xFFA020F0).withOpacity(0.4),
+                  color: const Color(0xFFA020F0).withOpacity(0.15 ),
                   borderRadius: BorderRadius.circular(20)),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  // const CircleAvatar(
-                  //   radius: 40,
-                  //   backgroundImage: AssetImage("assets/images/5.jpg"),
-                  // ),
                   Expanded(
                     flex: 3,
                     child: Container(
