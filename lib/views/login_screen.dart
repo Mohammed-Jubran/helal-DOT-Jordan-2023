@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:helal/views/bottom_navigation_bar.dart';
+import 'package:helal/views/otp1_screen.dart';
 import 'package:helal/views/sign_up_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -120,7 +121,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: InkWell(
                     onTap: () {
                       Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Container()));
+                          MaterialPageRoute(builder: (context) => const OTP1Screen()));
                     },
                     child: const Text(
                       'Forget Password ?',
