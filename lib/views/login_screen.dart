@@ -94,6 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       shadowColor: Colors.purple,
                       borderRadius: const BorderRadius.all(Radius.circular(50)),
                       child: TextFormField(
+                        keyboardType: TextInputType.emailAddress,
                         controller: _emailController,
                         decoration: const InputDecoration(
                           hintText: 'Email',
@@ -121,6 +122,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       shadowColor: Colors.purple,
                       borderRadius: const BorderRadius.all(Radius.circular(50)),
                       child: TextFormField(
+                        keyboardType: TextInputType.visiblePassword,
                         controller: _passwordController,
                         obscureText: _isInvisible,
                         decoration: InputDecoration(
