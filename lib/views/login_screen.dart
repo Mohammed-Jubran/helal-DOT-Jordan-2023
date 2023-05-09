@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:helal/controller/user_controller.dart';
-import 'package:helal/model/user_model.dart';
 import 'package:helal/views/bottom_navigation_bar.dart';
 import 'package:helal/views/otp1_screen.dart';
 import 'package:helal/views/sign_up_screen.dart';
@@ -19,23 +19,23 @@ class _LoginScreenState extends State<LoginScreen> {
   bool _isInvisible = true;
   final _formKey = GlobalKey<FormState>();
 
-  _login() async {
-    if (_formKey.currentState!.validate()) {
-      String email = _emailController.text;
-      String password = _passwordController.text;
+  _handleSignInAction(BuildContext context) {
+    const storage =  FlutterSecureStorage();
+    EasyLoading.show(status: "Loading");
+    UserController()
+        .login(_emailController.text, _passwordController.text)
+        .then((value) async {
+      EasyLoading.dismiss();
+      await const FlutterSecureStorage()
+          .write(key: "token", value: "${value.type} ${value.token}");
 
-      User user = User(email: email, password: password);
-      EasyLoading.show(status: "Loading");
-      UserController().login(email, password).then((value) {
-        EasyLoading.dismiss();
-        Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => const BottomNavigation(),));
-      }).catchError((ex) {
-        print(ex);
-        EasyLoading.dismiss();
-        EasyLoading.showError(ex.toString());
-      });
-    }
+      // ignore: use_build_context_synchronously
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => const BottomNavigation()));
+    }).catchError((ex) {
+      EasyLoading.dismiss();
+      EasyLoading.showError(ex.toString());
+    });
   }
 
     @override
@@ -177,7 +177,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       width: (double.infinity) - 10,
                       child: ElevatedButton(
                         onPressed: () {
-                          _login();
+                          _handleSignInAction(context);
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.purpleAccent,
