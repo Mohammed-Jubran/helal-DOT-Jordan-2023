@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:helal/views/bottom_navigation_bar.dart';
-import 'package:helal/views/home_screen.dart';
-import 'package:helal/views/login_screen.dart';
+import 'package:helal/views/main_screen/bottom_navigation_bar.dart';
+import 'package:helal/views/main_screen/home_screen.dart';
+import 'package:helal/views/login_otp_screen/login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);

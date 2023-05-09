@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:helal/controller/user_controller.dart';
-import 'package:helal/views/bottom_navigation_bar.dart';
-import 'package:helal/views/otp1_screen.dart';
-import 'package:helal/views/sign_up_screen.dart';
+import 'package:helal/views/main_screen/bottom_navigation_bar.dart';
+import 'package:helal/views/login_otp_screen/otp1_screen.dart';
+import 'package:helal/views/login_otp_screen/sign_up_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);

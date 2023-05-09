@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:helal/controller/user_controller.dart';
 import 'package:helal/model/user_model.dart';
-import 'package:helal/views/home_screen.dart';
-import 'package:helal/views/login_screen.dart';
+import 'package:helal/views/main_screen/home_screen.dart';
+import 'package:helal/views/login_otp_screen/login_screen.dart';
 // ignore: implementation_imports
 import 'package:dropdown_button2/src/dropdown_button2.dart';
 
