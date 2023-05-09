@@ -28,7 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
       EasyLoading.show(status: "Loading");
       UserController().login(email, password).then((value) {
         EasyLoading.dismiss();
-        Navigator.push(context,
+        Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (context) => const BottomNavigation(),));
       }).catchError((ex) {
         print(ex);
