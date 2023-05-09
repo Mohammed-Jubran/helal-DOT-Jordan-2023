@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:helal/views/about_us_screen.dart';
 import 'package:helal/views/cart_screen.dart';
 import 'package:helal/views/categories_screen.dart';
 import 'package:helal/views/home_screen.dart';
-import 'package:helal/views/more_screen.dart';
+import 'package:helal/views/more_screen/more_screen.dart';
 import 'package:helal/views/search_screen.dart';
 
 class BottomNavigation extends StatefulWidget {
