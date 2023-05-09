@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:helal/views/bottom_navigation_bar.dart';
 import 'package:helal/views/home_screen.dart';
 import 'package:helal/views/login_screen.dart';
 
@@ -29,7 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
           context,
           MaterialPageRoute(
             builder: (context) =>
-                exists ? const HomeScreen() : const LoginScreen(),
+                exists ? const BottomNavigation() : const LoginScreen(),
           ));
     });
   }
