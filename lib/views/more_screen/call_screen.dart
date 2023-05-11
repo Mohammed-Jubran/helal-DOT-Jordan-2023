@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class CallScreen extends StatefulWidget {
   const CallScreen({Key? key}) : super(key: key);
@@ -8,12 +10,22 @@ class CallScreen extends StatefulWidget {
 }
 
 class _CallScreenState extends State<CallScreen> {
+
+  _launchCaller() async {
+    const url = "tel:0795746832";
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white24,
       appBar: AppBar(
-        title: const Text("Call us"),
+        title: const Text("Call us",style: TextStyle(fontFamily: 'TiltNeon')),
         centerTitle: true,
       ),
       body: Padding(
@@ -24,21 +36,26 @@ class _CallScreenState extends State<CallScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(height: 10),
-              const Card(
-                child: ListTile(
-                  leading: Icon(
-                    Icons.phone_android_outlined,
-                    color: Colors.purple,
-                    size: 35,
-                  ),
-                  title: Text(
-                    "Call the customer service center",
-                    style: TextStyle(fontFamily: 'TiltNeon'),
-                  ),
-                  subtitle: Text(
-                    "0795746832",
-                    style: TextStyle(
-                        fontFamily: 'TiltNeon', fontWeight: FontWeight.bold),
+              InkWell(
+                onTap: (){
+                  _launchCaller();
+                },
+                child: const Card(
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.phone_android_outlined,
+                      color: Colors.purple,
+                      size: 35,
+                    ),
+                    title: Text(
+                      "Call the customer service center",
+                      style: TextStyle(fontFamily: 'TiltNeon'),
+                    ),
+                    subtitle: Text(
+                      "0795746832",
+                      style: TextStyle(
+                          fontFamily: 'TiltNeon', fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ),
               ),
@@ -122,7 +139,13 @@ class _CallScreenState extends State<CallScreen> {
                             SizedBox(
                               width: double.infinity,
                               child: ElevatedButton(
-                                onPressed: (){},
+                                onPressed: (){
+                                  EasyLoading.showSuccess('Message has been sent');
+                                  Future.delayed(const Duration(milliseconds: 1000), () async {
+                                     EasyLoading.dismiss();
+                                     Navigator.pop(context);
+                                  });
+                                },
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: Colors.purpleAccent,
                                 ),

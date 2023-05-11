@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:helal/views/main_screen/products_screen.dart';
 
 class CategoriesScreen extends StatefulWidget {
   const CategoriesScreen({Key? key}) : super(key: key);
@@ -25,40 +26,45 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
           ),
           itemCount: myCategories.length,
           itemBuilder: (context, index) {
-            return Container(
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                  color: const Color(0xFFA020F0).withOpacity(0.15 ),
-                  borderRadius: BorderRadius.circular(20)),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Expanded(
-                    flex: 3,
-                    child: Container(
-                      margin: const EdgeInsets.only(top: 10,right: 10,left: 10,bottom: 5),
-                      decoration: BoxDecoration(
-                        color: Colors.grey,
-                        borderRadius: BorderRadius.circular(15),
-                        image: const DecorationImage(
-                          image: AssetImage("assets/images/5.jpg"),
-                          fit: BoxFit.cover,
-                          opacity:.6 ,
-                        )
+            return InkWell(
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const ProductsScreen(),));
+              },
+              child: Container(
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                    color: const Color(0xFFA020F0).withOpacity(0.15 ),
+                    borderRadius: BorderRadius.circular(20)),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      flex: 3,
+                      child: Container(
+                        margin: const EdgeInsets.only(top: 10,right: 10,left: 10,bottom: 5),
+                        decoration: BoxDecoration(
+                          color: Colors.grey,
+                          borderRadius: BorderRadius.circular(15),
+                          image: const DecorationImage(
+                            image: AssetImage("assets/images/5.jpg"),
+                            fit: BoxFit.cover,
+                            opacity:.6 ,
+                          )
+                        ),
                       ),
                     ),
-                  ),
-                  Expanded(
-                    flex: 1,
-                      child: Text(
-                    myCategories[index]["name"],
-                    style: const TextStyle(
-                        fontWeight: FontWeight.w400,
-                        fontSize: 18,
-                        fontFamily: "TiltNeon"),
-                  )),
-                ],
+                    Expanded(
+                      flex: 1,
+                        child: Text(
+                      myCategories[index]["name"],
+                      style: const TextStyle(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 18,
+                          fontFamily: "TiltNeon"),
+                    )),
+                  ],
+                ),
               ),
             );
           },

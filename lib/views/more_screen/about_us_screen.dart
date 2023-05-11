@@ -13,7 +13,7 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("About us"),
+          title: const Text("About us",style: TextStyle(fontFamily: 'TiltNeon')),
           centerTitle: true,
         ),
         body: Center(
