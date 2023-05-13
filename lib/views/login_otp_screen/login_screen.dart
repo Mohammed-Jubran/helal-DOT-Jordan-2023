@@ -182,7 +182,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           _handleSignInAction(context);
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.purpleAccent,
+                          backgroundColor: Colors.purple,
                         ),
                         child: const Text(
                           "Login",

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:helal/views/login_otp_screen/login_screen.dart';
+import 'package:helal/views/login_otp_screen/otp2_screen.dart';
+import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 
 class OTP1Screen extends StatefulWidget {
   const OTP1Screen({Key? key}) : super(key: key);
@@ -8,13 +11,17 @@ class OTP1Screen extends StatefulWidget {
 }
 
 class _OTP1ScreenState extends State<OTP1Screen> {
+
+  String initialCountry = 'JO';
+  PhoneNumber number = PhoneNumber(isoCode: 'JO');
+  String _phone = '';
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          leading: const Icon(Icons.arrow_back_ios_new_outlined,size: 20,),
-          title: const Text("Forget password"),
+          title: const Text("OTP Step One",style: TextStyle(fontFamily: 'TiltNeon',)),
           centerTitle: true,
         ),
         body:SingleChildScrollView(
@@ -28,73 +35,108 @@ class _OTP1ScreenState extends State<OTP1Screen> {
                   width: double.infinity,
                   decoration: const BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage("assets/images/Enter OTP-amico.png")
+                      image: AssetImage("assets/images/Enter OTP-amico.png"),
+                      fit: BoxFit.fill
                     )
                   ),
                 ),
-                const SizedBox(height: 40),
-                const Text("Reset Password",
+                const Text("Verify your phone number",
                     style: TextStyle(
+                        fontFamily: 'OoohBaby',
                         fontSize: 25,
                         fontWeight: FontWeight.w700,
                         color: Color(0xFF0C1A30))),
-                const SizedBox(height: 20),
-                const Text(
-                    "Enter your phone number you used",
+                const SizedBox(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Text(
+                        "we have send you an ",
+                        style: TextStyle(
+                            color: Color(0xFF838589),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400)),
+                    Text(
+                        "One Time Password(OTP)",
+                        style: TextStyle(
+                            fontFamily: 'TiltNeon',
+                            color: Colors.black,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400)),
+                  ],
+                ),
+                const SizedBox(height: 10),
+                const Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "    Enter mobile no.*",
                     style: TextStyle(
-                        color: Color(0xFF838589),
+                        fontFamily: 'TiltNeon',
                         fontSize: 14,
-                        fontWeight: FontWeight.w400)),
-                const SizedBox(height: 75),
-                const Text(
-                  "Email/ Phone",
-                  style: TextStyle(
-                      fontSize: 14,
-                      color: Color(0xFF0C1A30),
-                      fontWeight: FontWeight.w400),
+                        color: Color(0xFF838589),
+                        fontWeight: FontWeight.w400),
+                  ),
+                ),
+                const SizedBox(height: 5),
+                Material(
+                  elevation: 9.5,
+                  shadowColor: Colors.purple,
+                  borderRadius: BorderRadius.circular(50),
+                  child: InternationalPhoneNumberInput(
+                    onInputChanged: (PhoneNumber number) {
+                      _phone = number.phoneNumber!;
+                    },
+                    selectorConfig: const SelectorConfig(
+                      selectorType: PhoneInputSelectorType.DROPDOWN,
+                    ),
+                    ignoreBlank: false,
+                    initialValue: number,
+                    autoValidateMode: AutovalidateMode.disabled,
+                    selectorTextStyle: const TextStyle(color: Colors.black),
+                    formatInput: false,
+                    keyboardType: const TextInputType.numberWithOptions(
+                        signed: true, decimal: true),
+                    inputBorder: OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.circular(50)),
+                  ),
+                ),
+                const SizedBox(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text('Already have an account?',style: TextStyle(color: Color(0xFF838589),fontFamily: 'TiltNeon',fontSize: 14),),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginScreen(),));
+                      },
+                      child: const Text(
+                        'Login',
+                        style: TextStyle(
+                          fontFamily: 'TiltNeon',
+                          fontWeight: FontWeight.bold,
+                          decoration: TextDecoration.underline,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
                 const SizedBox(height: 20),
-                Container(
-                  height: 50,
-                  decoration: BoxDecoration(
-                    color: const Color(0xFFfafbfb),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: const TextField(
-                    enabled: true,
-                    textAlign: TextAlign.left,
-                    decoration: InputDecoration(
-                      hintText: ' Masukan Alamat Email/ No Telepon Anda',
-                      hintStyle: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                          color: Color(0xFFC4C5C4)),
-                      border: OutlineInputBorder(borderSide: BorderSide.none),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 76),
                 SizedBox(
                   width: (double.infinity) - 10,
-                  height: 50,
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => Container(),
-                          ));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => const OTP2Screen(),));
                     },
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFF3669C9),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10))),
+                      backgroundColor: Colors.purple,
+                    ),
                     child: const Text(
-                      "Reset",
+                      "Get OTP",
                       style: TextStyle(
-                          fontSize: 14,
-                          color: Color(0xFFFFFFFF),
-                          fontWeight: FontWeight.w500),
+                          fontFamily: 'TiltNeon',
+                          fontSize: 25,
+                          color: Colors.white),
                     ),
                   ),
                 ),
