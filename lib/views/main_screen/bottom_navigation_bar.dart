@@ -58,7 +58,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
           ),
           centerTitle: true,
           leading: const InkWell(
-              child: Icon(Icons.shield_moon_outlined,
+              child: Icon(Icons.shield_moon_sharp,
                   color: Colors.purple, size: 40)),
           actions:  [
             InkWell(child: const Icon(Icons.search, size: 40, color: Colors.purple),onTap: (){
