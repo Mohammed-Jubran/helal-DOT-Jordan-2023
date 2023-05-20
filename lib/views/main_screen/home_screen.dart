@@ -72,7 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           Category category = snapshot.data![index];
                           return InkWell(
                             onTap: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => const ProductsScreen(),));
+                              Navigator.push(context, MaterialPageRoute(builder: (context) =>  ProductsScreen(categoryId: category.id,),));
                             },
                             child: Column(
                               children:  [

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:helal/controller/product_controller.dart';
+import 'package:helal/model/product_model.dart';
 
 class ProductsScreen extends StatefulWidget {
-  const ProductsScreen({Key? key}) : super(key: key);
+  final int categoryId;
+  const ProductsScreen({Key? key, required this.categoryId}) : super(key: key);
 
   @override
   State<ProductsScreen> createState() => _ProductsScreenState();
@@ -9,6 +12,12 @@ class ProductsScreen extends StatefulWidget {
 
 class _ProductsScreenState extends State<ProductsScreen> {
 
+  late int receivedCategoryId;
+  @override
+  void initState() {
+    super.initState();
+    receivedCategoryId = widget.categoryId;
+  }
   _handleViewProduct() {
     showModalBottomSheet<void>(
         context: context,
@@ -116,83 +125,96 @@ class _ProductsScreenState extends State<ProductsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text("Categories name",style: TextStyle(fontFamily: 'TiltNeon')),
-          centerTitle: true,
-        ),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: GridView.builder(
-            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: 300,
-              childAspectRatio: 2 / 3,
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 0,
+    return FutureBuilder(
+      future: ProductController().getByCategoryId(receivedCategoryId),
+    builder: (context, snapshot) {
+      if (snapshot.connectionState == ConnectionState.waiting) {
+        return const Center(child: CircularProgressIndicator());
+      }
+      if (snapshot.connectionState == ConnectionState.done) {
+        return SafeArea(
+          child: Scaffold(
+            appBar: AppBar(
+              title: const Text("Categories name",style: TextStyle(fontFamily: 'TiltNeon')),
+              centerTitle: true,
             ),
-            itemCount: 20,
-            itemBuilder: (context, index) {
-              return InkWell(
-                onTap: () {
-                  _handleViewProduct();
+            body: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: GridView.builder(
+                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                  maxCrossAxisExtent: 300,
+                  childAspectRatio: 2 / 3,
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 0,
+                ),
+                itemCount: snapshot.data!.length,
+                itemBuilder: (context, index) {
+                  Product product = snapshot.data![index];
+                  return InkWell(
+                    onTap: () {
+                      _handleViewProduct();
 
-                },
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10),
-                  child: Material(
-                    elevation: 7,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        color: const Color(0xFFf6f5f4),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Expanded(
-                            flex: 3,
-                            child: Container(
-                              width:double.infinity,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5),
-                                  image: const DecorationImage(
-                                      image: ExactAssetImage(
-                                          "assets/images/11.jpeg"),
-                                      fit: BoxFit.cover)),
-                            ),
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 10),
+                      child: Material(
+                        elevation: 7,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                            color: const Color(0xFFf6f5f4),
                           ),
-                          Expanded(
-                            flex: 1,
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 10),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children:  [
-                                  const Text("Honey Gel",style: TextStyle(fontWeight: FontWeight.w600,fontFamily: "TiltNeon",fontSize: 15),),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    crossAxisAlignment: CrossAxisAlignment.center  ,
-                                    children: const [
-                                      Text("\$18.5/",style: TextStyle(fontFamily:"TiltNeon",fontWeight:FontWeight.bold,color: Colors.purple)),
-                                      Text("500ml",style: TextStyle(fontSize: 10,fontFamily:"TiltNeon",fontWeight: FontWeight.w400),),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Expanded(
+                                flex: 3,
+                                child: Container(
+                                  width:double.infinity,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5),
+                                      image:  DecorationImage(
+                                          image: NetworkImage(
+                                              product.image),
+                                          fit: BoxFit.cover)),
+                                ),
+                              ),
+                              Expanded(
+                                flex: 1,
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children:  [
+                                       Text(product.name,style: const TextStyle(fontWeight: FontWeight.w600,fontFamily: "TiltNeon",fontSize: 15),),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        crossAxisAlignment: CrossAxisAlignment.center  ,
+                                        children:  [
+                                          Text("\$${product.price}/",style: const TextStyle(fontFamily:"TiltNeon",fontWeight:FontWeight.bold,color: Colors.purple)),
+                                          Text(product.size,style: const TextStyle(fontSize: 10,fontFamily:"TiltNeon",fontWeight: FontWeight.w400),),
+                                        ],
+                                      ),
                                     ],
                                   ),
-                                ],
+                                ),
                               ),
-                            ),
+                            ],
                           ),
-                        ],
+                        ),
                       ),
                     ),
-                  ),
-                ),
-              );
-            },
+                  );
+                },
+              ),
+            ),
           ),
-        ),
-      ),
+        );
+      }
+      return Container();
+    }
+
     );
   }
 }
