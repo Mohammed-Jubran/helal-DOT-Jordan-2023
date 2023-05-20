@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:helal/controller/category_controller.dart';
+import 'package:helal/model/category_model.dart';
 import 'package:helal/views/main_screen/products_screen.dart';
 
 class CategoriesScreen extends StatefulWidget {
@@ -17,58 +19,79 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: GridView.builder(
-          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-            maxCrossAxisExtent: 200,
-            childAspectRatio: 3 / 3,
-            crossAxisSpacing: 20,
-            mainAxisSpacing: 20,
-          ),
-          itemCount: myCategories.length,
-          itemBuilder: (context, index) {
-            return InkWell(
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const ProductsScreen(),));
-              },
-              child: Container(
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                    color: const Color(0xFFA020F0).withOpacity(0.15 ),
-                    borderRadius: BorderRadius.circular(20)),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Expanded(
-                      flex: 3,
-                      child: Container(
-                        margin: const EdgeInsets.only(top: 10,right: 10,left: 10,bottom: 5),
-                        decoration: BoxDecoration(
-                          color: Colors.grey,
-                          borderRadius: BorderRadius.circular(15),
-                          image: const DecorationImage(
-                            image: AssetImage("assets/images/5.jpg"),
-                            fit: BoxFit.cover,
-                            opacity:.6 ,
-                          )
+        child: FutureBuilder(
+            future: CategoryController().getAll(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(child: CircularProgressIndicator());
+              }
+              if (snapshot.connectionState == ConnectionState.done) {
+                return GridView.builder(
+                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                    maxCrossAxisExtent: 200,
+                    childAspectRatio: 3 / 3,
+                    crossAxisSpacing: 20,
+                    mainAxisSpacing: 20,
+                  ),
+                  itemCount: snapshot.data!.length,
+                  itemBuilder: (context, index) {
+                    Category category = snapshot.data![index];
+                    return InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const ProductsScreen(),
+                            ));
+                      },
+                      child: Material(
+                        elevation: 8,
+                        shape: OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                            borderRadius: BorderRadius.circular(20)),
+                        shadowColor: Colors.purple,
+                        child: Container(
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20)),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Expanded(
+                                flex: 3,
+                                child: Container(
+                                  margin: const EdgeInsets.only(
+                                      top: 10, right: 10, left: 10, bottom: 5),
+                                  decoration: BoxDecoration(
+                                      color: Colors.grey,
+                                      borderRadius: BorderRadius.circular(15),
+                                      image: DecorationImage(
+                                        image: NetworkImage(category.image),
+                                        fit: BoxFit.cover,
+                                        opacity: .6,
+                                      )),
+                                ),
+                              ),
+                              Expanded(
+                                  flex: 1,
+                                  child: Text(
+                                    category.name,
+                                    style: const TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 18,
+                                        fontFamily: "TiltNeon"),
+                                  )),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                    Expanded(
-                      flex: 1,
-                        child: Text(
-                      myCategories[index]["name"],
-                      style: const TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 18,
-                          fontFamily: "TiltNeon"),
-                    )),
-                  ],
-                ),
-              ),
-            );
-          },
-        ),
+                    );
+                  },
+                );
+              }
+              return Container();
+            }),
       ),
     );
   }

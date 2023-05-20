@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:banner_image/banner_image.dart';
+import 'package:helal/controller/category_controller.dart';
+import 'package:helal/model/category_model.dart';
 import 'package:helal/views/main_screen/products_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -22,157 +24,174 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Scaffold(
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 0),
-          child: Column(
-            children: [
-              BannerImage(
-                aspectRatio: 2.7,
-                itemLength: list.length,
-                withOutIndicator: false,
-                selectedIndicatorColor: Colors.purple,
-                autoPlay: true,
-                borderRadius: BorderRadius.circular(8),
-                children: List.generate(
-                  list.length,
-                  (index) => Image.asset(
-                    list[index],
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-              const Align(
-                alignment: Alignment.centerLeft,
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20),
-                  child: Text("CATEGORIES",
-                      style: TextStyle(
-                        fontSize: 17,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'TiltNeon',
-                      )),
-                ),
-              ),
-              const SizedBox(height: 10),
-              SizedBox(
-                width: double.infinity,
-                height: 110,
-                child: ListView.separated(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 30,
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                  itemBuilder: (context, index) {
-                    return InkWell(
-                      onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => const ProductsScreen(),));
-                      },
-                      child: Column(
-                        children: const [
-                          CircleAvatar(
-                            backgroundColor: Colors.transparent,
-                            radius: 35,
-                            backgroundImage: AssetImage("assets/images/5.jpg"),
-                          ),
-                          SizedBox(height: 5),
-                          Text("fruits",
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  fontFamily: 'TiltNeon',
-                                  color: Colors.black)),
-                        ],
-                      ),
-                    );
-                  },
-                  separatorBuilder: (context, index) =>
-                      const SizedBox(width: 15),
-                ),
-              ),
-              const SizedBox(height: 5),
-              const Align(
-                alignment: Alignment.centerLeft,
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20),
-                  child: Text("FEATURED PRODUCTS",
-                      style: TextStyle(
-                        fontSize: 17,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'TiltNeon',
-                      )),
-                ),
-              ),
-              Expanded(
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: const Color(0xFFf6f5f4),
-                  ),
-                  width: double.infinity,
-                  child: ListView.separated(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 30,
-                    padding: const EdgeInsets.symmetric(horizontal: 15),
-                    itemBuilder: (context, index) {
-                      return InkWell(
-                        onTap: () {
-                          _handleViewProduct();
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 10),
-                          child: Material(
-                            elevation: 7,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5),
-                                color: const Color(0xFFf6f5f4),
-                              ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Expanded(
-                                    flex: 3,
-                                    child: Container(
-                                      width: (MediaQuery.of(context).size.width) *
-                                          .40,
-                                      decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(5),
-                                          image: const DecorationImage(
-                                              image: ExactAssetImage(
-                                                  "assets/images/11.jpeg"),
-                                              fit: BoxFit.cover)),
-                                    ),
-                                  ),
-                                  Expanded(
-                                    flex: 1,
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                                      child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children:  [
-                                          const Text("Honey Gel",style: TextStyle(fontWeight: FontWeight.w600,fontFamily: "TiltNeon",fontSize: 15),),
-                                          Row(
-                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                            crossAxisAlignment: CrossAxisAlignment.center  ,
-                                            children: const [
-                                              Text("\$18.5/",style: TextStyle(fontFamily:"TiltNeon",fontWeight:FontWeight.bold,color: Colors.purple)),
-                                              Text("500ml",style: TextStyle(fontSize: 10,fontFamily:"TiltNeon",fontWeight: FontWeight.w400),),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
+          child: FutureBuilder(
+            future: CategoryController().getAll(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(child: CircularProgressIndicator());
+              }
+              if (snapshot.connectionState == ConnectionState.done) {
+                return Column(
+                  children: [
+                    BannerImage(
+                      aspectRatio: 2.7,
+                      itemLength: list.length,
+                      withOutIndicator: false,
+                      selectedIndicatorColor: Colors.purple,
+                      autoPlay: true,
+                      borderRadius: BorderRadius.circular(8),
+                      children: List.generate(
+                        list.length,
+                            (index) => Image.asset(
+                          list[index],
+                          fit: BoxFit.cover,
                         ),
-                      );
-                    },
-                    separatorBuilder: (context, index) =>
+                      ),
+                    ),
+                    const Align(
+                      alignment: Alignment.centerLeft,
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 20),
+                        child: Text("CATEGORIES",
+                            style: TextStyle(
+                              fontSize: 17,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'TiltNeon',
+                            )),
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    SizedBox(
+                      width: double.infinity,
+                      height: 110,
+                      child: ListView.separated(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: snapshot.data!.length,
+                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                        itemBuilder: (context, index) {
+                          Category category = snapshot.data![index];
+                          return InkWell(
+                            onTap: () {
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => const ProductsScreen(),));
+                            },
+                            child: Column(
+                              children:  [
+                                 Material(
+                                   shape: const CircleBorder(),
+                                   elevation: 10,
+                                   color: Colors.purple,
+                                   child: CircleAvatar(
+                                    backgroundColor: Colors.transparent,
+                                    radius: 35,
+                                    backgroundImage: NetworkImage(category.image),
+                                ),
+                                 ),
+                                const SizedBox(height: 5),
+                                Text(category.name,
+                                    style: const TextStyle(
+                                        fontSize: 20,
+                                        fontFamily: 'TiltNeon',
+                                        color: Colors.black)),
+                              ],
+                            ),
+                          );
+                        },
+                        separatorBuilder: (context, index) =>
                         const SizedBox(width: 15),
-                  ),
-                ),
-              ),
-            ],
+                      ),
+                    ),
+                    const SizedBox(height: 5),
+                    const Align(
+                      alignment: Alignment.centerLeft,
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 20),
+                        child: Text("FEATURED PRODUCTS",
+                            style: TextStyle(
+                              fontSize: 17,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'TiltNeon',
+                            )),
+                      ),
+                    ),
+                    Expanded(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: const Color(0xFFf6f5f4),
+                        ),
+                        width: double.infinity,
+                        child: ListView.separated(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: 30,
+                          padding: const EdgeInsets.symmetric(horizontal: 15),
+                          itemBuilder: (context, index) {
+                            return InkWell(
+                              onTap: () {
+                                _handleViewProduct();
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(vertical: 10),
+                                child: Material(
+                                  elevation: 7,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5),
+                                      color: const Color(0xFFf6f5f4),
+                                    ),
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Expanded(
+                                          flex: 3,
+                                          child: Container(
+                                            width: (MediaQuery.of(context).size.width) *
+                                                .40,
+                                            decoration: BoxDecoration(
+                                                borderRadius: BorderRadius.circular(5),
+                                                image: const DecorationImage(
+                                                    image: ExactAssetImage(
+                                                        "assets/images/11.jpeg"),
+                                                    fit: BoxFit.cover)),
+                                          ),
+                                        ),
+                                        Expanded(
+                                          flex: 1,
+                                          child: Padding(
+                                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                                            child: Column(
+                                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children:  [
+                                                const Text("Honey Gel",style: TextStyle(fontWeight: FontWeight.w600,fontFamily: "TiltNeon",fontSize: 15),),
+                                                Row(
+                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                  crossAxisAlignment: CrossAxisAlignment.center  ,
+                                                  children: const [
+                                                    Text("\$18.5/",style: TextStyle(fontFamily:"TiltNeon",fontWeight:FontWeight.bold,color: Colors.purple)),
+                                                    Text("500ml",style: TextStyle(fontSize: 10,fontFamily:"TiltNeon",fontWeight: FontWeight.w400),),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                          separatorBuilder: (context, index) =>
+                          const SizedBox(width: 15),
+                        ),
+                      ),
+                    ),
+                  ],
+                );
+              }
+              return Container(color: Colors.red,);
+            },
           ),
         ),
       ),
