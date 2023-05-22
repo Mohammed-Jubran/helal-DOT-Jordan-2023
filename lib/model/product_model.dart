@@ -30,7 +30,6 @@ class Product {
       json["image"],
       int.parse(json["category_id"].toString()),
       int.parse(json["active"].toString()),
-
     );
   }
 
@@ -43,4 +42,8 @@ class Product {
         "category_id": categoryId,
         "active": active,
       };
+
+  double get total {
+    return price * selectedQty;
+  }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:helal/controller/product_provider.dart';
 import 'package:helal/views/main_screen/cart_screen.dart';
 import 'package:helal/views/main_screen/categories_screen.dart';
 import 'package:helal/views/main_screen/home_screen.dart';
@@ -6,6 +7,7 @@ import 'package:helal/views/more_screen/more_screen.dart';
 
 import 'package:helal/views/search_screen.dart';
 import 'package:helal/views/widget/with_notification_widget.dart';
+import 'package:provider/provider.dart';
 
 class BottomNavigation extends StatefulWidget {
   const BottomNavigation({Key? key}) : super(key: key);
@@ -32,62 +34,69 @@ class _BottomNavigationState extends State<BottomNavigation> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              Text(
-                "HelaL",
-                style: TextStyle(
-                  fontFamily: 'OoohBaby',
-                  fontSize: 30,
-                  color: Colors.purple,
-                  fontWeight: FontWeight.bold,
+    return Consumer(
+        builder: (context, ProductProvider productProvider, child) {
+          return SafeArea(
+            child: Scaffold(
+              appBar: AppBar(
+                title: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Text(
+                      "HelaL",
+                      style: TextStyle(
+                        fontFamily: 'OoohBaby',
+                        fontSize: 30,
+                        color: Colors.purple,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      " Market",
+                      style: TextStyle(
+                        fontFamily: 'OoohBaby',
+                        fontSize: 30,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ],
                 ),
+                centerTitle: true,
+                leading: const InkWell(
+                    child: Icon(Icons.shield_moon_sharp,
+                        color: Colors.purple, size: 40)),
+                actions:  [
+                  InkWell(child: const Icon(Icons.search, size: 40, color: Colors.purple),onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const SearchScreen(),));
+                  }),
+                  const SizedBox(width: 10),
+                ],
               ),
-              Text(
-                " Market",
-                style: TextStyle(
-                  fontFamily: 'OoohBaby',
-                  fontSize: 30,
-                  color: Colors.black,
-                ),
+              body: _pages[_selectedTab],
+              bottomNavigationBar: BottomNavigationBar(
+                elevation: 7,
+                backgroundColor: const Color(0xFFf2f2f2),
+                type: BottomNavigationBarType.fixed,
+                currentIndex: _selectedTab,
+                onTap: (index) => _changeTab(index),
+                selectedItemColor: Colors.purple,
+                unselectedItemColor: Colors.grey,
+                items:   [
+                  const BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+                  const BottomNavigationBarItem(
+                      icon: Icon(Icons.category), label: "Categories"),
+                  BottomNavigationBarItem(
+                      icon: productProvider.selectedProduct.isEmpty
+                          ? const  Icon(Icons.shopping_cart_sharp)
+                          :const WithNotification()
+                      , label: "Cart"),
+                  const BottomNavigationBarItem(
+                      icon: Icon(Icons.more_horiz), label: "More"),
+                ],
               ),
-            ],
-          ),
-          centerTitle: true,
-          leading: const InkWell(
-              child: Icon(Icons.shield_moon_sharp,
-                  color: Colors.purple, size: 40)),
-          actions:  [
-            InkWell(child: const Icon(Icons.search, size: 40, color: Colors.purple),onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const SearchScreen(),));
-            }),
-            const SizedBox(width: 10),
-          ],
-        ),
-        body: _pages[_selectedTab],
-        bottomNavigationBar: BottomNavigationBar(
-          elevation: 7,
-          backgroundColor: const Color(0xFFf2f2f2),
-          type: BottomNavigationBarType.fixed,
-          currentIndex: _selectedTab,
-          onTap: (index) => _changeTab(index),
-          selectedItemColor: Colors.purple,
-          unselectedItemColor: Colors.grey,
-          items:  const [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.category), label: "Categories"),
-            BottomNavigationBarItem(
-                icon: WithNotification(), label: "Cart"),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.more_horiz), label: "More"),
-          ],
-        ),
-      ),
+            ),
+          );
+        }
     );
   }
 }
