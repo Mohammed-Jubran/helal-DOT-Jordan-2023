@@ -41,7 +41,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) =>  ProductsScreen(categoryId: category.id),
+                              builder: (context) =>  ProductsScreen(categoryId: category.id, categoryName: category.name),
                             ));
                       },
                       child: Material(

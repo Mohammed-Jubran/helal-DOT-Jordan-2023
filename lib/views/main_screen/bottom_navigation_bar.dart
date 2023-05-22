@@ -5,6 +5,7 @@ import 'package:helal/views/main_screen/home_screen.dart';
 import 'package:helal/views/more_screen/more_screen.dart';
 
 import 'package:helal/views/search_screen.dart';
+import 'package:helal/views/widget/with_notification_widget.dart';
 
 class BottomNavigation extends StatefulWidget {
   const BottomNavigation({Key? key}) : super(key: key);
@@ -76,12 +77,12 @@ class _BottomNavigationState extends State<BottomNavigation> {
           onTap: (index) => _changeTab(index),
           selectedItemColor: Colors.purple,
           unselectedItemColor: Colors.grey,
-          items: const [
+          items:  const [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
             BottomNavigationBarItem(
                 icon: Icon(Icons.category), label: "Categories"),
             BottomNavigationBarItem(
-                icon: Icon(Icons.shopping_cart), label: "Cart"),
+                icon: WithNotification(), label: "Cart"),
             BottomNavigationBarItem(
                 icon: Icon(Icons.more_horiz), label: "More"),
           ],
