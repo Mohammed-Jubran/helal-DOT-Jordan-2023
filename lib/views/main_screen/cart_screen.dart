@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:helal/controller/location_controller.dart';
 import 'package:helal/controller/product_provider.dart';
 import 'package:helal/model/product_model.dart';
+import 'package:helal/views/main_screen/order_checkout_screen.dart';
 import 'package:helal/views/widget/empty_cart_widget.dart';
 import 'package:provider/provider.dart';
 
@@ -164,11 +168,69 @@ class _CartScreenState extends State<CartScreen> {
                     ),
                   ),
                 ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "JOD  ${productProvider.total.toStringAsFixed(2)} ",
+                            style: const TextStyle(
+                                fontFamily: "TiltNeon",
+                                fontSize: 17,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                          ),
+                          const Text("Total incl. VAT",
+                            style: TextStyle(
+                                fontFamily: "TiltNeon",
+                                fontSize: 11,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.grey),),
+                        ],
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          _handelGoToOrderCheckout(context);                        },
+                        style: ElevatedButton.styleFrom(
+                          fixedSize: const Size(150, 40),
+                          backgroundColor: Colors.deepPurple,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5)
+                          )
+                        ),
+                        child: const Text(
+                          "Checkout",
+                          style: TextStyle(
+                              fontFamily: 'TiltNeon',
+                              fontSize: 17,
+                              color: Colors.white),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 5)
               ],
             );
           },
         ),
       ),
     );
+  }
+  _handelGoToOrderCheckout(BuildContext context)async{
+   try{
+     EasyLoading.show(status: "Fetching location");
+     Position location =await LocationController().determinePosition();
+     EasyLoading.dismiss();
+     // ignore: use_build_context_synchronously
+     Navigator.push(context, MaterialPageRoute(builder: (context) =>  OrderCheckoutScreen(location)));
+   }catch(ex){
+     EasyLoading.dismiss();
+     EasyLoading.showError(ex.toString());
+   }
   }
 }

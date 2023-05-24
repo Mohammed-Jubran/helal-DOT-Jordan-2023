@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class ApiHelper{
-  final String domain = "192.168.0.5:3333";
+  final String domain = "192.168.0.3:3333";
 
   Future<String> getToken()async {
     var storage = const FlutterSecureStorage();

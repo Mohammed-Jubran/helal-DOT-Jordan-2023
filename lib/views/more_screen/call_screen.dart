@@ -25,7 +25,7 @@ class _CallScreenState extends State<CallScreen> {
     return Scaffold(
       backgroundColor: Colors.white24,
       appBar: AppBar(
-        title: const Text("Call us",style: TextStyle(fontFamily: 'TiltNeon')),
+        title: const Text("Contact us",style: TextStyle(fontFamily: 'TiltNeon')),
         centerTitle: true,
       ),
       body: Padding(

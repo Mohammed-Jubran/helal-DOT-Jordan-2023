@@ -108,16 +108,16 @@ class _ProductsScreenState extends State<ProductsScreen> {
                       const SizedBox(height: 10),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children:  const [
-                          Text("Total :  ",
+                        children:   [
+                          const Text("Total :  ",
                               style: TextStyle(
                                   fontFamily: 'TiltNeon', fontSize: 17)),
-                          Text("0.00",
-                              style: TextStyle(
+                          Text("\$${(product.total).toStringAsFixed(2)}",
+                              style: const TextStyle(
                                   fontFamily: 'TiltNeon',
                                   color: Colors.green,
                                   fontSize: 17)),
-                          Text("JD",
+                          const Text("JD",
                               style: TextStyle(
                                   fontFamily: 'TiltNeon', fontSize: 17)),
                         ],

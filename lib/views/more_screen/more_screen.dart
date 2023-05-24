@@ -59,7 +59,7 @@ class _MoreScreenState extends State<MoreScreen> {
                     color: Colors.purple,
                   ),
                   title:
-                      Text("Call us", style: TextStyle(fontFamily: "TiltNeon")),
+                      Text("Contact us", style: TextStyle(fontFamily: "TiltNeon")),
                   trailing: Icon(
                     Icons.arrow_forward_ios,
                     color: Colors.purple,
