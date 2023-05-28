@@ -6,6 +6,7 @@ class ProductProvider with ChangeNotifier{
 
   List<Product> selectedProduct=[];
   double total=0;
+  double finalTotal=0.0;
   Address? address;
   final keyForm = GlobalKey<FormState>();
   int paymentMethod = 1;
@@ -40,9 +41,12 @@ class ProductProvider with ChangeNotifier{
 
   generateTotal(){
     total=0;
+    finalTotal=0;
     for(Product product in selectedProduct){
       total+=product.selectedQty * product.price;
     }
+    finalTotal=total+2;
   }
+
 
 }

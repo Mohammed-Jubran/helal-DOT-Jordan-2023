@@ -188,9 +188,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                               onTap: () {
                                 _handleViewProduct(product);
                               },
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 10),
+                              child: Padding(padding: const EdgeInsets.symmetric(vertical: 10),
                                 child: Material(
                                   elevation: 7,
                                   child: Container(
@@ -199,8 +197,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                                       color: const Color(0xFFf6f5f4),
                                     ),
                                     child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         Expanded(
                                           flex: 3,

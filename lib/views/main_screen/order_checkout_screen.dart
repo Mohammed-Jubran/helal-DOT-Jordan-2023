@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:helal/controller/order_controller.dart';
 import 'package:helal/controller/product_provider.dart';
+import 'package:helal/model/order_model.dart';
+import 'package:helal/views/main_screen/bottom_navigation_bar.dart';
 import 'package:helal/views/widget/stepper_screen/address_form_screen.dart';
 import 'package:helal/views/widget/stepper_screen/google_map_screen.dart';
 import 'package:helal/views/widget/stepper_screen/payment_method_screen.dart';
@@ -105,21 +109,24 @@ class _OrderCheckoutScreenState extends State<OrderCheckoutScreen> {
             });
             break;
           case 3:
-            // OrderController()
-            //     .create(Order(
-            //     products: productProvider.selectedProducts,
-            //     address: productProvider.address!,
-            //     paymentMethodId: productProvider.paymentMethod,
-            //     total: productProvider.total,
-            //     taxAmount: productProvider.taxAmount,
-            //     subTotal: productProvider.subTotal))
-            //     .then((value) {
-            //   EasyLoading.dismiss();
-            //   EasyLoading.showSuccess("Done");
-            // }).catchError((ex) {
-            //   EasyLoading.dismiss();
-            //   EasyLoading.showError(ex.toString());
-            // });
+            OrderController()
+                .create(Order(
+                products: productProvider.selectedProduct,
+                address: productProvider.address!,
+                paymentMethodId: productProvider.paymentMethod,
+                total: productProvider.finalTotal,
+                subTotal: productProvider.total))
+                .then((value) {
+              EasyLoading.dismiss();
+              EasyLoading.showSuccess("Done");
+              productProvider.selectedProduct=[];
+              productProvider.finalTotal=0;
+              productProvider.total=0;
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const BottomNavigation(),));
+            }).catchError((ex) {
+              EasyLoading.dismiss();
+              EasyLoading.showError(ex.toString());
+            });
             break;
         }
       },

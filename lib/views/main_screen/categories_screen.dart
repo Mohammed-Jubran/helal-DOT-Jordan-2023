@@ -11,8 +11,6 @@ class CategoriesScreen extends StatefulWidget {
 }
 
 class _CategoriesScreenState extends State<CategoriesScreen> {
-  final List<Map> myCategories = List.generate(
-      20, (index) => {"id": index, "name": "Categories ${index + 1}"}).toList();
 
   @override
   Widget build(BuildContext context) {

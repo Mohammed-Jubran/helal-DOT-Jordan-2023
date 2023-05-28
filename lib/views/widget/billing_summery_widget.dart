@@ -111,7 +111,7 @@ class BillingSummeryWidget extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  ((productProvider.total+2).toStringAsFixed(2)),
+                  (productProvider.total+2).toStringAsFixed(2),
                   style: const TextStyle(
                       fontFamily: 'TiltNeon',
                       fontSize: 14,

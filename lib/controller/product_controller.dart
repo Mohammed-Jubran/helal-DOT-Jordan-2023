@@ -3,10 +3,10 @@ import 'package:helal/controller/api_helper.dart';
 import 'package:helal/model/product_model.dart';
 
 class ProductController {
-  Future<List<Product>> getAll() async {
+  Future<List<Product>> getFeaturedProducts() async {
     try {
       List<Product> product = [];
-      var response = await ApiHelper().getRequest("/api/products");
+      var response = await ApiHelper().getRequest("/api/products/active");
 
       response.forEach((v) {
         product.add(Product.fromJson(v));
