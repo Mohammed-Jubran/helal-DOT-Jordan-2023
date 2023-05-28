@@ -4,6 +4,7 @@ import 'package:helal/controller/product_provider.dart';
 import 'package:helal/views/widget/stepper_screen/address_form_screen.dart';
 import 'package:helal/views/widget/stepper_screen/google_map_screen.dart';
 import 'package:helal/views/widget/stepper_screen/payment_method_screen.dart';
+import 'package:helal/views/widget/stepper_screen/summery_screen.dart';
 import 'package:im_stepper/stepper.dart';
 import 'package:provider/provider.dart';
 
@@ -55,7 +56,7 @@ class _OrderCheckoutScreenState extends State<OrderCheckoutScreen> {
                       GoogleMapStep(location: widget.location,),
                       AddressFormScreen(),
                       const PaymentMethodScreen(),
-                      Container(),
+                      const SummeryScreen(),
                     ],
                   )),
               Row(
