@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:helal/controller/user_controller.dart';
 import 'package:helal/model/user_model.dart';
-import 'package:helal/views/main_screen/home_screen.dart';
 import 'package:helal/views/login_otp_screen/login_screen.dart';
-// ignore: implementation_imports
-import 'package:dropdown_button2/src/dropdown_button2.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -15,10 +12,8 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
 
-  final UserController _usersController = UserController();
   final _fullNameController = TextEditingController();
   final _phoneController = TextEditingController();
-  final _addressController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
@@ -82,7 +77,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     child: TextFormField(
                       controller: _fullNameController,
                       decoration: InputDecoration(
-                          hintText: 'Full Name',
+                          hintText: 'User Name',
                           prefixIcon: const Icon(
                             Icons.person,
                             color: Colors.purple,
@@ -112,33 +107,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           hintText: 'Phone Number',
                           prefixIcon: const Icon(
                             Icons.phone,
-                            color: Colors.purple,
-                          ),
-                          contentPadding:
-                          const EdgeInsets.symmetric(horizontal: 15),
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide.none,
-                            borderRadius: BorderRadius.circular(50),
-                          )),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'this filed is required';
-                        }
-                        return null;
-                      },
-                    ),
-                  ),
-                  const SizedBox(height: 15),
-                  Material(
-                    elevation: 9.5,
-                    shadowColor: Colors.purple,
-                    borderRadius: const BorderRadius.all(Radius.circular(50)),
-                    child: TextFormField(
-                      controller: _addressController,
-                      decoration: InputDecoration(
-                          hintText: 'Address',
-                          prefixIcon: const Icon(
-                            Icons.location_pin,
                             color: Colors.purple,
                           ),
                           contentPadding:
@@ -221,7 +189,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             email: _emailController.text,
                             password: _passwordController.text,
                           );
-                          await _usersController.createUser(user);
+                          await UserController().createUser(user);
                           // ignore: use_build_context_synchronously
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
@@ -229,7 +197,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             ),
                           );
                           // ignore: use_build_context_synchronously
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginScreen(),));
+                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const LoginScreen(),));
                         }
                       },
                       style: ElevatedButton.styleFrom(

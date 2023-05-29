@@ -8,7 +8,7 @@ class UserController {
     try {
       // ignore: unused_local_variable
       dynamic jsonObject =
-      await ApiHelper().postRequest('api/users', user.toJson());
+      await ApiHelper().postRequest('/api/users', user.toJson());
 
       return true;
     } catch (ex) {
