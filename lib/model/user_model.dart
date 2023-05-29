@@ -1,17 +1,15 @@
 class User {
   int? id;
-  String? fullName;
+  String fullName;
   String email;
-  String password;
-  String? address;
+  String? password;
   String? phone;
 
   User({
     this.id,
-     this.fullName,
+    required this.fullName,
     required this.email,
-    required this.password,
-     this.address,
+     this.password,
      this.phone,
   });
 
@@ -20,7 +18,6 @@ class User {
     "full_name": fullName,
     "email": email,
     "password": password,
-    "address": address,
     "phone": phone,
   };
 
@@ -30,7 +27,6 @@ class User {
         fullName: json["full_name"],
         email: json["email"],
         password: json["password"],
-        address: json["address"],
         phone: json["phone"]);
   }
 }

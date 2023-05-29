@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:helal/views/more_screen/about_us_screen.dart';
 import 'package:helal/views/login_otp_screen/login_screen.dart';
-import 'package:helal/views/more_screen/call_screen.dart';
+import 'package:helal/views/more_screen/contact_screen.dart';
 import 'package:helal/views/more_screen/profile_screen.dart';
 
 class MoreScreen extends StatefulWidget {
@@ -32,7 +32,7 @@ class _MoreScreenState extends State<MoreScreen> {
               const Divider(),
               InkWell(
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfileScreen(),));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) =>  ProfileScreen(),));
                 },
                 child: const ListTile(
                   leading: Icon(

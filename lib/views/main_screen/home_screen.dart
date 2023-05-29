@@ -110,7 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         alignment: Alignment.centerLeft,
                         child: Padding(
                           padding: EdgeInsets.symmetric(horizontal: 20),
-                          child: Text("FEATURED PRODUCTS",
+                          child: Text("SPECIAL OFFERS",
                               style: TextStyle(
                                 fontSize: 17,
                                 fontWeight: FontWeight.bold,

@@ -29,32 +29,31 @@ class UserController {
       rethrow;
     }
   }
+
   Future<User> getUser() async {
-    dynamic jsonObject = await ApiHelper().getRequest("api/users");
-    return User.fromJson(jsonObject);
-  }
-  
-  Future<User> updateUser (User user) async{
-    try{
-      var storage = const FlutterSecureStorage();
-      String? token =await storage.read(key: "token");
-      if (token == null){
-        throw Exception("No token available");
-      }
-      dynamic jsonObject =await ApiHelper().putRequest(
-          'users/${user.id}', user.toJson(),
-          headers: {'Authorization': token});
-      return User.fromJson(jsonObject);
-    }catch(ex){
+    try {
+      var result = await ApiHelper().getRequest("/api/users");
+      return User.fromJson(result);
+    } catch (e) {
       rethrow;
     }
   }
 
-
-  
-  
-  
-  
+  Future<User> update(
+      {required String fullName,
+      required String email,
+      required String phone}) async {
+    try {
+      var result = await ApiHelper().putRequest("/api/users", {
+        "full_name": fullName,
+        "email": email,
+        "phone": phone,
+      },);
+      return User.fromJson(result);
+    } catch (e) {
+      rethrow;
+    }
+  }
   
 }
 

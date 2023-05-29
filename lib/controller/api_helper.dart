@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 
 class ApiHelper{
-  final String domain = "192.168.0.2:3333";
+  final String domain = "192.168.0.6:3333";
 
   Future<String> getToken()async {
     var storage = const FlutterSecureStorage();
@@ -46,9 +46,11 @@ class ApiHelper{
     }
   }
 
-  Future<dynamic> getRequest (String path)async{
-    Uri uriFunction =Uri.http(domain,path);
-    http.Response response =await http.get(uriFunction);
+  Future<dynamic> getRequest(String path) async {
+    Uri uriFunction = Uri.http(domain, path);
+    var token = await getToken();
+    var headers = {"Authorization": token};
+    http.Response response = await http.get(uriFunction, headers: headers);
     return responseFunction(response);
   }
 
@@ -58,9 +60,12 @@ class ApiHelper{
     return responseFunction(response);
   }
 
-  Future<dynamic> putRequest (String path,Map body,{required Map<String,String>headers})async{
-    Uri uriFunction =Uri.http(domain,path);
-    http.Response response =await http.put(uriFunction,body: body);
+  Future<dynamic> putRequest(String path, Map body) async {
+    Uri uriFunction = Uri.http(domain, path);
+    var token = await getToken();
+    var headers = {"Authorization": token};
+    http.Response response =
+    await http.put(uriFunction, body: body, headers: headers);
     return responseFunction(response);
   }
 

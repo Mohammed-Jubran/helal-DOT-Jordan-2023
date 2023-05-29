@@ -218,7 +218,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           User user = User(
                             fullName: _fullNameController.text,
                             phone: _phoneController.text,
-                            address: _addressController.text,
                             email: _emailController.text,
                             password: _passwordController.text,
                           );
