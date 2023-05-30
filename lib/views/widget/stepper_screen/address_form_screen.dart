@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:helal/controller/product_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AddressFormScreen extends StatelessWidget {
   AddressFormScreen({super.key});
@@ -14,11 +15,11 @@ class AddressFormScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer(builder: (context, ProductProvider productProvider, child) {
-      return formWidget(productProvider);
+      return formWidget(context,productProvider);
     });
   }
 
-  Widget formWidget(ProductProvider productProvider) {
+  Widget formWidget(BuildContext context,ProductProvider productProvider) {
     _controllerCountry.text = productProvider.address?.country ?? '';
     _controllerCity.text = productProvider.address?.city ?? '';
     _controllerArea.text = productProvider.address?.area ?? '';
@@ -36,8 +37,8 @@ class AddressFormScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text("Country",
-                        style: TextStyle(fontFamily: "TiltNeon", fontSize: 17)),
+                    Text(AppLocalizations.of(context)!.country,
+                        style: const TextStyle(fontFamily: "TiltNeon", fontSize: 17)),
                     SizedBox(
                       height: 50,
                       child: TextFormField(
@@ -46,7 +47,7 @@ class AddressFormScreen extends StatelessWidget {
                         decoration: InputDecoration(
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(5)),
-                            hintText: "Country",
+                            hintText: AppLocalizations.of(context)!.country,
                             suffixIcon: const Icon(Icons.lock_sharp)),
                         validator: (text) {
                           if (text == null || text.isEmpty) {
@@ -57,8 +58,8 @@ class AddressFormScreen extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 10),
-                    const Text("City",
-                        style: TextStyle(fontFamily: "TiltNeon", fontSize: 17)),
+                    Text(AppLocalizations.of(context)!.city,
+                        style: const TextStyle(fontFamily: "TiltNeon", fontSize: 17)),
                     SizedBox(
                       height: 50,
                       child: TextFormField(
@@ -67,7 +68,7 @@ class AddressFormScreen extends StatelessWidget {
                         decoration: InputDecoration(
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(5)),
-                            hintText: "City",
+                            hintText: AppLocalizations.of(context)!.city,
                             suffixIcon: const Icon(Icons.lock_sharp)),
                         validator: (text) {
                           if (text == null || text.isEmpty) {
@@ -78,8 +79,8 @@ class AddressFormScreen extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 10),
-                    const Text("Area",
-                        style: TextStyle(fontFamily: "TiltNeon", fontSize: 17)),
+                    Text(AppLocalizations.of(context)!.area,
+                        style: const TextStyle(fontFamily: "TiltNeon", fontSize: 17)),
                     SizedBox(
                       height: 50,
                       child: TextFormField(
@@ -88,7 +89,7 @@ class AddressFormScreen extends StatelessWidget {
                         decoration: InputDecoration(
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(5)),
-                            hintText: "Area",
+                            hintText: AppLocalizations.of(context)!.area,
                             suffixIcon: const Icon(Icons.lock_sharp)),
                         validator: (text) {
                           if (text == null || text.isEmpty) {
@@ -99,8 +100,8 @@ class AddressFormScreen extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 10),
-                    const Text("Street",
-                        style: TextStyle(fontFamily: "TiltNeon", fontSize: 17)),
+                    Text(AppLocalizations.of(context)!.street,
+                        style: const TextStyle(fontFamily: "TiltNeon", fontSize: 17)),
                     SizedBox(
                       height: 50,
                       child: TextFormField(
@@ -110,7 +111,7 @@ class AddressFormScreen extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(5)),
                             enabledBorder: const OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.black12)),
-                            hintText: "Street"),
+                            hintText: AppLocalizations.of(context)!.street),
                         validator: (text) {
                           if (text == null || text.isEmpty) {
                             return "This field is required";
@@ -120,8 +121,8 @@ class AddressFormScreen extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 10),
-                    const Text("Building No.",
-                        style: TextStyle(fontFamily: "TiltNeon", fontSize: 17)),
+                    Text(AppLocalizations.of(context)!.buildingNo,
+                        style: const TextStyle(fontFamily: "TiltNeon", fontSize: 17)),
                     TextFormField(
                       controller: _controllerBuilding,
                       onChanged: (value) {
@@ -132,10 +133,10 @@ class AddressFormScreen extends StatelessWidget {
                               borderRadius: BorderRadius.circular(5)),
                           enabledBorder: const OutlineInputBorder(
                               borderSide: BorderSide(color: Colors.black12)),
-                          hintText: "Please Enter Your Building No. ",errorStyle: const TextStyle(height: 0)),
+                          hintText: AppLocalizations.of(context)!.buildingNoReq,errorStyle: const TextStyle(height: 0)),
                       validator: (text) {
                         if (text == null || text.isEmpty) {
-                          return "This field is required";
+                          return AppLocalizations.of(context)!.buildingNoReq;
                         }
                         return null;
                       },

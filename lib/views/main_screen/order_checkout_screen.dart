@@ -11,6 +11,8 @@ import 'package:helal/views/widget/stepper_screen/payment_method_screen.dart';
 import 'package:helal/views/widget/stepper_screen/summery_screen.dart';
 import 'package:im_stepper/stepper.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 // ignore: must_be_immutable
 class OrderCheckoutScreen extends StatefulWidget {
@@ -118,7 +120,7 @@ class _OrderCheckoutScreenState extends State<OrderCheckoutScreen> {
                 subTotal: productProvider.total))
                 .then((value) {
               EasyLoading.dismiss();
-              EasyLoading.showSuccess("Done");
+              EasyLoading.showSuccess(AppLocalizations.of(context)!.done);
               productProvider.selectedProduct=[];
               productProvider.finalTotal=0;
               productProvider.total=0;
@@ -130,8 +132,8 @@ class _OrderCheckoutScreenState extends State<OrderCheckoutScreen> {
             break;
         }
       },
-      child: const Text('Next',
-          style: TextStyle(
+      child: Text(AppLocalizations.of(context)!.next,
+          style: const TextStyle(
               fontFamily: 'TiltNeon',
               fontSize: 17,
               color: Colors.white)),
@@ -158,8 +160,8 @@ class _OrderCheckoutScreenState extends State<OrderCheckoutScreen> {
           Navigator.pop(context);
         }
       },
-      child: const Text('Previous',
-          style: TextStyle(
+      child: Text(AppLocalizations.of(context)!.previous,
+          style: const TextStyle(
               fontFamily: 'TiltNeon',
               fontSize: 17,
               color: Colors.white)),

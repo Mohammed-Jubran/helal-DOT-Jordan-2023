@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:helal/views/login_otp_screen/password_updated_screen.dart';
-import 'package:helal/views/main_screen/home_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OTP3Screen extends StatefulWidget {
   const OTP3Screen({Key? key}) : super(key: key);
@@ -19,7 +19,7 @@ class _OTP3ScreenState extends State<OTP3Screen> {
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-          title: const Text("OTP Step Three",style: TextStyle(fontFamily: 'TiltNeon',)),
+          title: Text(AppLocalizations.of(context)!.oTPStepThree,style: const TextStyle(fontFamily: 'TiltNeon',)),
           centerTitle: true,
         ),
         body: SingleChildScrollView(
@@ -30,15 +30,15 @@ class _OTP3ScreenState extends State<OTP3Screen> {
               children: [
                 const SizedBox(height: 40),
                 Column(
-                  children: const [
-                    Text("New",
-                        style: TextStyle(
+                  children: [
+                    Text(AppLocalizations.of(context)!.neww,
+                        style: const TextStyle(
                             fontFamily: 'OoohBaby',
                             fontSize: 25,
                             fontWeight: FontWeight.w700,
                             color: Color(0xFF0C1A30))),
-                    Text("Credentials ",
-                        style: TextStyle(
+                     Text(AppLocalizations.of(context)!.credentials,
+                        style: const TextStyle(
                             fontFamily: 'OoohBaby',
                             fontSize: 25,
                             fontWeight: FontWeight.w700,
@@ -47,15 +47,15 @@ class _OTP3ScreenState extends State<OTP3Screen> {
                 ),
                 const SizedBox(height: 20),
                 Column(
-                  children: const [
-                    Text("Your identity has been verified!",
-                        style: TextStyle(
+                  children:  [
+                    Text(AppLocalizations.of(context)!.yourIdentityHasBeenVerified,
+                        style: const TextStyle(
                             fontFamily: 'TiltNeon',
                             color: Color(0xFF838589),
                             fontSize: 14,
                             fontWeight: FontWeight.w400)),
-                    Text("Set your new password",
-                        style: TextStyle(
+                    Text(AppLocalizations.of(context)!.setYourNewPassword,
+                        style: const TextStyle(
                             fontFamily: 'TiltNeon',
                             color: Color(0xFF838589),
                             fontSize: 14,
@@ -63,11 +63,11 @@ class _OTP3ScreenState extends State<OTP3Screen> {
                   ],
                 ),
                 const SizedBox(height: 20),
-                const Align(
+                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    "    New Password",
-                    style: TextStyle(
+                    AppLocalizations.of(context)!.newPassword,
+                    style: const TextStyle(
                         fontFamily: 'TiltNeon',
                         fontSize: 14,
                         color: Color(0xFF838589),
@@ -83,7 +83,7 @@ class _OTP3ScreenState extends State<OTP3Screen> {
                     keyboardType: TextInputType.visiblePassword,
                     obscureText: _isInvisible,
                     decoration: InputDecoration(
-                        hintText: 'New Password',
+                        hintText: AppLocalizations.of(context)!.newPassword,
                         prefixIcon: const Icon(
                           Icons.lock,
                           color: Colors.purple,
@@ -112,11 +112,11 @@ class _OTP3ScreenState extends State<OTP3Screen> {
                   ),
                 ),
                 const SizedBox(height: 20),
-                const Align(
+                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    "    Confirm Password",
-                    style: TextStyle(
+                    AppLocalizations.of(context)!.confirmPassword,
+                    style: const TextStyle(
                         fontFamily: 'TiltNeon',
                         fontSize: 14,
                         color: Color(0xFF838589),
@@ -132,7 +132,7 @@ class _OTP3ScreenState extends State<OTP3Screen> {
                     keyboardType: TextInputType.visiblePassword,
                     obscureText: _isInvisible,
                     decoration: InputDecoration(
-                        hintText: 'Confirm Password',
+                        hintText: AppLocalizations.of(context)!.confirmPassword,
                         prefixIcon: const Icon(
                           Icons.lock,
                           color: Colors.purple,
@@ -170,9 +170,9 @@ class _OTP3ScreenState extends State<OTP3Screen> {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.purple,
                     ),
-                    child: const Text(
-                      "Rest",
-                      style: TextStyle(
+                    child: Text(
+                      AppLocalizations.of(context)!.rest,
+                      style: const TextStyle(
                           fontFamily: 'TiltNeon',
                           fontSize: 25,
                           color: Colors.white),

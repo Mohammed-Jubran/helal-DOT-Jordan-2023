@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class CallScreen extends StatefulWidget {
   const CallScreen({Key? key}) : super(key: key);
@@ -25,7 +27,7 @@ class _CallScreenState extends State<CallScreen> {
     return Scaffold(
       backgroundColor: Colors.white24,
       appBar: AppBar(
-        title: const Text("Contact us",style: TextStyle(fontFamily: 'TiltNeon')),
+        title: Text(AppLocalizations.of(context)!.contactUs,style: const TextStyle(fontFamily: 'TiltNeon')),
         centerTitle: true,
       ),
       body: Padding(
@@ -40,20 +42,20 @@ class _CallScreenState extends State<CallScreen> {
                 onTap: (){
                   _launchCaller();
                 },
-                child: const Card(
+                child:  Card(
                   child: ListTile(
-                    leading: Icon(
+                    leading: const Icon(
                       Icons.phone_android_outlined,
                       color: Colors.purple,
                       size: 35,
                     ),
                     title: Text(
-                      "Call the customer service center",
-                      style: TextStyle(fontFamily: 'TiltNeon'),
+                      AppLocalizations.of(context)!.callTheCustomerServiceCenter,
+                      style: const TextStyle(fontFamily: 'TiltNeon'),
                     ),
                     subtitle: Text(
-                      "0795746832",
-                      style: TextStyle(
+                      AppLocalizations.of(context)!.telPhone,
+                      style: const TextStyle(
                           fontFamily: 'TiltNeon', fontWeight: FontWeight.bold),
                     ),
                   ),
@@ -65,16 +67,16 @@ class _CallScreenState extends State<CallScreen> {
                   padding: const EdgeInsets.symmetric(vertical: 10),
                   child: Column(
                     children: [
-                      const Card(
+                      Card(
                         child: ListTile(
-                          leading: Icon(
+                          leading: const Icon(
                             Icons.email_outlined,
                             color: Colors.purple,
                             size: 35,
                           ),
                           title: Text(
-                            "Send us a message",
-                            style: TextStyle(fontFamily: 'TiltNeon'),
+                            AppLocalizations.of(context)!.sendUsAMessage,
+                            style: const TextStyle(fontFamily: 'TiltNeon'),
                           ),
                         ),
                       ),
@@ -89,7 +91,7 @@ class _CallScreenState extends State<CallScreen> {
                                 decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(5)),
-                                  hintText: "Full Name"
+                                  hintText: AppLocalizations.of(context)!.userName
                                 ),
                               ),
                             ),
@@ -100,7 +102,7 @@ class _CallScreenState extends State<CallScreen> {
                                 decoration: InputDecoration(
                                     border: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(5)),
-                                    hintText: "Phone number"
+                                    hintText: AppLocalizations.of(context)!.phoneNumber
                                 ),
                               ),
                             ),
@@ -111,7 +113,7 @@ class _CallScreenState extends State<CallScreen> {
                                 decoration: InputDecoration(
                                     border: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(5)),
-                                    hintText: "Email address"
+                                    hintText: AppLocalizations.of(context)!.email
                                 ),
                               ),
                             ),
@@ -122,7 +124,7 @@ class _CallScreenState extends State<CallScreen> {
                                 decoration: InputDecoration(
                                     border: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(5)),
-                                    hintText: "Subject"
+                                    hintText: AppLocalizations.of(context)!.subject
                                 ),
                               ),
                             ),
@@ -132,7 +134,7 @@ class _CallScreenState extends State<CallScreen> {
                               decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(5)),
-                                  hintText: "Please explain your problem in detail and our team will contact you as soon as possible"
+                                  hintText: AppLocalizations.of(context)!.pleaseExplainYourProblem
                               ),
                             ),
                             const SizedBox(height: 10),
@@ -140,7 +142,7 @@ class _CallScreenState extends State<CallScreen> {
                               width: double.infinity,
                               child: ElevatedButton(
                                 onPressed: (){
-                                  EasyLoading.showSuccess('Message has been sent');
+                                  EasyLoading.showSuccess(AppLocalizations.of(context)!.messageHasBeenSent);
                                   Future.delayed(const Duration(milliseconds: 1000), () async {
                                      EasyLoading.dismiss();
                                      Navigator.pop(context);
@@ -149,7 +151,7 @@ class _CallScreenState extends State<CallScreen> {
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: Colors.purpleAccent,
                                 ),
-                                child: const Text("Send",style: TextStyle(color: Colors.white,fontFamily: 'TiltNeon',fontSize: 20),),
+                                child: Text(AppLocalizations.of(context)!.send,style: const TextStyle(color: Colors.white,fontFamily: 'TiltNeon',fontSize: 20),),
                               ),
                             )
                           ],

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:helal/controller/user_controller.dart';
 import 'package:helal/model/user_model.dart';
 import 'package:helal/views/login_otp_screen/login_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -32,39 +34,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: const [
-                      Text(
-                        '  Welcome in ',
-                        style: TextStyle(
-                          fontFamily: 'OoohBaby',
-                          fontSize: 30,
-                        ),
-                      ),
-                      Text(
-                        'HelaL ',
-                        style: TextStyle(
-                          fontFamily: 'OoohBaby',
-                          fontSize: 30,
-                          color: Colors.purple,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        'market',
-                        style: TextStyle(
-                          fontFamily: 'OoohBaby',
-                          fontSize: 30,
-                        ),
-                      ),
-                    ],
+                  Text(
+                    AppLocalizations.of(context)!.helloIn,
+                    style: const TextStyle(
+                      fontFamily: 'OoohBaby',
+                      fontSize: 30,
+                    ),
                   ),
                   const SizedBox(height: 30),
-                  const Text(
-                    "Sign Up",
-                    style: TextStyle(
+                   Text(
+                    AppLocalizations.of(context)!.signUp,
+                    style: const TextStyle(
                         fontFamily: 'OoohBaby',
                         fontSize: 45,
                         fontWeight: FontWeight.bold),
@@ -77,7 +57,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     child: TextFormField(
                       controller: _fullNameController,
                       decoration: InputDecoration(
-                          hintText: 'User Name',
+                          hintText: AppLocalizations.of(context)!.userName,
                           prefixIcon: const Icon(
                             Icons.person,
                             color: Colors.purple,
@@ -104,7 +84,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     child: TextFormField(
                       controller: _phoneController,
                       decoration: InputDecoration(
-                          hintText: 'Phone Number',
+                          hintText: AppLocalizations.of(context)!.phoneNumber,
                           prefixIcon: const Icon(
                             Icons.phone,
                             color: Colors.purple,
@@ -130,14 +110,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     borderRadius: const BorderRadius.all(Radius.circular(50)),
                     child: TextFormField(
                       controller: _emailController,
-                      decoration: const InputDecoration(
-                        hintText: 'Email',
-                        prefixIcon: Icon(
+                      decoration:  InputDecoration(
+                        hintText: AppLocalizations.of(context)!.email,
+                        prefixIcon: const Icon(
                           Icons.email,
                           color: Colors.purple,
                         ),
-                        contentPadding: EdgeInsets.symmetric(horizontal: 15),
-                        border: OutlineInputBorder(
+                        contentPadding: const EdgeInsets.symmetric(horizontal: 15),
+                        border: const OutlineInputBorder(
                           borderSide: BorderSide.none,
                           borderRadius: BorderRadius.all(Radius.circular(50)),
                         ),
@@ -158,7 +138,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     child: TextFormField(
                       controller: _passwordController,
                       decoration: InputDecoration(
-                          hintText: 'Password',
+                          hintText: AppLocalizations.of(context)!.password,
                           prefixIcon: const Icon(
                             Icons.lock,
                             color: Colors.purple,
@@ -192,8 +172,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           await UserController().createUser(user);
                           // ignore: use_build_context_synchronously
                           ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text('User created successfully'),
+                             SnackBar(
+                              content: Text(AppLocalizations.of(context)!.userCreatedSuccessfully),
                             ),
                           );
                           // ignore: use_build_context_synchronously
@@ -203,9 +183,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.purple,
                       ),
-                      child: const Text(
-                        "Sign Up",
-                        style: TextStyle(
+                      child:  Text(
+                        AppLocalizations.of(context)!.signUp,
+                        style: const TextStyle(
                             fontFamily: 'TiltNeon',
                             fontSize: 25,
                             color: Colors.white),
@@ -216,14 +196,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text('have an account ?'),
+                      Text(AppLocalizations.of(context)!.haveAnAccount),
                       TextButton(
                         onPressed: () {
                           Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginScreen(),));
                         },
-                        child: const Text(
-                          'Login',
-                          style: TextStyle(
+                        child:  Text(
+                          AppLocalizations.of(context)!.login,
+                          style: const TextStyle(
                             fontFamily: 'TiltNeon',
                             fontWeight: FontWeight.bold,
                             decoration: TextDecoration.underline,

@@ -5,6 +5,8 @@ import 'package:helal/controller/user_controller.dart';
 import 'package:helal/views/main_screen/bottom_navigation_bar.dart';
 import 'package:helal/views/login_otp_screen/otp1_screen.dart';
 import 'package:helal/views/login_otp_screen/sign_up_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -21,7 +23,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   _handleSignInAction(BuildContext context) {
     const storage =  FlutterSecureStorage();
-    EasyLoading.show(status: "Loading");
+    EasyLoading.show(status: AppLocalizations.of(context)!.loading);
     UserController()
         .login(_emailController.text, _passwordController.text)
         .then((value) async {
@@ -51,39 +53,17 @@ class _LoginScreenState extends State<LoginScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: const [
-                        Text(
-                          '  Welcome in ',
-                          style: TextStyle(
-                            fontFamily: 'OoohBaby',
-                            fontSize: 30,
-                          ),
-                        ),
-                        Text(
-                          'HelaL ',
-                          style: TextStyle(
-                            fontFamily: 'OoohBaby',
-                            fontSize: 30,
-                            color: Colors.purple,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Text(
-                          'market',
-                          style: TextStyle(
-                            fontFamily: 'OoohBaby',
-                            fontSize: 30,
-                          ),
-                        ),
-                      ],
+                    Text(
+                      AppLocalizations.of(context)!.helloIn,
+                      style: const TextStyle(
+                        fontFamily: 'OoohBaby',
+                        fontSize: 30,
+                      ),
                     ),
                     const SizedBox(height: 100),
-                    const Text(
-                      "Login",
-                      style: TextStyle(
+                     Text(
+                      AppLocalizations.of(context)!.login,
+                      style: const TextStyle(
                           fontFamily: 'OoohBaby',
                           fontSize: 45,
                           fontWeight: FontWeight.bold),
@@ -96,14 +76,14 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: TextFormField(
                         keyboardType: TextInputType.emailAddress,
                         controller: _emailController,
-                        decoration: const InputDecoration(
-                          hintText: 'Email',
-                          prefixIcon: Icon(
+                        decoration:  InputDecoration(
+                          hintText: AppLocalizations.of(context)!.email,
+                          prefixIcon: const Icon(
                             Icons.email,
                             color: Colors.purple,
                           ),
-                          contentPadding: EdgeInsets.symmetric(horizontal: 15),
-                          border: OutlineInputBorder(
+                          contentPadding: const EdgeInsets.symmetric(horizontal: 15),
+                          border: const OutlineInputBorder(
                             borderSide: BorderSide.none,
                             borderRadius: BorderRadius.all(Radius.circular(50)),
                           ),
@@ -126,7 +106,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         controller: _passwordController,
                         obscureText: _isInvisible,
                         decoration: InputDecoration(
-                            hintText: 'Password',
+                            hintText: AppLocalizations.of(context)!.password,
                             prefixIcon: const Icon(
                               Icons.lock,
                               color: Colors.purple,
@@ -163,9 +143,9 @@ class _LoginScreenState extends State<LoginScreen> {
                               MaterialPageRoute(
                                   builder: (context) => const OTP1Screen()));
                         },
-                        child: const Text(
-                          'Forget Password ?',
-                          style: TextStyle(
+                        child:  Text(
+                          AppLocalizations.of(context)!.forgetPassword,
+                          style: const TextStyle(
                             color: Colors.deepPurple,
                             fontFamily: 'TiltNeon',
                             fontWeight: FontWeight.bold,
@@ -184,9 +164,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.purple,
                         ),
-                        child: const Text(
-                          "Login",
-                          style: TextStyle(
+                        child:  Text(
+                          AppLocalizations.of(context)!.login,
+                          style: const TextStyle(
                               fontFamily: 'TiltNeon',
                               fontSize: 25,
                               color: Colors.white),
@@ -197,7 +177,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text('Don\'t have an account ?'),
+                         Text(AppLocalizations.of(context)!.doNot),
                         TextButton(
                           onPressed: () {
                             Navigator.push(
@@ -206,9 +186,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                   builder: (context) => const SignUpScreen(),
                                 ));
                           },
-                          child: const Text(
-                            'Create',
-                            style: TextStyle(
+                          child:  Text(
+                            AppLocalizations.of(context)!.create,
+                            style: const TextStyle(
                               fontFamily: 'TiltNeon',
                               fontWeight: FontWeight.bold,
                               decoration: TextDecoration.underline,

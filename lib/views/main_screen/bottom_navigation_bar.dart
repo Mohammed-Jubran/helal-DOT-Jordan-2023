@@ -4,7 +4,7 @@ import 'package:helal/views/main_screen/cart_screen.dart';
 import 'package:helal/views/main_screen/categories_screen.dart';
 import 'package:helal/views/main_screen/home_screen.dart';
 import 'package:helal/views/more_screen/more_screen.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:helal/views/search_screen.dart';
 import 'package:helal/views/widget/with_notification_widget.dart';
 import 'package:provider/provider.dart';
@@ -41,10 +41,10 @@ class _BottomNavigationState extends State<BottomNavigation> {
               appBar: AppBar(
                 title: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
+                  children:  [
                     Text(
-                      "HelaL",
-                      style: TextStyle(
+                      AppLocalizations.of(context)!.helaL,
+                      style: const TextStyle(
                         fontFamily: 'OoohBaby',
                         fontSize: 30,
                         color: Colors.purple,
@@ -52,8 +52,8 @@ class _BottomNavigationState extends State<BottomNavigation> {
                       ),
                     ),
                     Text(
-                      " Market",
-                      style: TextStyle(
+                      AppLocalizations.of(context)!.market,
+                      style: const TextStyle(
                         fontFamily: 'OoohBaby',
                         fontSize: 30,
                         color: Colors.black,
@@ -82,16 +82,16 @@ class _BottomNavigationState extends State<BottomNavigation> {
                 selectedItemColor: Colors.purple,
                 unselectedItemColor: Colors.grey,
                 items:   [
-                  const BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-                  const BottomNavigationBarItem(
-                      icon: Icon(Icons.category), label: "Categories"),
+                   BottomNavigationBarItem(icon: const Icon(Icons.home), label: AppLocalizations.of(context)!.home),
+                   BottomNavigationBarItem(
+                      icon: const Icon(Icons.category), label: AppLocalizations.of(context)!.categories),
                   BottomNavigationBarItem(
                       icon: productProvider.selectedProduct.isEmpty
                           ? const  Icon(Icons.shopping_cart_sharp)
                           :const WithNotification()
-                      , label: "Cart"),
-                  const BottomNavigationBarItem(
-                      icon: Icon(Icons.more_horiz), label: "More"),
+                      , label: AppLocalizations.of(context)!.cart),
+                   BottomNavigationBarItem(
+                      icon: const Icon(Icons.more_horiz), label: AppLocalizations.of(context)!.more),
                 ],
               ),
             ),

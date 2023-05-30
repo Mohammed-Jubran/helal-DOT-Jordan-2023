@@ -4,6 +4,9 @@ import 'package:helal/views/more_screen/about_us_screen.dart';
 import 'package:helal/views/login_otp_screen/login_screen.dart';
 import 'package:helal/views/more_screen/contact_screen.dart';
 import 'package:helal/views/more_screen/profile_screen.dart';
+import 'package:helal/views/widget/language_picker_widget.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class MoreScreen extends StatefulWidget {
   const MoreScreen({Key? key}) : super(key: key);
@@ -34,14 +37,14 @@ class _MoreScreenState extends State<MoreScreen> {
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) =>  ProfileScreen(),));
                 },
-                child: const ListTile(
-                  leading: Icon(
+                child:  ListTile(
+                  leading: const Icon(
                     Icons.person,
                     color: Colors.purple,
                   ),
-                  title: Text("Edit profile",
-                      style: TextStyle(fontFamily: "TiltNeon")),
-                  trailing: Icon(
+                  title: Text(AppLocalizations.of(context)!.editProfile,
+                      style: const TextStyle(fontFamily: "TiltNeon")),
+                  trailing: const Icon(
                     Icons.arrow_forward_ios,
                     color: Colors.purple,
                   ),
@@ -53,34 +56,28 @@ class _MoreScreenState extends State<MoreScreen> {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => const CallScreen(),));
 
                 },
-                child: const ListTile(
-                  leading: Icon(
+                child:  ListTile(
+                  leading: const Icon(
                     Icons.phone,
                     color: Colors.purple,
                   ),
                   title:
-                      Text("Contact us", style: TextStyle(fontFamily: "TiltNeon")),
-                  trailing: Icon(
+                      Text(AppLocalizations.of(context)!.contactUs, style: const TextStyle(fontFamily: "TiltNeon")),
+                  trailing: const Icon(
                     Icons.arrow_forward_ios,
                     color: Colors.purple,
                   ),
                 ),
               ),
               const Divider(),
-              InkWell(
-                onTap: () {},
-                child: const ListTile(
-                  leading: Icon(
-                    Icons.star_rate,
-                    color: Colors.purple,
-                  ),
-                  title:
-                      Text("Rate us", style: TextStyle(fontFamily: "TiltNeon")),
-                  trailing: Icon(
-                    Icons.arrow_forward_ios,
-                    color: Colors.purple,
-                  ),
+               ListTile(
+                leading: const Icon(
+                  Icons.translate,
+                  color: Colors.purple,
                 ),
+                title:
+                    Text(AppLocalizations.of(context)!.language, style: const TextStyle(fontFamily: "TiltNeon")),
+                trailing:const LanguagePickerWidget(),
               ),
               const Divider(),
               InkWell(
@@ -91,14 +88,14 @@ class _MoreScreenState extends State<MoreScreen> {
                         builder: (context) => const AboutUsScreen(),
                       ));
                 },
-                child: const ListTile(
-                  leading: Icon(
+                child: ListTile(
+                  leading: const Icon(
                     Icons.info,
                     color: Colors.purple,
                   ),
-                  title: Text("About as",
-                      style: TextStyle(fontFamily: "TiltNeon")),
-                  trailing: Icon(
+                  title: Text(AppLocalizations.of(context)!.aboutAs,
+                      style: const TextStyle(fontFamily: "TiltNeon")),
+                  trailing: const Icon(
                     Icons.arrow_forward_ios,
                     color: Colors.purple,
                   ),
@@ -115,14 +112,14 @@ class _MoreScreenState extends State<MoreScreen> {
                         builder: (context) => const LoginScreen(),
                       ));
                 },
-                child: const ListTile(
-                  leading: Icon(
+                child: ListTile(
+                  leading: const Icon(
                     Icons.logout,
                     color: Colors.purple,
                   ),
                   title:
-                      Text("Logout", style: TextStyle(fontFamily: "TiltNeon")),
-                  trailing: Icon(
+                      Text(AppLocalizations.of(context)!.logout, style: const TextStyle(fontFamily: "TiltNeon")),
+                  trailing: const Icon(
                     Icons.arrow_forward_ios,
                     color: Colors.purple,
                   ),

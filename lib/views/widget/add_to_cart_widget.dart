@@ -3,6 +3,8 @@ import 'package:helal/controller/product_provider.dart';
 import 'package:helal/views/main_screen/cart_screen.dart';
 import 'package:helal/views/widget/with_notification_widget.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class AddToCartWidget extends StatelessWidget {
   const AddToCartWidget({Key? key}) : super(key: key);
@@ -26,8 +28,8 @@ class AddToCartWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const WithNotification(),
-                const Text("View Cart",
-                    style: TextStyle(
+                Text(AppLocalizations.of(context)!.viewCart,
+                    style: const TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
                       fontFamily: "TiltNeon",

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:helal/views/login_otp_screen/login_screen.dart';
 import 'package:helal/views/login_otp_screen/otp2_screen.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class OTP1Screen extends StatefulWidget {
   const OTP1Screen({Key? key}) : super(key: key);
@@ -21,7 +23,7 @@ class _OTP1ScreenState extends State<OTP1Screen> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("OTP Step One",style: TextStyle(fontFamily: 'TiltNeon',)),
+          title:  Text(AppLocalizations.of(context)!.oTPStepOne,style: const TextStyle(fontFamily: 'TiltNeon',)),
           centerTitle: true,
         ),
         body:SingleChildScrollView(
@@ -40,8 +42,8 @@ class _OTP1ScreenState extends State<OTP1Screen> {
                     )
                   ),
                 ),
-                const Text("Verify your phone number",
-                    style: TextStyle(
+                Text(AppLocalizations.of(context)!.verifyYourPhoneNumber,
+                    style: const TextStyle(
                         fontFamily: 'OoohBaby',
                         fontSize: 25,
                         fontWeight: FontWeight.w700,
@@ -49,16 +51,16 @@ class _OTP1ScreenState extends State<OTP1Screen> {
                 const SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
+                  children:  [
                     Text(
-                        "we have send you an ",
-                        style: TextStyle(
+                        AppLocalizations.of(context)!.weHaveSendYouAn,
+                        style: const TextStyle(
                             color: Color(0xFF838589),
                             fontSize: 14,
                             fontWeight: FontWeight.w400)),
                     Text(
-                        "One Time Password(OTP)",
-                        style: TextStyle(
+                        AppLocalizations.of(context)!.oneTimePassword,
+                        style: const TextStyle(
                             fontFamily: 'TiltNeon',
                             color: Colors.black,
                             fontSize: 14,
@@ -66,11 +68,11 @@ class _OTP1ScreenState extends State<OTP1Screen> {
                   ],
                 ),
                 const SizedBox(height: 10),
-                const Align(
+                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    "    Enter mobile no.*",
-                    style: TextStyle(
+                    AppLocalizations.of(context)!.enterMobileNo,
+                    style: const TextStyle(
                         fontFamily: 'TiltNeon',
                         fontSize: 14,
                         color: Color(0xFF838589),
@@ -89,6 +91,7 @@ class _OTP1ScreenState extends State<OTP1Screen> {
                     selectorConfig: const SelectorConfig(
                       selectorType: PhoneInputSelectorType.DROPDOWN,
                     ),
+                    hintText: AppLocalizations.of(context)!.phoneNumber,
                     ignoreBlank: false,
                     initialValue: number,
                     autoValidateMode: AutovalidateMode.disabled,
@@ -105,14 +108,14 @@ class _OTP1ScreenState extends State<OTP1Screen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text('Already have an account?',style: TextStyle(color: Color(0xFF838589),fontFamily: 'TiltNeon',fontSize: 14),),
+                     Text(AppLocalizations.of(context)!.haveAnAccount,style: const TextStyle(color: Color(0xFF838589),fontFamily: 'TiltNeon',fontSize: 14),),
                     TextButton(
                       onPressed: () {
                         Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginScreen(),));
                       },
-                      child: const Text(
-                        'Login',
-                        style: TextStyle(
+                      child:  Text(
+                        AppLocalizations.of(context)!.login,
+                        style: const TextStyle(
                           fontFamily: 'TiltNeon',
                           fontWeight: FontWeight.bold,
                           decoration: TextDecoration.underline,
@@ -131,9 +134,9 @@ class _OTP1ScreenState extends State<OTP1Screen> {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.purple,
                     ),
-                    child: const Text(
-                      "Get OTP",
-                      style: TextStyle(
+                    child: Text(
+                      AppLocalizations.of(context)!.getOTP,
+                      style: const TextStyle(
                           fontFamily: 'TiltNeon',
                           fontSize: 25,
                           color: Colors.white),

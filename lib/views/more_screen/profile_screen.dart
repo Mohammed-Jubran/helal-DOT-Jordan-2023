@@ -4,6 +4,8 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:helal/controller/user_controller.dart';
 import 'package:helal/views/login_otp_screen/otp1_screen.dart';
 import 'package:helal/views/main_screen/bottom_navigation_bar.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class ProfileScreen extends StatelessWidget {
    ProfileScreen({super.key});
@@ -18,7 +20,7 @@ class ProfileScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("My Account",style: TextStyle(fontFamily: 'TiltNeon')),
+          title: Text(AppLocalizations.of(context)!.myAccount,style: const TextStyle(fontFamily: 'TiltNeon')),
           centerTitle: true,
         ),
         body: Center(
@@ -43,8 +45,8 @@ class ProfileScreen extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 const SizedBox(height: 10),
-                                const Text("UserName",
-                                    style: TextStyle(fontFamily: "TiltNeon", fontSize: 17)),
+                                Text(AppLocalizations.of(context)!.userName,
+                                    style: const TextStyle(fontFamily: "TiltNeon", fontSize: 17)),
                                 const SizedBox(height: 5),
                                 TextFormField(
                                   controller: _controllerUsername,
@@ -60,17 +62,17 @@ class ProfileScreen extends StatelessWidget {
                                           borderRadius: BorderRadius.circular(5)),
                                       enabledBorder: const OutlineInputBorder(
                                           borderSide: BorderSide(color: Colors.black12)),
-                                      hintText: "Please Enter Your Name",errorStyle: const TextStyle(height: 0)),
+                                      hintText: AppLocalizations.of(context)!.userName,errorStyle: const TextStyle(height: 0)),
                                 ),
                                 const SizedBox(height: 10),
-                                const Text("Email",
-                                    style: TextStyle(fontFamily: "TiltNeon", fontSize: 17)),
+                                Text(AppLocalizations.of(context)!.email,
+                                    style: const TextStyle(fontFamily: "TiltNeon", fontSize: 17)),
                                 const SizedBox(height: 5),
                                 TextFormField(
                                   controller: _controllerEmail,
                                   validator: (value) {
                                     if (!EmailValidator.validate(value!)) {
-                                      return "Email";
+                                      return AppLocalizations.of(context)!.email;
                                     }
                                     return null;
                                   },
@@ -80,11 +82,11 @@ class ProfileScreen extends StatelessWidget {
                                           borderRadius: BorderRadius.circular(5)),
                                       enabledBorder: const OutlineInputBorder(
                                           borderSide: BorderSide(color: Colors.black12)),
-                                      hintText: "Enter yor Email",errorStyle: const TextStyle(height: 0)),
+                                      hintText: AppLocalizations.of(context)!.email,errorStyle: const TextStyle(height: 0)),
                                 ),
                                 const SizedBox(height: 10),
-                                const Text("Phone",
-                                    style: TextStyle(fontFamily: "TiltNeon", fontSize: 17)),
+                                Text(AppLocalizations.of(context)!.phoneNumber,
+                                    style: const TextStyle(fontFamily: "TiltNeon", fontSize: 17)),
                                 const SizedBox(height: 5),
                                 TextFormField(
                                   controller: _controllerPhone,
@@ -100,7 +102,7 @@ class ProfileScreen extends StatelessWidget {
                                           borderRadius: BorderRadius.circular(5)),
                                       enabledBorder: const OutlineInputBorder(
                                           borderSide: BorderSide(color: Colors.black12)),
-                                      hintText: "Password",errorStyle: const TextStyle(height: 0)),
+                                      hintText: AppLocalizations.of(context)!.phoneNumber,errorStyle: const TextStyle(height: 0)),
                                 ),
                                 const SizedBox(height: 30),
                                 SizedBox(
@@ -113,8 +115,8 @@ class ProfileScreen extends StatelessWidget {
                                      _handleSubmitAction();
                                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const BottomNavigation(),));
                                       },
-                                      child: const Text("Submit",
-                                        style: TextStyle(
+                                      child: Text(AppLocalizations.of(context)!.submit,
+                                        style: const TextStyle(
                                             fontFamily: 'TiltNeon',
                                             fontSize: 17,
                                             color: Colors.white),)),
@@ -128,9 +130,9 @@ class ProfileScreen extends StatelessWidget {
                                           MaterialPageRoute(
                                               builder: (context) => const OTP1Screen()));
                                     },
-                                    child: const Text(
-                                      'Forget Password ?',
-                                      style: TextStyle(
+                                    child: Text(
+                                      AppLocalizations.of(context)!.forgetPassword,
+                                      style: const TextStyle(
                                         color: Colors.deepPurple,
                                         fontFamily: 'TiltNeon',
                                         fontWeight: FontWeight.bold,

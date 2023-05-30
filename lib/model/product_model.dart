@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 class Product {
   int id;
   String name;
+  String nameAr;
   String size;
   double price;
   String image;
@@ -14,6 +15,7 @@ class Product {
   Product(
     this.id,
     this.name,
+    this.nameAr,
     this.size,
     this.price,
     this.image,
@@ -25,6 +27,7 @@ class Product {
     return Product(
       int.parse(json["id"].toString()),
       json["name"],
+      json["name_ar"],
       json["size"],
       double.parse(json["price"].toString()),
       json["image"],
@@ -36,6 +39,7 @@ class Product {
   Map<String, dynamic> toJson() => {
         "id": id,
         "name": name,
+        "name_ar": nameAr,
         "quantity": selectedQty,
         "size": size,
         "price": price,

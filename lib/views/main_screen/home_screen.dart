@@ -7,6 +7,7 @@ import 'package:helal/model/category_model.dart';
 import 'package:helal/model/product_model.dart';
 import 'package:helal/views/main_screen/products_screen.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -37,6 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 }
                 if (snapshot.connectionState == ConnectionState.done) {
                   return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       BannerImage(
                         aspectRatio: 2.7,
@@ -53,17 +55,14 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                       ),
-                      const Align(
-                        alignment: Alignment.centerLeft,
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 20),
-                          child: Text("CATEGORIES",
-                              style: TextStyle(
-                                fontSize: 17,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: 'TiltNeon',
-                              )),
-                        ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: Text(AppLocalizations.of(context)!.categoriesUpper,
+                            style: const TextStyle(
+                              fontSize: 17,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'TiltNeon',
+                            )),
                       ),
                       const SizedBox(height: 10),
                       SizedBox(
@@ -92,7 +91,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ),
                                    ),
                                   const SizedBox(height: 5),
-                                  Text(category.name,
+                                  Text(AppLocalizations.of(context)!.language == "English" ?
+                                      category.name
+                                      : category.nameAr ,
                                       style: const TextStyle(
                                           fontSize: 20,
                                           fontFamily: 'TiltNeon',
@@ -106,17 +107,14 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       const SizedBox(height: 5),
-                      const Align(
-                        alignment: Alignment.centerLeft,
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 20),
-                          child: Text("SPECIAL OFFERS",
-                              style: TextStyle(
-                                fontSize: 17,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: 'TiltNeon',
-                              )),
-                        ),
+                       Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: Text(AppLocalizations.of(context)!.specialOffers,
+                            style: const TextStyle(
+                              fontSize: 17,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'TiltNeon',
+                            )),
                       ),
                       FutureBuilder(
                         future:  ProductController().getFeaturedProducts(),
@@ -174,7 +172,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   CrossAxisAlignment.start,
                                                   children: [
                                                     Text(
-                                                      product.name,
+                                                      AppLocalizations.of(context)!.language == "English" ?
+                                                      product.name
+                                                          : product.nameAr ,
                                                       style: const TextStyle(
                                                           fontWeight:
                                                           FontWeight.w600,
@@ -277,7 +277,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       const SizedBox(height: 10),
                       Text(
-                        "price per piece : ${product.price.toStringAsFixed(2)} JD",
+                        "${AppLocalizations.of(context)!.pricePerPiece} ${product.price.toStringAsFixed(2)} JD ",
                         style: const TextStyle(
                             fontSize: 14,
                             color: Colors.grey,
@@ -318,15 +318,15 @@ class _HomeScreenState extends State<HomeScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children:   [
-                          const Text("Total :  ",
-                              style: TextStyle(
+                          Text(AppLocalizations.of(context)!.total,
+                              style: const TextStyle(
                                   fontFamily: 'TiltNeon', fontSize: 17)),
                           Text("\$${(product.total).toStringAsFixed(2)}",
                               style: const TextStyle(
                                   fontFamily: 'TiltNeon',
                                   color: Colors.green,
                                   fontSize: 17)),
-                          const Text("JD",
+                          const Text(" JD",
                               style: TextStyle(
                                   fontFamily: 'TiltNeon', fontSize: 17)),
                         ],
@@ -343,11 +343,11 @@ class _HomeScreenState extends State<HomeScreen> {
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.purple,
                           ),
-                          child: const Text(
-                            "Add to cart",
-                            style: TextStyle(
+                          child: Text(
+                            AppLocalizations.of(context)!.addToCart,
+                            style: const TextStyle(
                                 fontFamily: 'TiltNeon',
-                                fontSize: 18,
+                                fontSize: 15,
                                 color: Colors.white),
                           ),
                         ),

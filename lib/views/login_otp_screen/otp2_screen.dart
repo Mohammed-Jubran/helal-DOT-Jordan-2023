@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_verification_code/flutter_verification_code.dart';
 import 'package:helal/views/login_otp_screen/otp3_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class OTP2Screen extends StatefulWidget {
   const OTP2Screen({Key? key}) : super(key: key);
@@ -18,7 +20,7 @@ class _OTP2ScreenState extends State<OTP2Screen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("OTP Step Two",style: TextStyle(fontFamily: 'TiltNeon',)),
+        title: Text(AppLocalizations.of(context)!.oTPStepTwo,style: const TextStyle(fontFamily: 'TiltNeon',)),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -29,8 +31,8 @@ class _OTP2ScreenState extends State<OTP2Screen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(height: 20),
-              const Text("OTP Verification",
-                  style: TextStyle(
+              Text(AppLocalizations.of(context)!.oneTimePassword,
+                  style: const TextStyle(
                       fontFamily: 'OoohBaby',
                       fontSize: 25,
                       fontWeight: FontWeight.w700,
@@ -39,9 +41,9 @@ class _OTP2ScreenState extends State<OTP2Screen> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children:  [
-                  const Text(
-                    "Enter the code from the sms we sent",
-                    style: TextStyle(
+                  Text(
+                    AppLocalizations.of(context)!.enterTheCodeFromTheSmsWeSent,
+                    style: const TextStyle(
                         fontFamily: 'TiltNeon',
                         color: Color(0xFF838589),
                         fontSize: 14,
@@ -50,16 +52,16 @@ class _OTP2ScreenState extends State<OTP2Screen> {
                   const SizedBox(height: 5),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
+                    children:  [
                       Text(
-                        "to ",
-                        style: TextStyle(
+                        AppLocalizations.of(context)!.to,
+                        style: const TextStyle(
                             fontFamily: 'TiltNeon',
                             color: Color(0xFF838589),
                             fontSize: 14,
                             fontWeight: FontWeight.w400),
                       ),
-                      Text(
+                      const Text(
                         "+962******832 ",
                         style: TextStyle(
                             fontFamily: 'TiltNeon',
@@ -108,12 +110,12 @@ class _OTP2ScreenState extends State<OTP2Screen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text('Don\'t receive the OTP?',style: TextStyle(color: Color(0xFF838589),fontFamily: 'TiltNeon',fontSize: 14),),
+                  Text(AppLocalizations.of(context)!.doNotReceiveTheOTP,style: const TextStyle(color: Color(0xFF838589),fontFamily: 'TiltNeon',fontSize: 14),),
                   TextButton(
                     onPressed: () {},
-                    child: const Text(
-                      'RESEND',
-                      style: TextStyle(
+                    child: Text(
+                      AppLocalizations.of(context)!.resend,
+                      style: const TextStyle(
                         color: Colors.purple,
                         fontFamily: 'TiltNeon',
                         fontWeight: FontWeight.bold,
@@ -133,9 +135,9 @@ class _OTP2ScreenState extends State<OTP2Screen> {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.purple,
                   ),
-                  child: const Text(
-                    "Submit",
-                    style: TextStyle(
+                  child: Text(
+                    AppLocalizations.of(context)!.submit,
+                    style: const TextStyle(
                         fontFamily: 'TiltNeon',
                         fontSize: 25,
                         color: Colors.white),

@@ -7,6 +7,8 @@ import 'package:helal/model/product_model.dart';
 import 'package:helal/views/main_screen/order_checkout_screen.dart';
 import 'package:helal/views/widget/empty_cart_widget.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class CartScreen extends StatefulWidget {
   const CartScreen({Key? key}) : super(key: key);
@@ -97,7 +99,7 @@ class _CartScreenState extends State<CartScreen> {
                                           ),
                                           Center(
                                             child: Text(
-                                              "Quantity: ${product.selectedQty}",
+                                              "${AppLocalizations.of(context)!.quantity} ${product.selectedQty}",
                                               style: const TextStyle(
                                                   fontFamily: "TiltNeon",
                                                   fontSize: 14),
@@ -137,9 +139,9 @@ class _CartScreenState extends State<CartScreen> {
                                             crossAxisAlignment: CrossAxisAlignment.center,
                                             mainAxisAlignment: MainAxisAlignment.center,
                                             children: [
-                                              const Text(
-                                                "total : ",
-                                                style: TextStyle(
+                                               Text(
+                                                AppLocalizations.of(context)!.total,
+                                                style: const TextStyle(
                                                     fontFamily: "TiltNeon",
                                                     fontSize: 17,
                                                     fontWeight: FontWeight.bold,
@@ -184,8 +186,8 @@ class _CartScreenState extends State<CartScreen> {
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black),
                           ),
-                          const Text("Total incl. VAT",
-                            style: TextStyle(
+                          Text(AppLocalizations.of(context)!.totalInclVAT,
+                            style: const TextStyle(
                                 fontFamily: "TiltNeon",
                                 fontSize: 11,
                                 fontWeight: FontWeight.bold,
@@ -202,9 +204,9 @@ class _CartScreenState extends State<CartScreen> {
                             borderRadius: BorderRadius.circular(5)
                           )
                         ),
-                        child: const Text(
-                          "Checkout",
-                          style: TextStyle(
+                        child: Text(
+                          AppLocalizations.of(context)!.checkout,
+                          style: const TextStyle(
                               fontFamily: 'TiltNeon',
                               fontSize: 17,
                               color: Colors.white),
@@ -223,7 +225,7 @@ class _CartScreenState extends State<CartScreen> {
   }
   _handelGoToOrderCheckout(BuildContext context)async{
    try{
-     EasyLoading.show(status: "Fetching location");
+     EasyLoading.show(status: AppLocalizations.of(context)!.fetchingLocation);
      Position location =await LocationController().determinePosition();
      EasyLoading.dismiss();
      // ignore: use_build_context_synchronously

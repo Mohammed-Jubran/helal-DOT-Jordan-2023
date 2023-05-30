@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:helal/controller/product_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class PaymentMethodScreen extends StatelessWidget {
   const PaymentMethodScreen({Key? key});
@@ -21,9 +23,9 @@ class PaymentMethodScreen extends StatelessWidget {
                   Icons.attach_money_outlined,
                   color: Colors.deepPurple,
                 ),
-                title: const Text(
-                  "Cash On Delivery",
-                  style: TextStyle(
+                title: Text(
+                  AppLocalizations.of(context)!.cashOnDelivery,
+                  style: const TextStyle(
                     fontFamily: 'TiltNeon',
                     fontSize: 17,
                   ),
@@ -46,9 +48,9 @@ class PaymentMethodScreen extends StatelessWidget {
                   Icons.payment,
                   color: Colors.deepPurple,
                 ),
-                title: const Text(
-                  "Debit Card",
-                  style: TextStyle(
+                title: Text(
+                  AppLocalizations.of(context)!.debitCard,
+                  style: const TextStyle(
                     fontFamily: 'TiltNeon',
                     fontSize: 17,
                   ),
@@ -69,17 +71,17 @@ class PaymentMethodScreen extends StatelessWidget {
                   const SizedBox(height: 10),
                   TextField(
                     enabled: isDebitCardSelected,
-                    decoration: const InputDecoration(
-                      hintText: "Card Number",
-                      prefixIcon: Icon(Icons.payment),
+                    decoration:  InputDecoration(
+                      hintText: AppLocalizations.of(context)!.cardNumber,
+                      prefixIcon: const Icon(Icons.payment),
                     ),
                   ),
                   const SizedBox(height: 15),
                   TextField(
                     enabled: isDebitCardSelected,
-                    decoration: const InputDecoration(
-                      hintText: "Holder Name",
-                      prefixIcon: Icon(Icons.person_2_outlined),
+                    decoration:  InputDecoration(
+                      hintText: AppLocalizations.of(context)!.holderName,
+                      prefixIcon: const Icon(Icons.person_2_outlined),
                     ),
                   ),
                   const SizedBox(height: 15),
@@ -89,9 +91,9 @@ class PaymentMethodScreen extends StatelessWidget {
                       Flexible(
                         child: TextField(
                           enabled: isDebitCardSelected,
-                          decoration: const InputDecoration(
-                            hintText: "MM/YY",
-                            prefixIcon: Icon(Icons.calendar_month),
+                          decoration:  InputDecoration(
+                            hintText: AppLocalizations.of(context)!.exp,
+                            prefixIcon: const Icon(Icons.calendar_month),
                           ),
                         ),
                       ),
@@ -99,9 +101,9 @@ class PaymentMethodScreen extends StatelessWidget {
                       Flexible(
                         child: TextField(
                           enabled: isDebitCardSelected,
-                          decoration: const InputDecoration(
-                            hintText: "CVV",
-                            prefixIcon: Icon(Icons.lock_outline),
+                          decoration:  InputDecoration(
+                            hintText: AppLocalizations.of(context)!.cVV,
+                            prefixIcon: const Icon(Icons.lock_outline),
                           ),
                         ),
                       ),

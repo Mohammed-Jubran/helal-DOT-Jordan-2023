@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:helal/controller/product_provider.dart';
 import 'package:helal/views/widget/billing_summery_widget.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class SummeryScreen extends StatelessWidget {
   const SummeryScreen({super.key});
@@ -11,15 +13,15 @@ class SummeryScreen extends StatelessWidget {
     return Consumer(builder: (context, ProductProvider productProvider, child) {
       return SingleChildScrollView(
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          const Text(
-            "Summery",
-            style: TextStyle(
+          Text(
+            AppLocalizations.of(context)!.summary,
+            style: const TextStyle(
               fontWeight: FontWeight.bold,
               fontFamily: 'TiltNeon',
               fontSize: 25,
             ),
           ),
-          _addressWidget(productProvider),
+          _addressWidget(context,productProvider),
           const BillingSummeryWidget()
         ]),
       );
@@ -27,15 +29,15 @@ class SummeryScreen extends StatelessWidget {
   }
 }
 
-Widget _addressWidget(ProductProvider productProvider) {
+Widget _addressWidget(BuildContext context,ProductProvider productProvider) {
   return Padding(
     padding: const EdgeInsets.all(10.0),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          "Delivery Address",
-          style: TextStyle(
+        Text(
+          AppLocalizations.of(context)!.deliveryAddress,
+          style: const TextStyle(
             fontWeight: FontWeight.w400,
             fontFamily: 'TiltNeon',
             fontSize: 18,
@@ -47,9 +49,9 @@ Widget _addressWidget(ProductProvider productProvider) {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text(
-              "Country",
-              style: TextStyle(
+             Text(
+              AppLocalizations.of(context)!.country,
+              style: const TextStyle(
                   fontFamily: 'TiltNeon',
                   fontSize: 14,
                   color: Colors.grey
@@ -71,9 +73,9 @@ Widget _addressWidget(ProductProvider productProvider) {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text(
-              "City",
-              style: TextStyle(
+            Text(
+              AppLocalizations.of(context)!.city,
+              style: const TextStyle(
                   fontFamily: 'TiltNeon',
                   fontSize: 14,
                   color: Colors.grey
@@ -95,9 +97,9 @@ Widget _addressWidget(ProductProvider productProvider) {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text(
-              "Area",
-              style: TextStyle(
+            Text(
+              AppLocalizations.of(context)!.area,
+              style: const TextStyle(
                   fontFamily: 'TiltNeon',
                   fontSize: 14,
                   color: Colors.grey
@@ -119,9 +121,9 @@ Widget _addressWidget(ProductProvider productProvider) {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text(
-              "Street",
-              style: TextStyle(
+            Text(
+              AppLocalizations.of(context)!.street,
+              style: const TextStyle(
                   fontFamily: 'TiltNeon',
                   fontSize: 14,
                   color: Colors.grey
@@ -143,9 +145,9 @@ Widget _addressWidget(ProductProvider productProvider) {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text(
-              "Building No.",
-              style: TextStyle(
+            Text(
+              AppLocalizations.of(context)!.buildingNo,
+              style: const TextStyle(
                   fontFamily: 'TiltNeon',
                   fontSize: 14,
                   color: Colors.grey

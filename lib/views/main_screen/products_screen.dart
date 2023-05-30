@@ -4,6 +4,8 @@ import 'package:helal/controller/product_provider.dart';
 import 'package:helal/model/product_model.dart';
 import 'package:helal/views/widget/add_to_cart_widget.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class ProductsScreen extends StatefulWidget {
   final int categoryId;
@@ -68,7 +70,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                       ),
                       const SizedBox(height: 10),
                       Text(
-                        "price per piece : ${product.price.toStringAsFixed(2)} JD",
+                        "${AppLocalizations.of(context)!.pricePerPiece} ${product.price.toStringAsFixed(2)} JD ",
                         style: const TextStyle(
                             fontSize: 14,
                             color: Colors.grey,
@@ -109,15 +111,15 @@ class _ProductsScreenState extends State<ProductsScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children:   [
-                          const Text("Total :  ",
-                              style: TextStyle(
+                          Text(AppLocalizations.of(context)!.total,
+                              style: const TextStyle(
                                   fontFamily: 'TiltNeon', fontSize: 17)),
                           Text("\$${(product.total).toStringAsFixed(2)}",
                               style: const TextStyle(
                                   fontFamily: 'TiltNeon',
                                   color: Colors.green,
                                   fontSize: 17)),
-                          const Text("JD",
+                          const Text(" JD",
                               style: TextStyle(
                                   fontFamily: 'TiltNeon', fontSize: 17)),
                         ],
@@ -134,11 +136,11 @@ class _ProductsScreenState extends State<ProductsScreen> {
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.purple,
                           ),
-                          child: const Text(
-                            "Add to cart",
-                            style: TextStyle(
+                          child: Text(
+                            AppLocalizations.of(context)!.addToCart,
+                            style: const TextStyle(
                                 fontFamily: 'TiltNeon',
-                                fontSize: 18,
+                                fontSize: 15,
                                 color: Colors.white),
                           ),
                         ),

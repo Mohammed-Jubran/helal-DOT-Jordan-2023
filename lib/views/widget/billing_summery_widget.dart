@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:helal/controller/product_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class BillingSummeryWidget extends StatelessWidget {
   const BillingSummeryWidget({
@@ -16,9 +18,9 @@ class BillingSummeryWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            const Text(
-              "Billing Summery",
-              style: TextStyle(
+            Text(
+              AppLocalizations.of(context)!.invoiceSummary,
+              style: const TextStyle(
                 fontWeight: FontWeight.w400,
                 fontFamily: 'TiltNeon',
                 fontSize: 18,
@@ -30,9 +32,9 @@ class BillingSummeryWidget extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children:  [
-                const Text(
-                  "Number Of Products",
-                  style: TextStyle(
+                Text(
+                  AppLocalizations.of(context)!.numberOfProducts,
+                  style: const TextStyle(
                       fontFamily: 'TiltNeon',
                       fontSize: 14,
                       color: Colors.grey
@@ -54,9 +56,9 @@ class BillingSummeryWidget extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children:  [
-                const Text(
-                  "Sub Total",
-                  style: TextStyle(
+                Text(
+                  AppLocalizations.of(context)!.subTotal,
+                  style: const TextStyle(
                       fontFamily: 'TiltNeon',
                       fontSize: 14,
                       color: Colors.grey
@@ -77,16 +79,16 @@ class BillingSummeryWidget extends StatelessWidget {
             const SizedBox(height: 3),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
+              children:  [
                 Text(
-                  "Delivery Charges",
-                  style: TextStyle(
+                  AppLocalizations.of(context)!.deliveryCharges,
+                  style: const TextStyle(
                       fontFamily: 'TiltNeon',
                       fontSize: 14,
                       color: Colors.grey
                   ),
                 ),
-                Text(
+                const Text(
                   "2.00",
                   style: TextStyle(
                       fontFamily: 'TiltNeon',
@@ -102,9 +104,9 @@ class BillingSummeryWidget extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
-                  "Total",
-                  style: TextStyle(
+                 Text(
+                  AppLocalizations.of(context)!.fTotal,
+                  style: const TextStyle(
                       fontFamily: 'TiltNeon',
                       fontSize: 14,
                       color: Colors.grey
