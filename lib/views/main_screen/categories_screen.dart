@@ -27,14 +27,14 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                 return GridView.builder(
                   gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                     maxCrossAxisExtent: 200,
-                    childAspectRatio: 3 / 3,
-                    crossAxisSpacing: 20,
-                    mainAxisSpacing: 20,
+                    childAspectRatio: 5 / 6,
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10,
                   ),
                   itemCount: snapshot.data!.length,
                   itemBuilder: (context, index) {
                     Category category = snapshot.data![index];
-                    return InkWell(
+                    return GestureDetector(
                       onTap: () {
                         Navigator.push(
                             context,
@@ -42,47 +42,28 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                               builder: (context) =>  ProductsScreen(categoryId: category.id, categoryName: category.name),
                             ));
                       },
-                      child: Material(
-                        elevation: 8,
-                        shape: OutlineInputBorder(
-                          borderSide: BorderSide.none,
-                            borderRadius: BorderRadius.circular(20)),
-                        shadowColor: Colors.purple,
-                        child: Container(
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20)),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Expanded(
-                                flex: 3,
-                                child: Container(
-                                  margin: const EdgeInsets.only(
-                                      top: 10, right: 10, left: 10, bottom: 5),
-                                  decoration: BoxDecoration(
-                                      color: Colors.grey,
-                                      borderRadius: BorderRadius.circular(15),
-                                      image: DecorationImage(
-                                        image: NetworkImage(category.image),
-                                        fit: BoxFit.cover,
-                                        opacity: .6,
-                                      )),
-                                ),
-                              ),
-                              Expanded(
-                                  flex: 1,
-                                  child: Text(
-                                    category.name,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: 18,
-                                        fontFamily: "TiltNeon"),
-                                  )),
-                            ],
+                      child: Stack(
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(15),
+                            child: Image.network(
+                                category.image,
+                              height: 250,
+                              fit: BoxFit.fitWidth,
+                            ),
                           ),
-                        ),
+                          Container(
+                            padding: const EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              color: Colors.black.withOpacity(0.5),
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            child: Center(
+                              child: Text(category.name,
+                                style: const TextStyle(fontSize: 20,color: Colors.white,fontFamily: "TiltNeon",fontWeight: FontWeight.bold),),
+                            ),
+                          ),
+                        ],
                       ),
                     );
                   },
