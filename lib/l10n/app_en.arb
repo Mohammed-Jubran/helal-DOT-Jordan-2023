@@ -1,0 +1,144 @@
+{
+    "language": "English",
+    "@language":{
+      "description": "The current Language"
+    },
+    "helloWorld": "Hello World!",
+    "@helloWorld": {
+      "description": "A programmer greeting"
+    },
+    "hello": "Hello {username}",
+    "@hello": {
+      "description": "A welcome message",
+      "placeholders": {
+         "username": {
+           "type": "String"
+         }
+      }
+    },
+    "helloIn": "Welcome In HelaL Market",
+        "@helloIn": {
+          "description": "A programmer greeting"
+        },
+    "login": "Login",
+            "@login": {
+              "description": "A programmer greeting"
+            },
+    "email": "Email",
+                "@login": {
+                  "description": "A programmer greeting"
+                },
+    "password": "Password",
+                    "@login": {
+                      "description": "A programmer greeting"
+                    },
+    "forgetPassword": "Forget Password ?",
+                        "@login": {
+                          "description": "A programmer greeting"
+                        },
+    "doNot": "Do not have an account ?",
+                            "@do": {
+                              "description": "A programmer greeting"
+                            },
+    "create": "Create",
+                                "@do": {
+                                  "description": "A programmer greeting"
+                                },
+    "signUp": "Sign Up",
+    "userName": "User Name",
+    "phoneNumber": "Phone Number",
+    "haveAnAccount": "have an account ?",
+    "userCreatedSuccessfully": "User created successfully",
+    "oTPStepOne": "OTP Step One",
+    "verifyYourPhoneNumber": "Verify your phone number",
+    "weHaveSendYouAn": "we have send you an ",
+    "oneTimePassword": "One Time Password(OTP)",
+    "enterMobileNo": "    Enter mobile no.*",
+    "getOTP": "Get OTP",
+    "oTPStepTwo": "OTP Step Two",
+    "enterTheCodeFromTheSmsWeSent": "Enter the code from the sms we sent",
+    "to": "to ",
+    "doNotReceiveTheOTP": "Do Not receive the OTP?",
+    "resend": "RESEND",
+    "submit": "Submit",
+    "oTPStepThree": "OTP Step Three",
+    "neww": "New",
+    "credentials": "Credentials",
+    "yourIdentityHasBeenVerified": "Your identity has been verified!",
+    "setYourNewPassword": "Set your new password",
+    "newPassword": "    New Password",
+    "confirmPassword": "    Confirm Password",
+    "rest": "Rest",
+    "updated": "Updated ",
+    "yourPasswordHasBeenUpdated": "your password has been updated! ",
+    "helaL": "HelaL",
+    "market": " Market",
+    "home": " Home",
+    "categories": "Categories",
+    "cart": "Cart",
+    "more": "More",
+    "categoriesUpper": "CATEGORIES",
+    "specialOffers": "SPECIAL OFFERS",
+    "yourShoppingCartIsEmpty": "Your shopping cart is empty.",
+    "addItemsYouWantToShop": "Add items you want to shop.",
+    "shopNow": "SHOP NOW",
+    "editProfile": "Edit profile",
+    "contactUs": "Contact us",
+    "languages": "Languages",
+    "aboutAs": "About as",
+    "logout": "Logout",
+    "pOne": "Welcome to Our Grocery App! We provide you with competitive-priced online grocery shopping and fast, reliable delivery service. Our journey began in 2000 with the opening of a small grocery store in the heart of the city, and since then, thanks to the support of our loyal customers, our company has grown and developed into one of the best online shopping services in the region.",
+    "pTwo": "At Our Grocery App, we strive to provide the best online shopping experience for our customers. We guarantee the quality of the products we offer and deliver them to your doorstep as quickly as possible. We also provide excellent customer service and respond to your questions and inquiries quickly and efficiently.",
+    "pThree": "We believe in the importance of teamwork and dedication to work, and we work hard to meet the needs of our customers and achieve their satisfaction. We look forward to continuing to provide the best services and products to our customers, and we thank you for your continuous support and trust in us.",
+    "callTheCustomerServiceCenter": "Call the customer service center",
+    "telPhone": "0795746832",
+    "sendUsAMessage": "Send us a message",
+    "subject": "Subject",
+    "pleaseExplainYourProblem": "Please explain your problem in detail and our team will contact you as soon as possible",
+    "send": "Send",
+    "messageHasBeenSent": "Message has been sent",
+    "myAccount": "My Account",
+    "pricePerPiece": "price per piece :",
+    "total": "Total :  ",
+    "addToCart": "Add to cart",
+    "viewCart": "View Cart",
+    "quantity": "Quantity: ",
+    "totalInclVAT": "Total incl. VAT",
+    "checkout": "Checkout",
+    "fetchingLocation": "Fetching location",
+    "next": "Next",
+    "previous": "Previous",
+    "country": "Country",
+    "city": "City",
+    "area": "Area",
+    "street": "Street",
+    "buildingNo": "Building No.",
+    "buildingNoReq": "please enter building Number",
+    "cashOnDelivery": "Cash On Delivery",
+    "debitCard": "Debit Card",
+    "cardNumber": "Card Number",
+    "holderName": "Holder Name",
+    "exp": "MM/YY",
+    "cVV": "CVV",
+    "summary": "Summary",
+    "deliveryAddress": "Delivery Address",
+    "invoiceSummary": "Invoice summary",
+    "numberOfProducts": "Number Of Products",
+    "subTotal": "Sub Total",
+    "deliveryCharges": "Delivery Charges",
+    "fTotal": "Total",
+    "done": "operation accomplished successfully",
+    "loading": "Loading"
+
+
+
+
+
+
+
+
+
+
+
+
+}
