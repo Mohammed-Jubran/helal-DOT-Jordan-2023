@@ -62,13 +62,15 @@ class _ProductsScreenState extends State<ProductsScreen> {
                       ),
                       const SizedBox(height: 10),
                       Text(
-                        product.name,
+                        AppLocalizations.of(context)!.language == "English" ?
+                        product.name
+                            : product.nameAr ,
                         style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 18,
                             fontFamily: 'TiltNeon'),
                       ),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 5),
                       Text(
                         "${AppLocalizations.of(context)!.pricePerPiece} ${product.price.toStringAsFixed(2)} JD ",
                         style: const TextStyle(
@@ -76,7 +78,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                             color: Colors.grey,
                             fontFamily: 'TiltNeon'),
                       ),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 5),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [

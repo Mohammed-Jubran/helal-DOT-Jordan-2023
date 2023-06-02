@@ -41,7 +41,9 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                           MaterialPageRoute(
                             builder: (context) => ProductsScreen(
                                 categoryId: category.id,
-                                categoryName: category.name),
+                                categoryName: AppLocalizations.of(context)!.language == "English" ?
+                                category.name
+                                    : category.nameAr ),
                           ),
                         );
                       },

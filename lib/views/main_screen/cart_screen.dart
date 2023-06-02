@@ -82,7 +82,12 @@ class _CartScreenState extends State<CartScreen> {
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               Text(
-                                                product.name,
+                                                AppLocalizations.of(
+                                                    context)!
+                                                    .language ==
+                                                    "English"
+                                                    ? product.name
+                                                    : product.nameAr,
                                                 style: const TextStyle(
                                                     fontWeight: FontWeight.w600,
                                                     fontFamily: "TiltNeon",

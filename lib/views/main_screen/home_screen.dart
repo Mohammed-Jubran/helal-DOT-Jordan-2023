@@ -49,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         borderRadius: BorderRadius.circular(8),
                         children: List.generate(
                           list.length,
-                              (index) => Image.asset(
+                          (index) => Image.asset(
                             list[index],
                             fit: BoxFit.cover,
                           ),
@@ -57,12 +57,13 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: Text(AppLocalizations.of(context)!.categoriesUpper,
-                            style: const TextStyle(
-                              fontSize: 17,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'TiltNeon',
-                            )),
+                        child:
+                            Text(AppLocalizations.of(context)!.categoriesUpper,
+                                style: const TextStyle(
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'TiltNeon',
+                                )),
                       ),
                       const SizedBox(height: 10),
                       SizedBox(
@@ -76,24 +77,35 @@ class _HomeScreenState extends State<HomeScreen> {
                             Category category = snapshot.data![index];
                             return InkWell(
                               onTap: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context) =>  ProductsScreen(categoryId: category.id, categoryName: category.name),));
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => ProductsScreen(
+                                          categoryId: category.id,
+                                          categoryName: AppLocalizations.of(context)!.language == "English" ?
+                                          category.name
+                                              : category.nameAr ),
+                                    ));
                               },
                               child: Column(
-                                children:  [
-                                   Material(
-                                     shape: const CircleBorder(),
-                                     elevation: 10,
-                                     color: Colors.purple,
-                                     child: CircleAvatar(
+                                children: [
+                                  Material(
+                                    shape: const CircleBorder(),
+                                    elevation: 10,
+                                    color: Colors.purple,
+                                    child: CircleAvatar(
                                       backgroundColor: Colors.transparent,
                                       radius: 35,
-                                      backgroundImage: NetworkImage(category.image),
+                                      backgroundImage:
+                                          NetworkImage(category.image),
+                                    ),
                                   ),
-                                   ),
                                   const SizedBox(height: 5),
-                                  Text(AppLocalizations.of(context)!.language == "English" ?
-                                      category.name
-                                      : category.nameAr ,
+                                  Text(
+                                      AppLocalizations.of(context)!.language ==
+                                              "English"
+                                          ? category.name
+                                          : category.nameAr,
                                       style: const TextStyle(
                                           fontSize: 20,
                                           fontFamily: 'TiltNeon',
@@ -103,11 +115,11 @@ class _HomeScreenState extends State<HomeScreen> {
                             );
                           },
                           separatorBuilder: (context, index) =>
-                          const SizedBox(width: 15),
+                              const SizedBox(width: 15),
                         ),
                       ),
                       const SizedBox(height: 5),
-                       Padding(
+                      Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
                         child: Text(AppLocalizations.of(context)!.specialOffers,
                             style: const TextStyle(
@@ -117,119 +129,148 @@ class _HomeScreenState extends State<HomeScreen> {
                             )),
                       ),
                       FutureBuilder(
-                        future:  ProductController().getFeaturedProducts(),
-                        builder: (context, snapshot) {
-                          if (snapshot.connectionState == ConnectionState.waiting) {
-                            return const Center(child: CircularProgressIndicator());
-                          }
-                          if (snapshot.connectionState == ConnectionState.done) {
-                            return Container(
-                              height: ((MediaQuery.of(context).size.height)*.35)-10,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: const Color(0xFFf6f5f4),
-                              ),
-                              width: double.infinity,
-                              child: ListView.separated(
-                                scrollDirection: Axis.horizontal,
-                                itemCount: snapshot.data!.length,
-                                padding: const EdgeInsets.symmetric(horizontal: 15),
-                                itemBuilder: (context, index) {
-                                  Product product = snapshot.data![index];
-                                  return InkWell(
-                                    onTap: () {
-                                      _handleViewProduct(product);
-                                    },
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(vertical: 10),
-                                      child: Material(
-                                        elevation: 7,
-                                        child: Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            Expanded(
-                                              flex: 3,
-                                              child: Container(
-                                                width: (MediaQuery.of(context).size.width) *
-                                                    .40,
-                                                decoration: BoxDecoration(
-                                                    borderRadius: BorderRadius.circular(5),
-                                                    image:  DecorationImage(
-                                                        image: NetworkImage(
-                                                            product.image),
-                                                        fit: BoxFit.cover)),
-                                              ),
-                                            ),
-                                            Expanded(
-                                              flex: 1,
-                                              child: Padding(
-                                                padding: const EdgeInsets.symmetric(
-                                                    horizontal: 10),
-                                                child: Column(
-                                                  mainAxisAlignment:
-                                                  MainAxisAlignment.spaceEvenly,
-                                                  crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                                  children: [
-                                                    Text(
-                                                      AppLocalizations.of(context)!.language == "English" ?
-                                                      product.name
-                                                          : product.nameAr ,
-                                                      style: const TextStyle(
-                                                          fontWeight:
-                                                          FontWeight.w600,
-                                                          fontFamily: "TiltNeon",
-                                                          fontSize: 15),
-                                                    ),
-                                                    Row(
-                                                      mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
-                                                      crossAxisAlignment:
-                                                      CrossAxisAlignment.center,
-                                                      children: [
-                                                        Text(
-                                                            "\$${product.price.toStringAsFixed(2)}",
-                                                            style: const TextStyle(
-                                                                fontFamily:
-                                                                "TiltNeon",
-                                                                fontWeight:
-                                                                FontWeight.bold,
-                                                                color:
-                                                                Colors.purple)),
-                                                        SizedBox(width:(MediaQuery.of(context).size.width)*.2),
-                                                        Text(
-                                                          product.size,
-                                                          style: const TextStyle(
-                                                              fontSize: 10,
-                                                              fontFamily:
-                                                              "TiltNeon",
-                                                              fontWeight:
-                                                              FontWeight.w400),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ],
+                          future: ProductController().getFeaturedProducts(),
+                          builder: (context, snapshot) {
+                            if (snapshot.connectionState ==
+                                ConnectionState.waiting) {
+                              return const Center(
+                                  child: CircularProgressIndicator());
+                            }
+                            if (snapshot.connectionState ==
+                                ConnectionState.done) {
+                              return Container(
+                                height: ((MediaQuery.of(context).size.height) *
+                                        .35) -
+                                    10,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: const Color(0xFFf6f5f4),
+                                ),
+                                width: double.infinity,
+                                child: ListView.separated(
+                                  scrollDirection: Axis.horizontal,
+                                  itemCount: snapshot.data!.length,
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 15),
+                                  itemBuilder: (context, index) {
+                                    Product product = snapshot.data![index];
+                                    return InkWell(
+                                      onTap: () {
+                                        _handleViewProduct(product);
+                                      },
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 10),
+                                        child: Material(
+                                          elevation: 7,
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Expanded(
+                                                flex: 3,
+                                                child: Container(
+                                                  width: (MediaQuery.of(context)
+                                                          .size
+                                                          .width) *
+                                                      .40,
+                                                  decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              5),
+                                                      image: DecorationImage(
+                                                          image: NetworkImage(
+                                                              product.image),
+                                                          fit: BoxFit.cover)),
                                                 ),
                                               ),
-                                            )
-                                          ],
+                                              Expanded(
+                                                flex: 1,
+                                                child: Padding(
+                                                  padding: const EdgeInsets
+                                                          .symmetric(
+                                                      horizontal: 10),
+                                                  child: Column(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceEvenly,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Text(
+                                                        AppLocalizations.of(
+                                                                        context)!
+                                                                    .language ==
+                                                                "English"
+                                                            ? product.name
+                                                            : product.nameAr,
+                                                        style: const TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            fontFamily:
+                                                                "TiltNeon",
+                                                            fontSize: 15),
+                                                      ),
+                                                      Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .center,
+                                                        children: [
+                                                          Text(
+                                                              "\$${product.price.toStringAsFixed(2)}",
+                                                              style: const TextStyle(
+                                                                  fontFamily:
+                                                                      "TiltNeon",
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  color: Colors
+                                                                      .purple)),
+                                                          SizedBox(
+                                                              width: (MediaQuery.of(
+                                                                          context)
+                                                                      .size
+                                                                      .width) *
+                                                                  .2),
+                                                          Text(
+                                                            product.size,
+                                                            style: const TextStyle(
+                                                                fontSize: 10,
+                                                                fontFamily:
+                                                                    "TiltNeon",
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  );
-                                },
-                                separatorBuilder: (context, index) => const SizedBox(width: 15),
-                              ),
-                            );
-                          }
-                          return Container();
-                        }
-                      ),
+                                    );
+                                  },
+                                  separatorBuilder: (context, index) =>
+                                      const SizedBox(width: 15),
+                                ),
+                              );
+                            }
+                            return Container();
+                          }),
                     ],
                   );
                 }
-                return Container(color: Colors.red,);
+                return Container(
+                  color: Colors.red,
+                );
               },
             ),
           ),
@@ -237,7 +278,8 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
-  _handleViewProduct(Product product ) {
+
+  _handleViewProduct(Product product) {
     showModalBottomSheet<void>(
         context: context,
         builder: (BuildContext context) {
@@ -256,7 +298,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         elevation: 9.5,
                         shadowColor: Colors.purple,
                         borderRadius:
-                        const BorderRadius.all(Radius.circular(5)),
+                            const BorderRadius.all(Radius.circular(5)),
                         child: Container(
                           width: (MediaQuery.of(context).size.width) * .5,
                           height: 150,
@@ -269,13 +311,18 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       const SizedBox(height: 10),
                       Text(
-                        product.name,
+                        AppLocalizations.of(
+                            context)!
+                            .language ==
+                            "English"
+                            ? product.name
+                            : product.nameAr,
                         style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 18,
                             fontFamily: 'TiltNeon'),
                       ),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 5),
                       Text(
                         "${AppLocalizations.of(context)!.pricePerPiece} ${product.price.toStringAsFixed(2)} JD ",
                         style: const TextStyle(
@@ -283,7 +330,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             color: Colors.grey,
                             fontFamily: 'TiltNeon'),
                       ),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 5),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -314,10 +361,10 @@ class _HomeScreenState extends State<HomeScreen> {
                               icon: const Icon(Icons.remove)),
                         ],
                       ),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 5),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children:   [
+                        children: [
                           Text(AppLocalizations.of(context)!.total,
                               style: const TextStyle(
                                   fontFamily: 'TiltNeon', fontSize: 17)),
@@ -336,7 +383,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         width: (MediaQuery.of(context).size.width) * .5,
                         child: ElevatedButton(
                           onPressed: () {
-                            var productProvider = Provider.of<ProductProvider>(context,listen: false);
+                            var productProvider = Provider.of<ProductProvider>(
+                                context,
+                                listen: false);
                             productProvider.addToCart(product);
                             Navigator.pop(context);
                           },
