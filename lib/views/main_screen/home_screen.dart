@@ -18,9 +18,9 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final list = [
-    'assets/images/1.jpeg',
-    'assets/images/4.jpeg',
-    'assets/images/3.jpeg',
+    'assets/images/hypermarket-1.png',
+    'assets/images/hypermarket-2.jpeg',
+    'assets/images/hypermarket-3.jpeg',
   ];
 
   @override
@@ -51,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           list.length,
                           (index) => Image.asset(
                             list[index],
-                            fit: BoxFit.cover,
+                            fit: BoxFit.fitWidth,
                           ),
                         ),
                       ),
