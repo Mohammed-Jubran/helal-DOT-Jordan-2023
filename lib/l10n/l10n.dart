@@ -9,7 +9,7 @@ class L10n {
   static String getFlag(String code) {
     switch (code) {
       case 'ar':
-        return '🇦🇪';
+        return '🇯🇴';
       default:
         return '🇺🇸';
     }
