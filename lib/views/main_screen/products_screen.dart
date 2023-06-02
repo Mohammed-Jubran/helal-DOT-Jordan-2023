@@ -226,8 +226,10 @@ class _ProductsScreenState extends State<ProductsScreen> {
                                                   CrossAxisAlignment.start,
                                               children: [
                                                 Text(
-                                                  product.name,
-                                                  style: const TextStyle(
+                                                AppLocalizations.of(context)!.language == "English" ?
+                                            product.name
+                                                : product.nameAr,
+                                              style: const TextStyle(
                                                       fontWeight:
                                                           FontWeight.w600,
                                                       fontFamily: "TiltNeon",
