@@ -4,27 +4,6 @@ import 'package:helal/l10n/l10n.dart';
 
 import 'package:provider/provider.dart';
 
-class LanguageWidget extends StatelessWidget {
-  const LanguageWidget({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final locale = Localizations.localeOf(context);
-    final flag = L10n.getFlag(locale.languageCode);
-
-    return Center(
-      child: CircleAvatar(
-        backgroundColor: Colors.white,
-        radius: 72,
-        child: Text(
-          flag,
-          style: const TextStyle(fontSize: 80),
-        ),
-      ),
-    );
-  }
-}
-
 class LanguagePickerWidget extends StatelessWidget {
   const LanguagePickerWidget({super.key});
 
