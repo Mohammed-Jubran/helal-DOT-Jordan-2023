@@ -31,52 +31,60 @@ class _ProductsScreenState extends State<ProductsScreen> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: ProductController().getByCategoryId(receivedCategoryId),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
-          }
-          if (snapshot.connectionState == ConnectionState.done) {
-            return SafeArea(
-              child: Scaffold(
-                appBar: AppBar(
-                  title: Text(receivedCategoryName,
-                      style: const TextStyle(fontFamily: 'TiltNeon')),
-                  centerTitle: true,
-                ),
-                body: Column(
-                  children: [
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: GridView.builder(
-                          gridDelegate:
-                              const SliverGridDelegateWithMaxCrossAxisExtent(
-                            maxCrossAxisExtent: 300,
-                            childAspectRatio: 2 / 3,
-                            crossAxisSpacing: 10,
-                            mainAxisSpacing: 0,
-                          ),
-                          itemCount: snapshot.data!.length,
-                          itemBuilder: (context, index) {
-                            Product product = snapshot.data![index];
-                            return InkWell(
-                              onTap: () {
-                                handleViewProduct(context,product);
-                              },
-                              child: OneProductCat(product: product),
-                            );
-                          },
+      future: ProductController().getByCategoryId(receivedCategoryId),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(child: CircularProgressIndicator());
+        }
+        if (snapshot.connectionState == ConnectionState.done) {
+          return SafeArea(
+            child: Scaffold(
+              appBar: AppBar(
+                title: Text(receivedCategoryName,
+                    style: const TextStyle(fontFamily: 'TiltNeon')),
+                centerTitle: true,
+              ),
+              body: Column(
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: GridView.builder(
+                        gridDelegate:
+                            const SliverGridDelegateWithMaxCrossAxisExtent(
+                          maxCrossAxisExtent: 300,
+                          childAspectRatio: 2 / 3,
+                          crossAxisSpacing: 10,
+                          mainAxisSpacing: 0,
                         ),
+                        itemCount: snapshot.data!.length,
+                        itemBuilder: (context, index) {
+                          Product product = snapshot.data![index];
+                          return InkWell(
+                            onTap: () {
+                              handleViewProduct(context, product);
+                            },
+                            child: OneProductCat(product: product),
+                          );
+                        },
                       ),
                     ),
-                    const AddToCartWidget(),
-                  ],
-                ),
+                  ),
+                  const AddToCartWidget(),
+                ],
               ),
-            );
-          }
-          return Container();
-        });
+            ),
+          );
+        }
+        return Center(
+          child: Column(
+            children: const [
+              Icon(Icons.error_outline),
+              Text("Something Is Wrong")
+            ],
+          ),
+        );
+      },
+    );
   }
 }
