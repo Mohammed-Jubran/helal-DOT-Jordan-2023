@@ -104,10 +104,13 @@ handleViewProduct(BuildContext context,Product product) {
                     width: (MediaQuery.of(context).size.width) * .5,
                     child: ElevatedButton(
                       onPressed: () {
-                        var productProvider = Provider.of<ProductProvider>(
-                            context,
-                            listen: false);
-                        productProvider.addToCart(product);
+                        if (product.selectedQty > 0) {
+                          var productProvider = Provider.of<ProductProvider>(
+                              context,
+                              listen: false);
+                          productProvider.addToCart(product);
+                          Navigator.pop(context);
+                        }
                         Navigator.pop(context);
                       },
                       style: ElevatedButton.styleFrom(
