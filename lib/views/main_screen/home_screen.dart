@@ -44,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         aspectRatio: 2.7,
                         itemLength: list.length,
                         withOutIndicator: false,
-                        selectedIndicatorColor: Colors.purple,
+                        selectedIndicatorColor: Colors.deepPurple,
                         autoPlay: true,
                         borderRadius: BorderRadius.circular(8),
                         children: List.generate(
@@ -92,7 +92,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   Material(
                                     shape: const CircleBorder(),
                                     elevation: 10,
-                                    color: Colors.purple,
+                                    color: Colors.deepPurple,
                                     child: CircleAvatar(
                                       backgroundColor: Colors.transparent,
                                       radius: 35,
@@ -109,7 +109,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       style: const TextStyle(
                                           fontSize: 20,
                                           fontFamily: 'TiltNeon',
-                                          color: Colors.black)),
+                                         )),
                                 ],
                               ),
                             );
@@ -144,7 +144,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                     10,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
-                                  color: const Color(0xFFf6f5f4),
                                 ),
                                 width: double.infinity,
                                 child: ListView.separated(

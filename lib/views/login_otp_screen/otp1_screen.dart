@@ -47,7 +47,7 @@ class _OTP1ScreenState extends State<OTP1Screen> {
                         fontFamily: 'OoohBaby',
                         fontSize: 25,
                         fontWeight: FontWeight.w700,
-                        color: Color(0xFF0C1A30))),
+                        )),
                 const SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -82,7 +82,7 @@ class _OTP1ScreenState extends State<OTP1Screen> {
                 const SizedBox(height: 5),
                 Material(
                   elevation: 9.5,
-                  shadowColor: Colors.purple,
+                  shadowColor: Colors.deepPurple,
                   borderRadius: BorderRadius.circular(50),
                   child: InternationalPhoneNumberInput(
                     onInputChanged: (PhoneNumber number) {
@@ -132,7 +132,7 @@ class _OTP1ScreenState extends State<OTP1Screen> {
                       Navigator.push(context, MaterialPageRoute(builder: (context) => const OTP2Screen(),));
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.purple,
+                      backgroundColor: Colors.deepPurple,
                     ),
                     child: Text(
                       AppLocalizations.of(context)!.getOTP,

@@ -30,13 +30,11 @@ class AddToCartWidget extends StatelessWidget {
                 const WithNotification(),
                 Text(AppLocalizations.of(context)!.viewCart,
                     style: const TextStyle(
-                      color: Colors.black,
                       fontWeight: FontWeight.bold,
                       fontFamily: "TiltNeon",
                     )),
                 Text(productProvider.total.toStringAsFixed(2),
                     style: const TextStyle(
-                      color: Colors.black,
                       fontWeight: FontWeight.bold,
                       fontFamily: "TiltNeon",
                     )),

@@ -30,7 +30,7 @@ class _MoreScreenState extends State<MoreScreen> {
               const Icon(
                 Icons.shopping_cart_outlined,
                 size: 150,
-                color: Colors.purple,
+                color: Colors.deepPurple,
               ),
               const Divider(),
               InkWell(
@@ -40,13 +40,13 @@ class _MoreScreenState extends State<MoreScreen> {
                 child:  ListTile(
                   leading: const Icon(
                     Icons.person,
-                    color: Colors.purple,
+                    color: Colors.deepPurple,
                   ),
                   title: Text(AppLocalizations.of(context)!.editProfile,
                       style: const TextStyle(fontFamily: "TiltNeon")),
                   trailing: const Icon(
                     Icons.arrow_forward_ios,
-                    color: Colors.purple,
+                    color: Colors.deepPurple,
                   ),
                 ),
               ),
@@ -59,13 +59,13 @@ class _MoreScreenState extends State<MoreScreen> {
                 child:  ListTile(
                   leading: const Icon(
                     Icons.phone,
-                    color: Colors.purple,
+                    color: Colors.deepPurple,
                   ),
                   title:
                       Text(AppLocalizations.of(context)!.contactUs, style: const TextStyle(fontFamily: "TiltNeon")),
                   trailing: const Icon(
                     Icons.arrow_forward_ios,
-                    color: Colors.purple,
+                    color: Colors.deepPurple,
                   ),
                 ),
               ),
@@ -73,7 +73,7 @@ class _MoreScreenState extends State<MoreScreen> {
                ListTile(
                 leading: const Icon(
                   Icons.translate,
-                  color: Colors.purple,
+                  color: Colors.deepPurple,
                 ),
                 title:
                     Text(AppLocalizations.of(context)!.language, style: const TextStyle(fontFamily: "TiltNeon")),
@@ -91,13 +91,13 @@ class _MoreScreenState extends State<MoreScreen> {
                 child: ListTile(
                   leading: const Icon(
                     Icons.info,
-                    color: Colors.purple,
+                    color: Colors.deepPurple,
                   ),
                   title: Text(AppLocalizations.of(context)!.aboutAs,
                       style: const TextStyle(fontFamily: "TiltNeon")),
                   trailing: const Icon(
                     Icons.arrow_forward_ios,
-                    color: Colors.purple,
+                    color: Colors.deepPurple,
                   ),
                 ),
               ),
@@ -115,13 +115,13 @@ class _MoreScreenState extends State<MoreScreen> {
                 child: ListTile(
                   leading: const Icon(
                     Icons.logout,
-                    color: Colors.purple,
+                    color: Colors.deepPurple,
                   ),
                   title:
                       Text(AppLocalizations.of(context)!.logout, style: const TextStyle(fontFamily: "TiltNeon")),
                   trailing: const Icon(
                     Icons.arrow_forward_ios,
-                    color: Colors.purple,
+                    color: Colors.deepPurple,
                   ),
                 ),
               ),

@@ -10,8 +10,7 @@ class EmptyCart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
+    return SizedBox(
       width: double.infinity,
       height: double.infinity,
       child: Column(
@@ -37,19 +36,18 @@ class EmptyCart extends StatelessWidget {
               Navigator.push(context, MaterialPageRoute(builder: (context) => const BottomNavigation(),));
             },
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.white,
               elevation: 0,
-              foregroundColor: Colors.purple,
+              foregroundColor: Colors.deepPurple,
               fixedSize: const Size(150, 40),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
-                  side: const BorderSide(color: Colors.purple, width: 1)),
+                  side: const BorderSide(color: Colors.deepPurple, width: 1)),
             ),
             child:  Text(AppLocalizations.of(context)!.shopNow,
                 style: const TextStyle(
                     fontFamily: 'TiltNeon',
                     fontSize: 15,
-                    color: Colors.purple,
+                    color: Colors.deepPurple,
                     fontWeight: FontWeight.w400)),
           )
         ],

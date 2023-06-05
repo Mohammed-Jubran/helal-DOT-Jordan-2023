@@ -22,28 +22,33 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  static final ValueNotifier<ThemeMode> themeNotifier =ValueNotifier(ThemeMode.light);
   const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<LocaleProvider>(context);
-    return MaterialApp(
-      builder: EasyLoading.init(),
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        useMaterial3: true,
-        primarySwatch: Colors.blue,
-      ),
-      debugShowCheckedModeBanner: false,
-      locale: provider.locale,
-      supportedLocales: L10n.all,
-      localizationsDelegates: const [
-        AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ],
-      home: const SplashScreen(),
-    );
+    return ValueListenableBuilder(valueListenable: themeNotifier, builder: (_,ThemeMode currentMode,__){
+      return MaterialApp(
+        builder: EasyLoading.init(),
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          useMaterial3: true,
+          primarySwatch: Colors.blue,
+        ),
+        darkTheme: ThemeData.dark(useMaterial3: true),
+        themeMode: currentMode,
+        debugShowCheckedModeBanner: false,
+        locale: provider.locale,
+        supportedLocales: L10n.all,
+        localizationsDelegates: const [
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+        ],
+        home: const SplashScreen(),
+      );
+    });
   }
 }

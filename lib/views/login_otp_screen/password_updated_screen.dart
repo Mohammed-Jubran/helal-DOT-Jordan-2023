@@ -22,15 +22,15 @@ class PasswordUpdatedScreen extends StatelessWidget {
                         fontFamily: 'OoohBaby',
                         fontSize: 30,
                         fontWeight: FontWeight.w700,
-                        color: Color(0xFF0C1A30))),
+                        )),
                 Text(AppLocalizations.of(context)!.updated,
                     style: const TextStyle(
                         fontFamily: 'OoohBaby',
                         fontSize: 30,
                         fontWeight: FontWeight.w700,
-                        color: Color(0xFF0C1A30))),
+                       )),
                 const SizedBox(height: 10),
-                const Icon(Icons.check_circle_sharp,size: 100,color: Colors.purple,),
+                const Icon(Icons.check_circle_sharp,size: 100,color: Colors.deepPurple,),
                 const SizedBox(height: 50),
                 Text(AppLocalizations.of(context)!.yourPasswordHasBeenUpdated,style: const TextStyle(color: Color(0xFF838589),fontFamily: 'TiltNeon',fontSize: 14),),
                 const SizedBox(height: 20),
@@ -41,7 +41,7 @@ class PasswordUpdatedScreen extends StatelessWidget {
                       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const BottomNavigation(),));
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.purple,
+                      backgroundColor: Colors.deepPurple,
                     ),
                     child: Text(
                       AppLocalizations.of(context)!.login,

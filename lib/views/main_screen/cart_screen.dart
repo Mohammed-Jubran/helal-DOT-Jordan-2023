@@ -51,7 +51,6 @@ class _CartScreenState extends State<CartScreen> {
                             child: Container(
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(5),
-                                color: const Color(0xFFf6f5f4),
                               ),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -99,7 +98,7 @@ class _CartScreenState extends State<CartScreen> {
                                                       fontFamily: "TiltNeon",
                                                       fontWeight:
                                                           FontWeight.bold,
-                                                      color: Colors.purple)),
+                                                      color: Colors.deepPurple)),
                                             ],
                                           ),
                                           Center(
@@ -150,7 +149,7 @@ class _CartScreenState extends State<CartScreen> {
                                                     fontFamily: "TiltNeon",
                                                     fontSize: 17,
                                                     fontWeight: FontWeight.bold,
-                                                    color: Colors.black),
+                                                    ),
                                               ),
                                               Text(
                                                 "\$${(product.total).toStringAsFixed(2)}",
@@ -189,7 +188,7 @@ class _CartScreenState extends State<CartScreen> {
                                 fontFamily: "TiltNeon",
                                 fontSize: 17,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.black),
+                                ),
                           ),
                           Text(AppLocalizations.of(context)!.totalInclVAT,
                             style: const TextStyle(

@@ -19,7 +19,6 @@ class OneProductCat extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(5),
-            color: const Color(0xFFf6f5f4),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -73,7 +72,7 @@ class OneProductCat extends StatelessWidget {
                                   fontWeight:
                                   FontWeight.bold,
                                   color:
-                                  Colors.purple)),
+                                  Colors.deepPurple)),
                           Text(
                             product.size,
                             style: const TextStyle(

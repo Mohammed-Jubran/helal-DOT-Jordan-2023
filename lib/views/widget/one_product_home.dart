@@ -84,7 +84,7 @@ class OneProductHome extends StatelessWidget {
                                 FontWeight
                                     .bold,
                                 color: Colors
-                                    .purple)),
+                                    .deepPurple)),
                         SizedBox(
                             width: (MediaQuery.of(
                                 context)

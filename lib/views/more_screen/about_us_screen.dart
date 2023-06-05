@@ -27,7 +27,6 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
                   AppLocalizations.of(context)!.pOne,
                   style: const TextStyle(
                       fontFamily: 'TiltNeon',
-                      color: Colors.black,
                       fontSize: 17),
                 ),
                 const SizedBox(height: 10),
@@ -35,14 +34,12 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
                     AppLocalizations.of(context)!.pTwo,
                     style: const TextStyle(
                         fontFamily: 'TiltNeon',
-                        color: Colors.black,
                         fontSize: 17)),
                 const SizedBox(height: 10),
                 Text(
                     AppLocalizations.of(context)!.pThree,
                     style: const TextStyle(
                         fontFamily: 'TiltNeon',
-                        color: Colors.black,
                         fontSize: 17)),
               ],
             ),

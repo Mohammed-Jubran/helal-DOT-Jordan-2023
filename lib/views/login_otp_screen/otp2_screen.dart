@@ -36,7 +36,7 @@ class _OTP2ScreenState extends State<OTP2Screen> {
                       fontFamily: 'OoohBaby',
                       fontSize: 25,
                       fontWeight: FontWeight.w700,
-                      color: Color(0xFF0C1A30))),
+                      )),
               const SizedBox(height: 20),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -65,7 +65,6 @@ class _OTP2ScreenState extends State<OTP2Screen> {
                         "+962******832 ",
                         style: TextStyle(
                             fontFamily: 'TiltNeon',
-                            color: Color(0xFF0C1A30),
                             fontSize: 14,
                             fontWeight: FontWeight.w400),
                       ),
@@ -78,16 +77,15 @@ class _OTP2ScreenState extends State<OTP2Screen> {
                 "02:32",
                 style: TextStyle(
                     fontFamily: 'TiltNeon',
-                    color: Colors.purple,
+                    color: Colors.deepPurple,
                     fontSize: 14,
                     fontWeight: FontWeight.w500),
               ),
               const SizedBox(height: 5),
               VerificationCode(
-                textStyle: const TextStyle(color: Color(0xFF0C1A30)),
                 keyboardType: TextInputType.number,
                 underlineWidth: 1,
-                underlineUnfocusedColor: Colors.purple,
+                underlineUnfocusedColor: Colors.deepPurple,
                 length: 4,
                 cursorColor: Colors.black,
                 margin: const EdgeInsets.all(12),
@@ -103,7 +101,7 @@ class _OTP2ScreenState extends State<OTP2Screen> {
                   if (!_onEditing) FocusScope.of(context).unfocus();
                 },
                 fullBorder: true,
-                fillColor: const Color(0xFFFAFAFA),
+
                 itemSize: 50,
               ),
               const SizedBox(height: 25),
@@ -116,7 +114,7 @@ class _OTP2ScreenState extends State<OTP2Screen> {
                     child: Text(
                       AppLocalizations.of(context)!.resend,
                       style: const TextStyle(
-                        color: Colors.purple,
+                        color: Colors.deepPurple,
                         fontFamily: 'TiltNeon',
                         fontWeight: FontWeight.bold,
                         decoration: TextDecoration.underline,
@@ -133,7 +131,7 @@ class _OTP2ScreenState extends State<OTP2Screen> {
                     Navigator.push(context, MaterialPageRoute(builder: (context) => const OTP3Screen(),));
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.purple,
+                    backgroundColor: Colors.deepPurple,
                   ),
                   child: Text(
                     AppLocalizations.of(context)!.submit,

@@ -52,7 +52,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   const SizedBox(height: 50),
                   Material(
                     elevation: 9.5,
-                    shadowColor: Colors.purple,
+                    shadowColor: Colors.deepPurple,
                     borderRadius: const BorderRadius.all(Radius.circular(50)),
                     child: TextFormField(
                       controller: _fullNameController,
@@ -60,7 +60,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           hintText: AppLocalizations.of(context)!.userName,
                           prefixIcon: const Icon(
                             Icons.person,
-                            color: Colors.purple,
+                            color: Colors.deepPurple,
                           ),
                           contentPadding:
                           const EdgeInsets.symmetric(horizontal: 15),
@@ -79,7 +79,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   const SizedBox(height: 15),
                   Material(
                     elevation: 9.5,
-                    shadowColor: Colors.purple,
+                    shadowColor: Colors.deepPurple,
                     borderRadius: const BorderRadius.all(Radius.circular(50)),
                     child: TextFormField(
                       controller: _phoneController,
@@ -87,7 +87,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           hintText: AppLocalizations.of(context)!.phoneNumber,
                           prefixIcon: const Icon(
                             Icons.phone,
-                            color: Colors.purple,
+                            color: Colors.deepPurple,
                           ),
                           contentPadding:
                           const EdgeInsets.symmetric(horizontal: 15),
@@ -106,7 +106,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   const SizedBox(height: 15),
                   Material(
                     elevation: 9.5,
-                    shadowColor: Colors.purple,
+                    shadowColor: Colors.deepPurple,
                     borderRadius: const BorderRadius.all(Radius.circular(50)),
                     child: TextFormField(
                       controller: _emailController,
@@ -114,7 +114,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         hintText: AppLocalizations.of(context)!.email,
                         prefixIcon: const Icon(
                           Icons.email,
-                          color: Colors.purple,
+                          color: Colors.deepPurple,
                         ),
                         contentPadding: const EdgeInsets.symmetric(horizontal: 15),
                         border: const OutlineInputBorder(
@@ -133,7 +133,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   const SizedBox(height: 15),
                   Material(
                     elevation: 9.5,
-                    shadowColor: Colors.purple,
+                    shadowColor: Colors.deepPurple,
                     borderRadius: const BorderRadius.all(Radius.circular(50)),
                     child: TextFormField(
                       controller: _passwordController,
@@ -141,7 +141,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           hintText: AppLocalizations.of(context)!.password,
                           prefixIcon: const Icon(
                             Icons.lock,
-                            color: Colors.purple,
+                            color: Colors.deepPurple,
                           ),
                           contentPadding:
                           const EdgeInsets.symmetric(horizontal: 15),
@@ -181,7 +181,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         }
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.purple,
+                        backgroundColor: Colors.deepPurple,
                       ),
                       child:  Text(
                         AppLocalizations.of(context)!.signUp,

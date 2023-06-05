@@ -37,7 +37,7 @@ class ProfileScreen extends StatelessWidget {
                       key: _formKey,
                       child: SingleChildScrollView(
                         child: Card(
-                          shadowColor: Colors.purple,
+                          shadowColor: Colors.deepPurple,
                           elevation: 5,
                           child: Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 10),

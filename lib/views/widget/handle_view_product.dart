@@ -21,7 +21,7 @@ handleViewProduct(BuildContext context,Product product) {
                 children: <Widget>[
                   Material(
                     elevation: 9.5,
-                    shadowColor: Colors.purple,
+                    shadowColor: Colors.deepPurple,
                     borderRadius: const BorderRadius.all(Radius.circular(5)),
                     child: Container(
                       width: (MediaQuery.of(context).size.width) * .5,
@@ -110,11 +110,12 @@ handleViewProduct(BuildContext context,Product product) {
                               listen: false);
                           productProvider.addToCart(product);
                           Navigator.pop(context);
+                        }else{
+                          Navigator.pop(context);
                         }
-                        Navigator.pop(context);
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.purple,
+                        backgroundColor: Colors.deepPurple,
                       ),
                       child: Text(
                         AppLocalizations.of(context)!.addToCart,

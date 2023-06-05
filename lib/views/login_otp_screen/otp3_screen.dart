@@ -17,7 +17,6 @@ class _OTP3ScreenState extends State<OTP3Screen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
         appBar: AppBar(
           title: Text(AppLocalizations.of(context)!.oTPStepThree,style: const TextStyle(fontFamily: 'TiltNeon',)),
           centerTitle: true,
@@ -36,13 +35,13 @@ class _OTP3ScreenState extends State<OTP3Screen> {
                             fontFamily: 'OoohBaby',
                             fontSize: 25,
                             fontWeight: FontWeight.w700,
-                            color: Color(0xFF0C1A30))),
+                            )),
                      Text(AppLocalizations.of(context)!.credentials,
                         style: const TextStyle(
                             fontFamily: 'OoohBaby',
                             fontSize: 25,
                             fontWeight: FontWeight.w700,
-                            color: Color(0xFF0C1A30))),
+                            )),
                   ],
                 ),
                 const SizedBox(height: 20),
@@ -77,7 +76,7 @@ class _OTP3ScreenState extends State<OTP3Screen> {
                 const SizedBox(height: 5),
                 Material(
                   elevation: 9.5,
-                  shadowColor: Colors.purple,
+                  shadowColor: Colors.deepPurple,
                   borderRadius: const BorderRadius.all(Radius.circular(50)),
                   child: TextFormField(
                     keyboardType: TextInputType.visiblePassword,
@@ -86,7 +85,7 @@ class _OTP3ScreenState extends State<OTP3Screen> {
                         hintText: AppLocalizations.of(context)!.newPassword,
                         prefixIcon: const Icon(
                           Icons.lock,
-                          color: Colors.purple,
+                          color: Colors.deepPurple,
                         ),
                         suffixIcon: IconButton(
                           onPressed: () {
@@ -126,7 +125,7 @@ class _OTP3ScreenState extends State<OTP3Screen> {
                 const SizedBox(height: 5),
                 Material(
                   elevation: 9.5,
-                  shadowColor: Colors.purple,
+                  shadowColor: Colors.deepPurple,
                   borderRadius: const BorderRadius.all(Radius.circular(50)),
                   child: TextFormField(
                     keyboardType: TextInputType.visiblePassword,
@@ -135,7 +134,7 @@ class _OTP3ScreenState extends State<OTP3Screen> {
                         hintText: AppLocalizations.of(context)!.confirmPassword,
                         prefixIcon: const Icon(
                           Icons.lock,
-                          color: Colors.purple,
+                          color: Colors.deepPurple,
                         ),
                         suffixIcon: IconButton(
                           onPressed: () {
@@ -168,7 +167,7 @@ class _OTP3ScreenState extends State<OTP3Screen> {
                       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const PasswordUpdatedScreen(),));
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.purple,
+                      backgroundColor: Colors.deepPurple,
                     ),
                     child: Text(
                       AppLocalizations.of(context)!.rest,

@@ -71,7 +71,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     const SizedBox(height: 50),
                     Material(
                       elevation: 9.5,
-                      shadowColor: Colors.purple,
+                      shadowColor: Colors.deepPurple,
                       borderRadius: const BorderRadius.all(Radius.circular(50)),
                       child: TextFormField(
                         keyboardType: TextInputType.emailAddress,
@@ -80,7 +80,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           hintText: AppLocalizations.of(context)!.email,
                           prefixIcon: const Icon(
                             Icons.email,
-                            color: Colors.purple,
+                            color: Colors.deepPurple,
                           ),
                           contentPadding: const EdgeInsets.symmetric(horizontal: 15),
                           border: const OutlineInputBorder(
@@ -99,7 +99,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     const SizedBox(height: 15),
                     Material(
                       elevation: 9.5,
-                      shadowColor: Colors.purple,
+                      shadowColor: Colors.deepPurple,
                       borderRadius: const BorderRadius.all(Radius.circular(50)),
                       child: TextFormField(
                         keyboardType: TextInputType.visiblePassword,
@@ -109,7 +109,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             hintText: AppLocalizations.of(context)!.password,
                             prefixIcon: const Icon(
                               Icons.lock,
-                              color: Colors.purple,
+                              color: Colors.deepPurple,
                             ),
                             suffixIcon: IconButton(
                               onPressed: () {
@@ -162,7 +162,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           _handleSignInAction(context);
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.purple,
+                          backgroundColor: Colors.deepPurple,
                         ),
                         child:  Text(
                           AppLocalizations.of(context)!.login,

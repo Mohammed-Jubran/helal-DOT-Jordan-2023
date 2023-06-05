@@ -25,7 +25,6 @@ class _CallScreenState extends State<CallScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white24,
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.contactUs,style: const TextStyle(fontFamily: 'TiltNeon')),
         centerTitle: true,
@@ -46,7 +45,7 @@ class _CallScreenState extends State<CallScreen> {
                   child: ListTile(
                     leading: const Icon(
                       Icons.phone_android_outlined,
-                      color: Colors.purple,
+                      color: Colors.deepPurple,
                       size: 35,
                     ),
                     title: Text(
@@ -61,104 +60,101 @@ class _CallScreenState extends State<CallScreen> {
                   ),
                 ),
               ),
-              Container(
-                color: Colors.white,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10),
-                  child: Column(
-                    children: [
-                      Card(
-                        child: ListTile(
-                          leading: const Icon(
-                            Icons.email_outlined,
-                            color: Colors.purple,
-                            size: 35,
-                          ),
-                          title: Text(
-                            AppLocalizations.of(context)!.sendUsAMessage,
-                            style: const TextStyle(fontFamily: 'TiltNeon'),
-                          ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                child: Column(
+                  children: [
+                    Card(
+                      child: ListTile(
+                        leading: const Icon(
+                          Icons.email_outlined,
+                          color: Colors.deepPurple,
+                          size: 35,
+                        ),
+                        title: Text(
+                          AppLocalizations.of(context)!.sendUsAMessage,
+                          style: const TextStyle(fontFamily: 'TiltNeon'),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
-                        child: Column(
-                          children: [
-                            const SizedBox(height: 10),
-                            SizedBox(
-                              height: 50,
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(5)),
-                                  hintText: AppLocalizations.of(context)!.userName
-                                ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: Column(
+                        children: [
+                          const SizedBox(height: 10),
+                          SizedBox(
+                            height: 50,
+                            child: TextField(
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(5)),
+                                hintText: AppLocalizations.of(context)!.userName
                               ),
                             ),
-                            const SizedBox(height: 10),
-                            SizedBox(
-                              height: 50,
-                              child: TextField(
-                                decoration: InputDecoration(
-                                    border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(5)),
-                                    hintText: AppLocalizations.of(context)!.phoneNumber
-                                ),
-                              ),
-                            ),
-                            const SizedBox(height: 10),
-                            SizedBox(
-                              height: 50,
-                              child: TextField(
-                                decoration: InputDecoration(
-                                    border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(5)),
-                                    hintText: AppLocalizations.of(context)!.email
-                                ),
-                              ),
-                            ),
-                            const SizedBox(height: 10),
-                            SizedBox(
-                              height: 50,
-                              child: TextField(
-                                decoration: InputDecoration(
-                                    border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(5)),
-                                    hintText: AppLocalizations.of(context)!.subject
-                                ),
-                              ),
-                            ),
-                            const SizedBox(height: 10),
-                            TextField(
-                              maxLines: 2,
+                          ),
+                          const SizedBox(height: 10),
+                          SizedBox(
+                            height: 50,
+                            child: TextField(
                               decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(5)),
-                                  hintText: AppLocalizations.of(context)!.pleaseExplainYourProblem
+                                  hintText: AppLocalizations.of(context)!.phoneNumber
                               ),
                             ),
-                            const SizedBox(height: 10),
-                            SizedBox(
-                              width: double.infinity,
-                              child: ElevatedButton(
-                                onPressed: (){
-                                  EasyLoading.showSuccess(AppLocalizations.of(context)!.messageHasBeenSent);
-                                  Future.delayed(const Duration(milliseconds: 1000), () async {
-                                     EasyLoading.dismiss();
-                                     Navigator.pop(context);
-                                  });
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.purpleAccent,
-                                ),
-                                child: Text(AppLocalizations.of(context)!.send,style: const TextStyle(color: Colors.white,fontFamily: 'TiltNeon',fontSize: 20),),
+                          ),
+                          const SizedBox(height: 10),
+                          SizedBox(
+                            height: 50,
+                            child: TextField(
+                              decoration: InputDecoration(
+                                  border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(5)),
+                                  hintText: AppLocalizations.of(context)!.email
                               ),
-                            )
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          SizedBox(
+                            height: 50,
+                            child: TextField(
+                              decoration: InputDecoration(
+                                  border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(5)),
+                                  hintText: AppLocalizations.of(context)!.subject
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          TextField(
+                            maxLines: 2,
+                            decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(5)),
+                                hintText: AppLocalizations.of(context)!.pleaseExplainYourProblem
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          SizedBox(
+                            width: double.infinity,
+                            child: ElevatedButton(
+                              onPressed: (){
+                                EasyLoading.showSuccess(AppLocalizations.of(context)!.messageHasBeenSent);
+                                Future.delayed(const Duration(milliseconds: 1000), () async {
+                                   EasyLoading.dismiss();
+                                   Navigator.pop(context);
+                                });
+                              },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.deepPurple,
+                              ),
+                              child: Text(AppLocalizations.of(context)!.send,style: const TextStyle(color: Colors.white,fontFamily: 'TiltNeon',fontSize: 20),),
+                            ),
+                          )
+                        ],
+                      ),
+                    )
+                  ],
                 ),
               ),
             ],
