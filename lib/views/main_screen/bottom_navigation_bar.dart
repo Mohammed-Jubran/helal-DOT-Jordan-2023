@@ -68,10 +68,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
                         ? ThemeMode.dark
                         : ThemeMode.light;
               },
-              child: Icon(
-                  MyApp.themeNotifier.value == ThemeMode.light
-                      ? Icons.dark_mode_outlined
-                      : Icons.light_mode,
+              child: const Icon(Icons.dark_mode_outlined,
                   color: Colors.deepPurple,
                   size: 40),
             ),
