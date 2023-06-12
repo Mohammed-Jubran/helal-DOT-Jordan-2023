@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:helal/views/main_screen/bottom_navigation_bar.dart';
+import 'package:helal/views/login_otp_screen/login_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
@@ -38,7 +38,7 @@ class PasswordUpdatedScreen extends StatelessWidget {
                   width: (MediaQuery.of(context).size.width)*.7,
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const BottomNavigation(),));
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const LoginScreen(),));
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.deepPurple,

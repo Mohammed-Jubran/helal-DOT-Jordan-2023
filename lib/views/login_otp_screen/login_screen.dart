@@ -36,7 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
           context, MaterialPageRoute(builder: (context) => const BottomNavigation()));
     }).catchError((ex) {
       EasyLoading.dismiss();
-      EasyLoading.showError(ex.toString());
+      EasyLoading.showInfo("your email or password is not correct");
     });
   }
 

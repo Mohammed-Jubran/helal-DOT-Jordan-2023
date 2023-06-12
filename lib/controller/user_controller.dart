@@ -26,7 +26,7 @@ class UserController {
       });
       return Login.fromJson(result);
     } catch (e) {
-      rethrow;
+      rethrow ;
     }
   }
 
