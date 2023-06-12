@@ -4,6 +4,7 @@ import 'package:helal/views/more_screen/about_us_screen.dart';
 import 'package:helal/views/login_otp_screen/login_screen.dart';
 import 'package:helal/views/more_screen/contact_screen.dart';
 import 'package:helal/views/more_screen/profile_screen.dart';
+import 'package:helal/views/more_screen/your_orders_screen.dart';
 import 'package:helal/views/widget/language_picker_widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -27,11 +28,6 @@ class _MoreScreenState extends State<MoreScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(height: 20),
-              const Icon(
-                Icons.shopping_cart_outlined,
-                size: 150,
-                color: Colors.deepPurple,
-              ),
               const Divider(),
               InkWell(
                 onTap: () {
@@ -39,7 +35,7 @@ class _MoreScreenState extends State<MoreScreen> {
                 },
                 child:  ListTile(
                   leading: const Icon(
-                    Icons.person,
+                    Icons.person_outline,
                     color: Colors.deepPurple,
                   ),
                   title: Text(AppLocalizations.of(context)!.editProfile,
@@ -58,7 +54,7 @@ class _MoreScreenState extends State<MoreScreen> {
                 },
                 child:  ListTile(
                   leading: const Icon(
-                    Icons.phone,
+                    Icons.phone_outlined,
                     color: Colors.deepPurple,
                   ),
                   title:
@@ -70,14 +66,45 @@ class _MoreScreenState extends State<MoreScreen> {
                 ),
               ),
               const Divider(),
+              InkWell(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) =>  const YourOrdersScreen(),));
+                },
+                child:  ListTile(
+                  leading: const Icon(
+                    Icons.history,
+                    color: Colors.deepPurple,
+                  ),
+                  title: Text(AppLocalizations.of(context)!.yourOrders,
+                      style: const TextStyle(fontFamily: "TiltNeon")),
+                  trailing: const Icon(
+                    Icons.arrow_forward_ios,
+                    color: Colors.deepPurple,
+                  ),
+                ),
+              ),
+              const Divider(),
                ListTile(
                 leading: const Icon(
-                  Icons.translate,
+                  Icons.translate_outlined,
                   color: Colors.deepPurple,
                 ),
                 title:
                     Text(AppLocalizations.of(context)!.language, style: const TextStyle(fontFamily: "TiltNeon")),
                 trailing:const LanguagePickerWidget(),
+              ),
+              const Divider(),
+              ListTile(
+                leading: const Icon(
+                  Icons.star_rate_outlined,
+                  color: Colors.deepPurple,
+                ),
+                title: Text(AppLocalizations.of(context)!.rateUs,
+                    style: const TextStyle(fontFamily: "TiltNeon")),
+                trailing: const Icon(
+                  Icons.arrow_forward_ios,
+                  color: Colors.deepPurple,
+                ),
               ),
               const Divider(),
               InkWell(
@@ -90,7 +117,7 @@ class _MoreScreenState extends State<MoreScreen> {
                 },
                 child: ListTile(
                   leading: const Icon(
-                    Icons.info,
+                    Icons.info_outlined,
                     color: Colors.deepPurple,
                   ),
                   title: Text(AppLocalizations.of(context)!.aboutAs,
@@ -114,7 +141,7 @@ class _MoreScreenState extends State<MoreScreen> {
                 },
                 child: ListTile(
                   leading: const Icon(
-                    Icons.logout,
+                    Icons.logout_outlined,
                     color: Colors.deepPurple,
                   ),
                   title:
@@ -125,6 +152,7 @@ class _MoreScreenState extends State<MoreScreen> {
                   ),
                 ),
               ),
+              const Divider(),
             ],
           ),
         ),

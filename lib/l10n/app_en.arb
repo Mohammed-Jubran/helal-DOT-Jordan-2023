@@ -128,7 +128,9 @@
     "deliveryCharges": "Delivery Charges",
     "fTotal": "Total",
     "done": "operation accomplished successfully",
-    "loading": "Loading"
+    "loading": "Loading",
+    "rateUs": "Rate us",
+    "yourOrders": "Your orders"
 
 
 
