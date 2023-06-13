@@ -7,6 +7,29 @@ class Address {
   late String street;
   late String buildingNo = "";
 
+
+  Address({
+    required this.latitude,
+    required this.longitude,
+    required this.country,
+    required this.city,
+    required this.area,
+    required this.street,
+    this.buildingNo = "",
+  });
+
+  factory Address.fromJson(Map<String, dynamic> json) {
+    return Address(
+      latitude: json['latitude'],
+      longitude: json['longitude'],
+      country: json['country'],
+      city: json['city'],
+      area: json['area'],
+      street: json['street'],
+      buildingNo: json['building_no'] ?? "",
+    );
+  }
+
   Map<String, dynamic> toJson() => {
     "latitude": latitude,
     "longitude": longitude,

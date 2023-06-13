@@ -76,15 +76,14 @@ class _GoogleMapStepState extends State<GoogleMapStep> {
 
     List<Placemark> placemarks = await placemarkFromCoordinates(_requiredLocation.latitude, _requiredLocation.longitude);
     Placemark first = placemarks.first;
-    Address address = Address();
-
-    address.latitude = _requiredLocation.latitude;
-    address.longitude = _requiredLocation.longitude;
-    address.country = first.country!;
-    address.city = first.locality!;
-    address.area = first.subLocality!;
-    address.street = first.street!;
-    address.buildingNo = "";
+    Address address = Address(
+      latitude: _requiredLocation.latitude,
+      longitude: _requiredLocation.longitude,
+      country: first.country!,
+      city: first.locality!,
+      area: first.subLocality!,
+      street: first.street!,
+    );
 
     // ignore: use_build_context_synchronously
     var productProvider = Provider.of<ProductProvider>(context,listen: false);

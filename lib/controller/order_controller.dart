@@ -11,4 +11,21 @@ class OrderController {
       rethrow;
     }
   }
+
+
+  Future<List<Order>> getOrdersByUserId(int userId) async {
+    try {
+      List<Order> order = [];
+      var response = await ApiHelper().getRequest("/api/orders/$userId");
+
+      response.forEach((v) {
+        order.add(Order.fromJson(v));
+      });
+
+      return order;
+    } catch (ex) {
+      rethrow;
+    }
+  }
+
 }
