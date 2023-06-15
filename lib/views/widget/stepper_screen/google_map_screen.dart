@@ -30,6 +30,7 @@ class _GoogleMapStepState extends State<GoogleMapStep> {
         target: LatLng(widget.location.latitude, widget.location.longitude),
         zoom: 19,
     );
+    _requiredLocation = _initialPosition.target;
   }
 
   @override
@@ -45,7 +46,7 @@ class _GoogleMapStepState extends State<GoogleMapStep> {
           width: mapWidth,
           height: mapHeight,
           child: GoogleMap(
-            mapType: MapType.hybrid,
+            mapType: MapType.normal,
             mapToolbarEnabled: true,
             myLocationEnabled: true,
             initialCameraPosition: _initialPosition,
