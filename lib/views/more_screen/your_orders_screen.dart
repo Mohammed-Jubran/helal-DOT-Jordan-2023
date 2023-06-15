@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:helal/controller/order_controller.dart';
 import 'package:helal/model/order_model.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class OrderScreen extends StatefulWidget {
   final int userId;
@@ -25,7 +27,7 @@ class _OrderScreenState extends State<OrderScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Orders',style: TextStyle(fontFamily: 'TiltNeon')),
+        title:  Text(AppLocalizations.of(context)!.yourOrders,style: TextStyle(fontFamily: 'TiltNeon')),
         centerTitle: true,
       ),
       body: FutureBuilder<List<Order>>(
@@ -46,8 +48,8 @@ class _OrderScreenState extends State<OrderScreen> {
               itemBuilder: (context, index) {
                 Order order = snapshot.data![index];
                 return ListTile(
-                  title: Text('Order Date: ${order.orderDate}',style: const TextStyle(fontFamily: 'TiltNeon')),
-                  trailing: Text('Total: ${order.total?.toStringAsFixed(2)}',style: const TextStyle(fontFamily: 'TiltNeon')),
+                  title: Text('${AppLocalizations.of(context)!.orderDate} ${order.orderDate}',style: const TextStyle(fontFamily: 'TiltNeon')),
+                  trailing: Text('${AppLocalizations.of(context)!.total} ${order.total?.toStringAsFixed(2)}',style: const TextStyle(fontFamily: 'TiltNeon')),
                 );
               }, separatorBuilder: (BuildContext context, int index) { return const Divider(); },
             );

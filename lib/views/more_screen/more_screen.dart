@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:helal/controller/user_controller.dart';
 import 'package:helal/views/more_screen/about_us_screen.dart';
 import 'package:helal/views/login_otp_screen/login_screen.dart';
 import 'package:helal/views/more_screen/contact_screen.dart';
@@ -17,6 +18,22 @@ class MoreScreen extends StatefulWidget {
 }
 
 class _MoreScreenState extends State<MoreScreen> {
+
+  late int? userId;
+
+  @override
+  void initState() {
+    super.initState();
+    fetchUserId();
+  }
+
+  Future<void> fetchUserId() async {
+    final user = await UserController().getUser();
+    setState(() {
+      userId = user.id;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,7 +85,7 @@ class _MoreScreenState extends State<MoreScreen> {
               const Divider(),
               InkWell(
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) =>   OrderScreen(userId: 6),));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => OrderScreen(userId: userId ?? 0)));
                 },
                 child:  ListTile(
                   leading: const Icon(

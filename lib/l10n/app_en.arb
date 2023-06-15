@@ -131,7 +131,8 @@
     "loading": "Loading",
     "rateUs": "Rate us",
     "yourOrders": "Your orders",
-    "pleaseClick": "Please click on the payment method to complete the steps"
+    "pleaseClick": "Please click on the payment method to complete the steps",
+    "orderDate": "Order Date:"
 
 
 
