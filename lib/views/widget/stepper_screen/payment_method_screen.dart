@@ -13,7 +13,17 @@ class PaymentMethodScreen extends StatelessWidget {
       bool isDebitCardSelected = productProvider.paymentMethod == 2;
       return SingleChildScrollView(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            const SizedBox(height: 10),
+             Text(AppLocalizations.of(context)!.pleaseClick,
+              style: const TextStyle(
+                fontWeight: FontWeight.w400,
+                color: Colors.red,
+                fontFamily: 'TiltNeon',
+                fontSize: 18,
+              ),),
+            const SizedBox(height: 10),
             Card(
               child: ListTile(
                 onTap: () {

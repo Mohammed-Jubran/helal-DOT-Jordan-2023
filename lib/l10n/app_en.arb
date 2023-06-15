@@ -130,7 +130,8 @@
     "done": "operation accomplished successfully",
     "loading": "Loading",
     "rateUs": "Rate us",
-    "yourOrders": "Your orders"
+    "yourOrders": "Your orders",
+    "pleaseClick": "Please click on the payment method to complete the steps"
 
 
 

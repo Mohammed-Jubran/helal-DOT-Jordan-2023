@@ -30,6 +30,11 @@ class SummeryScreen extends StatelessWidget {
 }
 
 Widget _addressWidget(BuildContext context,ProductProvider productProvider) {
+  final address = productProvider.address;
+  if (address == null) {
+    // Handle the case when the address is null, for example, show a placeholder or an error message.
+    return const Text('Address is not available');
+  }
   return Padding(
     padding: const EdgeInsets.all(10.0),
     child: Column(
