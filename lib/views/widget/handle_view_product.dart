@@ -30,7 +30,7 @@ handleViewProduct(BuildContext context,Product product) {
                           borderRadius: BorderRadius.circular(5),
                           image: DecorationImage(
                               image: NetworkImage(product.image),
-                              fit: BoxFit.cover)),
+                              fit: BoxFit.fitHeight)),
                     ),
                   ),
                   const SizedBox(height: 10),

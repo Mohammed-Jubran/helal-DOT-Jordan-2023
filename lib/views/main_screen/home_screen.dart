@@ -38,6 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 }
                 if (snapshot.connectionState == ConnectionState.done) {
                   return Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       BannerImage(
