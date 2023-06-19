@@ -18,7 +18,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final list = [
-    'assets/images/hypermarket-1.png',
+    'assets/images/hyper.jpeg',
     'assets/images/hypermarket-2.jpeg',
     'assets/images/hypermarket-3.jpeg',
   ];
