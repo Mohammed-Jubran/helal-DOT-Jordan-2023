@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 
 class ApiHelper{
-  final String domain = "164.92.204.56:3333";
+  final String domain = "134.122.95.120:3333";
 
   Future<String> getToken()async {
     var storage = const FlutterSecureStorage();
